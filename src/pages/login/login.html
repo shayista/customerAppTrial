@@ -1,25 +1,36 @@
 <ion-content class="loginContent" style="background:url(assets/imgs/BG.png) no-repeat center;background-size:cover;">
+  <div class="conatiner">
 
-  <p class="logoImage"><img class="logo" src="assets/imgs/logo.png" /></p>
-  <p class="loginTitle">User Login</p>
 
-  <form>
-    <ion-item class="loginInput">
-      <ion-input type="text" placeholder="User Name" name="username">
-      </ion-input>
-    </ion-item>
+    <p class="logoImage">
+      <img class="logo" src="assets/imgs/logo.png" />
+    </p>
+    <p class="loginTitle">User Login</p>
 
-    <ion-item class="loginInput">
-      <ion-input type="password" placeholder="Password " name="Password">
-      </ion-input>
-    </ion-item>
-    <input type="button" class="page-button" (click)="goToOtherPage()" value="Login">
+    <form #f="ngForm" (ngSubmit)="f.valid && validUser(f)">
+      <ion-item class="loginInput">
+        <ion-input type="email" name="username" placeholder="User Name" [(ngModel)]="username" #user="ngModel" required>
+        </ion-input>
      
+      </ion-item>
+     
+      <ion-item class="loginInput">
+        <ion-input type="password" placeholder="Password " name="password" [(ngModel)]="password" #pwd="ngModel" required>
+        </ion-input>
+      </ion-item>
+      
+      <input type="submit" class="page-button" value="Login">
 
-  
-  </form>
 
-  
+
+    </form>
+    <div  style="color:white" *ngIf ="user.touched && !user.valid">
+      Username is required
+    </div>
+    <div  style="color:white" *ngIf ="pwd.touched && !pwd.valid">
+      Password is required
+   </div>
+  </div>
   <p class="forgotPassword">
     Forgot Password?
   </p>
