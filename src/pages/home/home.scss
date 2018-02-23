@@ -1,5 +1,11 @@
 page-home {
-    font-family: 'Segoe UI';
+    *{
+        padding: 0;
+        margin: 0;
+        font-family: 'Segoe UI';
+       
+    }
+
 // HEADER SECTION //
 .header{
     float: left;
@@ -126,11 +132,11 @@ page-home {
 }
 
 .listMyVisit{
-    padding-top: 170px; 
+    padding-top: 134px; 
 }
 
 .detailsLi{
-    background:#000 !important;
+    //background:rgba(0, 0, 0, .76) !important;
     margin: 0px 10px 10px 10px ;
     padding: 0;
     width: 95%;
@@ -258,7 +264,7 @@ page-home {
 .presentContent{
     width: 100%;
     float:left;
-   background-color: #000 ;
+   background:rgba(0, 0, 0, .7) ;
 }
 .pastContent{
     color: #000;
@@ -380,8 +386,11 @@ padding: 0 !important;
 
 .item-inner{
     border: none !important;
+   
 }
-
+.item-ios{
+    background: transparent !important; 
+}
 .subtitlesContainer{
     width: 78%;
     margin: 0 auto; 

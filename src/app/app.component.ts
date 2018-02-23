@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { loginPage } from '../pages/login/login';
 import { MyVisitPage } from '../pages/my-visit/my-visit';
+import { HomePage } from '../pages/home/home';
 
 
 

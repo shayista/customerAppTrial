@@ -6,26 +6,30 @@ page-login {
 
 // HEADER SECTION //
 .logo{
-    
+    margin:123.5px 0 76.5px 0 !important;
     max-width:57.8%;
     height:auto;
-    margin:37% 21% 11.4% 21%;
+   
     text-align: center;
 }
 
 .loginTitle{
     padding: 0 !important;
-    margin: 0 0 20px 0 !important;
+     margin-bottom: 20px;
     font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
     color: #8f9296;
-    position: relative;
-    left: 42px;
-    width:26%;
+  //  position: relative;
+   // left: 42px;
+  
     font-weight: normal;
    
 }
 .logoImage{
     width: 100%;
+    text-align: center;
+    margin: 0 !important;
 }
 
 
@@ -36,20 +40,20 @@ page-login {
     padding-left: 20px;
     border-radius: 36px;
     min-height: 35px;
-    width:77%;
-    margin:0 63px 15px 11.3%; 
+    max-width:290px;
+    margin:0 0 20px 0; 
     font-size: 15px;
     font-weight: normal;
 }
 .conatiner{
-    margin: 0 auto;
+    margin: 0 11.3%;
 }
 // LOGIN BUTTON and FORGOT PASSWORD SECTION //
 .page-button{
     font-size: 15px;
-    width:77%;
+    width:290px;
     border-radius: 36px;
-    margin:5px 63px 20px 11.3%; 
+    margin:0 0 15px 0; 
     min-height: 35px;
     color: #fff;
     border:none;
@@ -61,8 +65,8 @@ page-login {
     text-align: left;
     font-size: 15px;
     color: #0099cc;
-    position: relative;
-    left: 11.3%;
+    //position: relative;
+    //left: 11.3%;
     margin:0;
 }
 
@@ -71,7 +75,9 @@ page-login {
     font-size: 10px;
     color: #8f9296;
     text-align: center;
-    margin: 36.9% 0 8.9% 0;
+    margin: 50% 0 9.1% 0;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .text-input{

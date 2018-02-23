@@ -49,12 +49,12 @@ password:string;
       }
   }
 
-  navigateUser(userDetails) {
+  navigateUser(userDetails) { 
     if (userDetails.data.valid) {
-      console.log(userDetails.data);
-        sessionStorage.setItem("attendeeId", userDetails.data._id);
-        sessionStorage.setItem("attendeeName", userDetails.data.name);
-        sessionStorage.setItem("attendeePath", userDetails.data.attendee_path);
+        //console.log(userDetails);
+        sessionStorage.setItem("attendeeId", userDetails.data.result._id);
+        sessionStorage.setItem("attendeeName", userDetails.data.result.name);
+        sessionStorage.setItem("attendeePath", userDetails.data.result.attendee_path);
         this.navCtrl.push(HomePage);
     } else {
        alert("Invalid credentials entered....");

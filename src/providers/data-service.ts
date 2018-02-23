@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class DataServiceProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(private _http: HttpClient) {
    
   }
 
@@ -18,10 +18,24 @@ export class DataServiceProvider {
   //               .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   // }
 
+  /** Customer credentials validation and fetching related details
+    * inputs are  username is emailID and password
+   **/
   validateUser(name, password): Observable<any> {
-    return this.http.post("http://localhost:8080/api/loginAuthCust", {name: name, pflag: password})
+    return this._http.post("http://localhost:8080/api/loginAuthCust", {name: name, pflag: password})
                     .map((res: Response) => res)
                     .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
+
+  /** Customer Future Visit details
+    *inputs is login customerID
+    *input future = 1 for future vists and 0 for past visits
+  **/
+  getCustFutureAndPastVisit(loginCustId, future): Observable<any> { console.log(loginCustId + "---loginCustId");
+    return this._http.post('http://localhost:8080/api/getCustFutureAndPastVisit', {"attendeeId": loginCustId,"future": future}) 
+                     .map((res: Response) => res)
+                     .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
+  }
+ 
 
 }
