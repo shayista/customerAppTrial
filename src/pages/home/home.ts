@@ -37,7 +37,7 @@ export class HomePage implements OnInit{
 }
 
 getCustPastVisit() { 
-  this._dataservice.getCustFutureAndPastVisit(sessionStorage.getItem("attendeeId"), 0)
+  this._dataservice.getCustFutureAndPastVisit(sessionStorage.getItem("attendeeId"), 1)
                     .subscribe(res=> 
                                   {
                                     this.pastVisits = res; console.log(JSON.stringify(this.pastVisits));
