@@ -8,9 +8,17 @@ import { loginPage } from '../login/login';
   templateUrl: 'rootModule.html'
 })
 export class rootModulePage {
- 
   
-  constructor(public viewCtrl: ViewController , public navCtrl: NavController ) {}
+  attendeeName:String;
+  
+  constructor(public viewCtrl: ViewController , public navCtrl: NavController ) {
+    if (sessionStorage.getItem("attendeeId") == "undefined") {
+        this.navCtrl.push(loginPage);
+    } else {
+      this.attendeeName = sessionStorage.getItem("attendeeName");
+      //console.log(this.attendeeName);
+    }
+  }
   
     // close() {
     //   this.viewCtrl.dismiss();

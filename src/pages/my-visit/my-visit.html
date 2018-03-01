@@ -15,117 +15,81 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="mainContainer">
+<ion-content padding class="mainContainer" *ngIf="visitDetails">
   <div class="container" ng-disabled="clicked">
     <div class="subHeader">
       <p class="button-clear" ng-disabled="clicked" (click)="goBack()">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i> Cognizant's Digital Capabilities
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>{{visitDetails.purpose}}
       </p>
       <div class="locationDetails">
-        <p>Cognizant India, Chennai-DLF</p>
+        <p>Cognizant {{visitDetails.visit_locations[0].country}}, {{visitDetails.visit_locations[0].city}} - {{visitDetails.visit_locations[0].visitingLocation}}</p>
         <p class="daysCount">
           <i class="fa fa-calendar fa-lg"></i>
-          <span>27<sup>th</sup> Sep - 28<sup>th</sup> Sep  </span> | 2 Day(s)
+          <span>{{visitDetails.startDate | date: "d"}}<sup>{{visitDetails.startSuperScript}}</sup> {{visitDetails.startDate | date: "MMM"}} - {{visitDetails.endDate | date: "d"}}<sup>{{visitDetails.endSuperScript}}</sup> {{visitDetails.endDate | date: "MMM"}}  </span> | {{visitDetails.noOfDays}} Day(s)
         </p>
 
       </div>
     </div>
     
-    
-  
-
-    <div padding class="routingContainer">
-      <div class="xyz">
-        <ion-segment class="details" [(ngModel)]="details">
-          <ion-segment-button class="detailsHeader agenda" id="agendaContent" value="Day1">
-      Day 1
+<div class="agendaTabs">
+    <ion-icon class="active" (click)="agendaTabsFunc(0)" id="agendaLink"><i aria-hidden="true" class="fa fa-list-alt notifiation"></i>Agenda</ion-icon> 
+    <span class="separator">|</span>
+    <ion-icon  (click)="agendaTabsFunc(1)" id="itenaryLink"><i aria-hidden="true" class="fa fa-file-text-o notifiation"></i>Itenary</ion-icon>
+</div>
+    <div padding [class.hide]="!checkStatus"  class="routingContainer" *ngIf="agendaData" >
+      
+      <div class="xyz" *ngIf="agendaData">
+        <ion-segment class="details" [(ngModel)]="details" >
+          <ion-segment-button class="detailsHeader"  *ngFor="let x of agendaData.dayCount; let i = index" value="Day{{x}}" id="agendaDataIndex{{i}}" [ngClass]="{'active' : i === 0}" (click)="renderAgenda(i)" >
+           Day {{x}}
           </ion-segment-button>
-          <ion-segment-button class="detailsHeader" (click)="toggleColor()" id="itineary" value="Day2">
+          <!-- <ion-segment-button class="detailsHeader" (click)="toggleColor()" id="itineary" value="Day2">
             Day 2
-          </ion-segment-button>
+          </ion-segment-button> -->
           
         </ion-segment>
    
       </div>
       <div class="sezLocation">
           <p class="visitingLocationDetails">
-           Visiting Location : <span>HYD -DLF</span>
+           Visiting Location : <span>{{ agendaData[0].records[0].visitCity[0]  | uppercase |slice: 0:3 }} - {{ agendaData[0].records[0].visitLocation[0] }}</span>
           </p>
           <p class="meetingRoomDetails">
-           Meeting Room: <span>Krida Auditorium</span>
+           Meeting Room: <span>{{ agendaData[0].records[0].agenda_meetingRoom[0] }}</span>
           </p>
-
-        </div>
-      <div [ngSwitch]="details">
-        <ion-list *ngSwitchDefault class="dynamic">
-
-          <ion-list item-start class="agendaList">
-
-            <ion-item class="ionItem start">
-        
-              <div class="profilesPresenters">
-                  <img class="presenterOne" src="assets/imgs/profile1.png">
-                  <img class="presenterTwo" src="assets/imgs/profile2.png">
-              </div>
-              
-
-             
-              <p class="timing"> 09:00 AM - 10:00 AM</p>
-              <p class="titleTopic">Introduction </p>
-            </ion-item>
-
-            <ion-item class="ionItem start">
-                
-                      <div class="profilesPresenters">
-                          <img class="presenterOne" src="assets/imgs/profile1.png">
-                          <img class="presenterTwo" src="assets/imgs/profile2.png">
-                      </div>
-                      
-        
-                     
-                      <p class="timing"> 10:00 AM - 11:00 AM</p>
-                      <p class="titleTopic">Digital UX Capabalities </p>
-                    </ion-item>
-
-            <ion-item class="lunchBreak">
-              
-             
-              <p class="timing"> 12:00 PM - 13:30 PM </p>
-              <p class="titleTopic">Lunch Break </p>
-            </ion-item>
-
-            <ion-item class="ionItem start">
-                
-                      <div class="profilesPresenters">
-                          <img class="presenterOne" src="assets/imgs/profile1.png">
-                          <img class="presenterTwo" src="assets/imgs/profile2.png">
-                      </div>
-                      
-        
-                     
-                      <p class="timing"> 10:00 AM - 11:00 AM</p>
-                      <p class="titleTopic">Digital UX Capabalities </p>
-                    </ion-item>
-
-          </ion-list>
-
-
-
-
-        </ion-list>
-
-        <ion-list *ngSwitchCase="'Day2'">
-          <ion-item>
-            <ion-thumbnail item-start>
-              <p>Day 2</p>
-            </ion-thumbnail>
-
-          </ion-item>
-
-        </ion-list>
       </div>
+       
+      <div [ngSwitch]="agendaChoice" *ngIf="agendaData">
+        <div *ngFor="let agenda of agendaData; let i = index;">
+            <ion-list *ngSwitchCase="i">
+                <ion-item>
+                 
+                      <ion-list  class="dynamic" >
+                          <ion-list item-start class="agendaList" *ngFor="let agendaDetails of agenda.records">
+                          
+                              <ion-item class="ionItem start">
+                                <div class="profilesPresenters">
+                                    <img class="presenterOne" src="assets/imgs/profile1.png">
+                                    <img class="presenterTwo" src="assets/imgs/profile2.png">
+                                </div>
+                                <p class="timing"> {{ agendaDetails.from}} - {{ agendaDetails.to}}</p>
+                                <p class="titleTopic">{{ agendaDetails.topic}} </p>
+                              </ion-item>
+
+                                <!-- <ion-item class="lunchBreak">
+                                  <p class="timingLunch"> 12:00 PM - 13:30 PM </p>
+                                  <p class="titleTopicLunch">Lunch Break </p>
+                                </ion-item> -->
+                              </ion-list>
+                        </ion-list>
+                </ion-item>
+      
+              </ion-list>
+        </div>
+         
+            </div>
     </div>
  
-
+<div [class.hide]="checkStatus" > Itenary</div>
   </div>
 </ion-content>

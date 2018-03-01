@@ -8,17 +8,17 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
   selector: 'page-login',
   templateUrl: 'login.html'
 })
-export class loginPage implements OnInit{
-result:any;
-username:string;
-password:string;
+export class loginPage implements OnInit {
+  result: any;
+  username: string;
+  password: string;
 
-  constructor(public navCtrl: NavController,public dataService : DataServiceProvider) { 
-   
-   }
+  constructor(public navCtrl: NavController, public dataService: DataServiceProvider) {
 
-  ngOnInit(){
-    
+  }
+
+  ngOnInit() {
+
   }
 
 
@@ -35,31 +35,30 @@ password:string;
   // }
 
   validUser() {
-    
-      if(this.username.length > 0 && this.password.length > 0){
-          this.dataService.validateUser(this.username, this.password)
-                          .subscribe(res=> 
-                                        {
-                                          this.navigateUser(res);                                          ;
-                                        },
-                                      error => console.error("Error :: " + error)  
-                                    );
-      } else {
-          alert("Please enter username and password...");
-      }
-  }
 
-  navigateUser(userDetails) { 
-    if (userDetails.data.valid) {
-        //console.log(userDetails);
-        sessionStorage.setItem("attendeeId", userDetails.data.result._id);
-        sessionStorage.setItem("attendeeName", userDetails.data.result.name);
-        sessionStorage.setItem("attendeePath", userDetails.data.result.attendee_path);
-        this.navCtrl.push(HomePage);
+    if (this.username.length > 0 && this.password.length > 0) {
+      this.dataService.validateUser(this.username, this.password)
+        .subscribe(res => {
+          this.navigateUser(res);;
+        },
+        error => console.error("Error :: " + error)
+        );
     } else {
-       alert("Invalid credentials entered....");
+      alert("Please enter username and password...");
     }
   }
 
-  
+  navigateUser(userDetails) {
+    if (userDetails.data.valid) {
+      //console.log(userDetails);
+      sessionStorage.setItem("attendeeId", userDetails.data.result._id);
+      sessionStorage.setItem("attendeeName", userDetails.data.result.name);
+      sessionStorage.setItem("attendeePath", userDetails.data.result.attendee_path);
+      this.navCtrl.push(HomePage);
+    } else {
+      alert("Invalid credentials entered....");
+    }
+  }
+
+
 }

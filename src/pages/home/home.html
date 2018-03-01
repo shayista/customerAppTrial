@@ -1,6 +1,6 @@
 <ion-header class="header">
   <ion-navbar>
-    <ion-title class="logoTitle">
+    <ion-title class="logoTitle" (click) = "futureVisitData()">
       <img class="mainLogo" src="assets/imgs/logo1.png">
     </ion-title>
     <div class=profile>
@@ -20,33 +20,33 @@
       <h4> My Visit</h4>
       <span class="daysLeft">
         <i class="fa fa-star" aria-hidden="true"></i>
-        2 Days Left
+        {{ daysRemaining }}
       </span>
     </div>
     <ion-list class="list listMyVisit"  style="  background: url(assets/imgs/Panel_BG.png);background-size: cover;">
     
-        <ion-item class="presentItem">
+        <ion-item class="presentItem" *ngIf="firstVisit">
           <div class="presentContent" item-content>
             <ion-card class="presentCard">
-              <ion-card-header class="presentVisitHeading">
-                Cognizant's Digital Capabilities
+              <ion-card-header  class="presentVisitHeading">
+                {{ firstVisit.purpose }}
               </ion-card-header>
               <ion-card-content>
                 <div>
                   <div>
                     <p>
                       <i class="fa fa-calendar fa-lg icon-color calendar"></i>
-                      <span class="daysCount"> 27<sup>th</sup> Sep - 28<sup>th</sup>Sep </span> | 2 Day(s)</p>
+                      <span class="daysCount"> {{ firstVisit.startDate | date : "d" }}<sup>{{firstVisit.startSuperScript}}</sup>{{firstVisit.startDate | date : "MMM"}} - {{ firstVisit.endDate | date : "d" }}<sup>{{ firstVisit.endSuperScript }}</sup> {{ firstVisit.endDate | date : "MMM"}} </span> | {{firstVisit.noOfDays}} Day(s)</p>
                   </div>
                   <div>
                     <p>
                       <i class="fa fa-map-marker fa-lg icon-color location" aria-hidden="true"></i>
-                      <span class="daysCount"> Cognizant- India</span> | Chennai - DLF</p>
+                      <span class="daysCount"> Cognizant - {{ firstVisit.visit_locations[0].country }}</span> | {{ firstVisit.visit_locations[0].city }} - {{ firstVisit.visit_locations[0].visitingLocation }}</p>
                   </div>
                 </div>
                 
               </ion-card-content>
-              <button class="viewDetails" (click)="goToOtherPage()"> View Details
+              <button class="viewDetails" (click)="goToAgenda(firstVisit._id,firstVisit)"> View Details
               </button>
             </ion-card>
           </div>
@@ -57,20 +57,49 @@
 
 
   </div>
+ 
 
-  <div class="visitsPast">
+  <div class="visitsPast"  *ngIf="pastVisits">
     <div class="pastVisitHeader">
       <h4>Past Visits</h4>
       <div class="closed">
         <i class="fa fa-circle circle" aria-hidden="true"></i>Closed</div>
     </div>
     <ion-list class="list">
-      <ion-item class="pastItem">
+      <ion-item class="pastItem" *ngFor="let visits of pastVisits;let i =index;">
+        <div class="pastContent" item-content>
+          <ion-card class="pastCard">
+            <ion-card-header class="pastVisitHeading">
+              {{visits.purpose}}
+              <button class="pastView" (click)="goToAgenda(visits._id,visits)"> View 
+                <i class="fa fa-angle-right fa-lg arrowRight" aria-hidden="true"></i>
+              </button>
+            </ion-card-header>
+            <ion-card-content>
+              <div>
+                <div>
+                  <p class="noOfDaysPast">
+                    <i class="fa fa-calendar fa-lg icon-color calendar"></i>
+                    <span class="daysCountPast">   
+                        {{visits.startDate | date : "d"}}<sup>{{visits.startSuperScript}}</sup>{{visits.startDate | date : "MMM"}}- {{visits.endDate | date : "d"}}<sup>{{visits.endSuperScript}}</sup>{{visits.endDate | date : "MMM"}}</span> | {{visits.noOfDays}} Day(s)
+                  </p>
+                </div>
+                <div>
+                  <p class="daysCountPast">
+                    <i class="fa fa-map-marker fa-lg icon-color location" aria-hidden="true"></i>
+                    <span class="daysCountPast"> Cognizant- {{visits.visit_locations[0].country}}</span> | {{visits.visit_locations[0].city}} - {{visits.visit_locations[0].visitingLocation}}</p>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-item>
+      <!-- <ion-item class="pastItem">
         <div class="pastContent" item-content>
           <ion-card class="pastCard">
             <ion-card-header class="pastVisitHeading">
               Cognizant's Digital Capabilities
-              <button class="pastView" (click)="goToOtherPage()"> View 
+              <button class="pastView" (click)="goToAgenda()"> View 
                 <i class="fa fa-angle-right fa-lg arrowRight" aria-hidden="true"></i>
               </button>
             </ion-card-header>
@@ -91,34 +120,7 @@
             </ion-card-content>
           </ion-card>
         </div>
-      </ion-item>
-      <ion-item class="pastItem">
-        <div class="pastContent" item-content>
-          <ion-card class="pastCard">
-            <ion-card-header class="pastVisitHeading">
-              Cognizant's Digital Capabilities
-              <button class="pastView" (click)="goToOtherPage()"> View 
-                <i class="fa fa-angle-right fa-lg arrowRight" aria-hidden="true"></i>
-              </button>
-            </ion-card-header>
-            <ion-card-content>
-              <div>
-                <div>
-                  <p class="noOfDaysPast">
-                    <i class="fa fa-calendar fa-lg icon-color calendar"></i>
-                    <span class="daysCountPast">  27 Sep - 28 Sep</span> | 2 Day(s)
-                  </p>
-                </div>
-                <div>
-                  <p class="daysCountPast">
-                    <i class="fa fa-map-marker fa-lg icon-color location" aria-hidden="true"></i>
-                    <span class="daysCountPast"> Cognizant- India</span> | Chennai - DLF</p>
-                </div>
-              </div>
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-item>
+      </ion-item> -->
     </ion-list>
   </div>
 </ion-content>

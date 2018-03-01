@@ -24,7 +24,7 @@ export class DataServiceProvider {
   validateUser(name, password): Observable<any> {
     return this._http.post("http://localhost:8080/api/loginAuthCust", {name: name, pflag: password})
                     .map((res: Response) => res)
-                    .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+                    .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
   /** Customer Future Visit details
@@ -34,8 +34,19 @@ export class DataServiceProvider {
   getCustFutureAndPastVisit(loginCustId, future): Observable<any> { console.log(loginCustId + "---loginCustId");
     return this._http.post('http://localhost:8080/api/getCustFutureAndPastVisit', {"attendeeId": loginCustId,"future": future}) 
                      .map((res: Response) => res)
-                     .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
+                     .catch((error:any) => Observable.throw(error || 'Server error')); 
   }
+
+   /** Fetched visit agendas for a particular visit
+    *inputs is visitId
+  **/
+  getCustVisitAgendas(VisitId): Observable<any> { 
+
+    return this._http.post('http://localhost:8080/api/getCustVisitAgendas', {"visitId": VisitId}) 
+                     .map((res: Response) => res)
+                     .catch((error:any) => Observable.throw(error || 'Server error')); 
+  }
+
  
 
 }

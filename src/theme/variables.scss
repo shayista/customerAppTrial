@@ -92,11 +92,29 @@ url('../assets/fonts/fontawesome-webfont.woff2?v=#{$fa-version}') format('woff2'
 url('../assets/fonts/fontawesome-webfont.woff?v=#{$fa-version}') format('woff'),
 url('../assets/fonts/fontawesome-webfont.ttf?v=#{$fa-version}') format('truetype'),
 url('../assets/fonts/fontawesome-webfont.svg?v=#{$fa-version}#fontawesomeregular') format('svg'); font-weight: normal; font-style: normal; }
-$popover-md-width: 150x;
-$popover-ios-width: 150px;
-$popover-wp-width: 150px;
 
-$popover-md-border-radius: 3x;
-$popover-ios-border-radius: 3px;
-$popover-wp-border-radius: 3px;
+
+$popover-md-width: 245px;
+$popover-ios-width: 245px;
+$popover-wp-width: 245px;
+
+$popover-md-border-radius: 8px;
+$popover-ios-border-radius: 8px;
+$popover-wp-border-radius: 8px;
+
+.popover-content{
+padding: 0;
+height: 216.5px;
+//border-bottom: 1px solid #808080;
+} 
+.toolbar-ios{
+  min-height:44px;
+  padding: 4px 10px 10px 10px !important;
+}
+.toolbar-md {
+  padding: 4px 10px 0px 10px !important;
+}
+.toolbar-title-md{
+padding: 0 10px !important;
+}
 $item-border: none;

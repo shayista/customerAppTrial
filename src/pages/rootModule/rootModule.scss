@@ -1,48 +1,57 @@
 page-rootmodule{
-.popOverDisplay .label{
-    width: 150px !important;
-    color: #2d2926 !important;
-    font-size: 15px !important;
-    border: none !important;
-    text-align: left;
-    margin: 0 !important;
-    border: 0 !important;
-    font-weight: bold !important;
-    padding: 0 !important;
+    .popOverDisplay .label{
+        width: 245px !important;
+        color: #2d2926 !important;
+        font-size: 15px !important;
+        border: none !important;
+        text-align: left;
+        margin: 0 !important;
+        border: 0 !important;
+        font-weight: bold !important;
+        padding: 0 !important;
+        }
+    .list  {
+        //padding: 2.5px 0 !important;
+        font-size: 15px;
+        color: #2d2926 !important;
+        margin:  0 !important;
+        border: 0 !important;
+        height: 44px !important;
+        border-bottom: 0.55px solid gainsboro !important;
     }
-.list  {
-    padding: 2.5px 0 !important;
-    font-size: 15px;
-    color: #2d2926 !important;
-    margin: 0 !important;
-    border: 0 !important;
-}
-.popover-content{
-    width: 245px !important;
-    min-height: 245px !important;
-} 
-.user-icon{
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-}
-.log-out{
-    padding-left: 20px !important;
-    padding-right: 20px !important;   
-}
-.help-icon{
-    padding-left: 20px !important;
-    padding-right: 20px !important; 
-}
-ion-list .manager-name{
-background-color: #f5f5f5 !important;
-}
-.manager-name{
-font-family: 'Segoe UI' !important;
-font-size: 26px #808080 !important;
-font-weight: 400 !important;
-}
-// top: 38.0313px;
-// left: 155px;
-// transform-origin: right top 0px;
-// width: 220px;
-}
+    .popover-content{
+        width: 245px !important;
+       // min-height: 245px !important;
+        //padding: 0 !important;
+        
+    } 
+    
+    .log-out{
+    
+       padding-left: 20px !important;
+        padding-right: 20px !important;
+        color: #00667f;
+        font-size: 17px;
+        padding-top: 13px; 
+    }
+    .icon{
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        color: #00667f;
+        font-size: 17px;
+        padding-top: 14px;
+    }
+    
+    .managerName{
+    font-family: 'Segoe UI' !important;
+    font-size: 13px !important;
+    color: #808080 !important;
+    font-weight: 400 !important;
+    border-bottom: 0.55px solid #808080 !important;
+    background-color: #f5f5f5;
+    min-height: 38px !important;
+    padding: 10px 0 10px 20px !important;
+    }
+    
+    }
+    
