@@ -1,22 +1,7 @@
-<ion-header class="header">
-  <ion-navbar>
-    <ion-title class="logoTitle">
-      <img class="mainLogo" (click)="goBack()" src="assets/imgs/logo1.png">
-    </ion-title>
-    <div class="profile">
-      <i class="fa fa-bell-o notifiation" aria-hidden="true"></i>
-      <span class="badge count">02</span>
-      <ion-avatar class="userDetails" item-start>
-        <img class="avatar" src="assets/imgs/Profile_M_AgendaScreen.png">
 
-      </ion-avatar>
-      <i class="fa fa-chevron-down fa-lg popOver" aria-hidden="true" (click)="presentPopover($event)"></i>
-    </div>
-  </ion-navbar>
-</ion-header>
 
 <ion-content padding class="mainContainer" *ngIf="visitDetails">
-  <div class="container" ng-disabled="clicked">
+  <div ng-disabled="clicked">
     <div class="subHeader">
       <p class="button-clear" ng-disabled="clicked" (click)="goBack()">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>{{visitDetails.purpose}}
@@ -30,11 +15,11 @@
 
       </div>
     </div>
-    
+  <div class="container">
 <div class="agendaTabs">
-    <ion-icon class="active" (click)="agendaTabsFunc(0)" id="agendaLink"><i aria-hidden="true" class="fa fa-list-alt notifiation"></i>Agenda</ion-icon> 
+    <ion-icon class="active" (click)="agendaTabsFunc(0)" id="agendaLink"><i aria-hidden="true" class="fa fa-list-alt"></i>Agenda</ion-icon> 
     <span class="separator">|</span>
-    <ion-icon  (click)="agendaTabsFunc(1)" id="itenaryLink"><i aria-hidden="true" class="fa fa-file-text-o notifiation"></i>Itenary</ion-icon>
+    <ion-icon  (click)="agendaTabsFunc(1)" id="itenaryLink"><i aria-hidden="true" class="fa fa-file-text-o"></i>Itenary</ion-icon>
 </div>
     <div padding [class.hide]="!checkStatus"  class="routingContainer" *ngIf="agendaData" >
       
@@ -91,5 +76,6 @@
     </div>
  
 <div [class.hide]="checkStatus" > Itenary</div>
+  </div>
   </div>
 </ion-content>

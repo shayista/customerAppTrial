@@ -12,17 +12,21 @@ page-home {
     margin: 0;
     padding: 0 0 0 0px;
 }
-
+.title .toolbar-title {
+    width: auto;
+    display:inline-block;
+  }
 .logoTitle{
     padding: 0 !important;
     display: inline-block;
+    width: auto;
 }
 
 .mainLogo{
     max-width: 100%;
-    height: 35px !important;
+    height: 32px !important;
     float: left;
-    margin: 6px 0 0 10px !important;
+    margin: 8px 0 0 10px !important;
 }
 .badge{
     font-size: 10px !important;
@@ -65,7 +69,12 @@ page-home {
         width:30px;
     }
 
-
+    ion-avatar.userDetails:after {
+        content: "\f078";
+        font-family: FontAwesome;
+        color: #888684;
+        font-size: 9px;
+    } 
 .popOver{
     font-size: 9px !important;
     display: inline-block;
@@ -85,7 +94,7 @@ page-home {
 .container{
     width: 100%;
     padding: 0 10px !important;
-
+    background: #f5f5f5;
 }
 
 .list{
@@ -99,11 +108,12 @@ page-home {
 
 /* MY VISITS  SECTION */
 .visits{
-    box-shadow: 0px 0 10px 1px gainsboro;
+    box-shadow: 1px 0 10px 1px gainsboro;
     width: calc(100% - 20px);
     margin: 10px 10px 10px 10px;
     float: left;
     border-radius: 8px;
+    background: #fff;
 }
 
 .myVisitHeader{
@@ -113,7 +123,7 @@ page-home {
 }
 
 .myVisitHeader h4 {
-    margin: 10.5px 15px;
+    margin: 7px 15px;
     float: left;
     font-size: 19px;
     color: #000;
@@ -122,7 +132,7 @@ page-home {
 
 .daysLeft{    
     color: #999;
-    margin: 13px 15px 0px 0px;
+    margin: 9px 15px 0px 0px;
     font-size: 13px;
     float: right;
     font-weight: normal;
@@ -140,6 +150,7 @@ page-home {
 
 .listMyVisit{
     padding-top: 134px; 
+    border-radius: 0 0 8px 8px;
 }
 
 .detailsLi{
@@ -196,7 +207,7 @@ page-home {
 
 .viewDetails {
     float: left;
-    min-height: 35px;
+    min-height: 44px;
     width: 100%;
     color: #fff;
     font-size: 20px;
@@ -217,6 +228,7 @@ page-home {
     margin: 0px 10px 10px 10px;
     float: left;
     border-radius: .25em;
+    background: #fff;
 }
 
 .pastVisitHeader{
@@ -228,7 +240,7 @@ page-home {
 }
 
 .pastVisitHeader h4 {
-    margin: 12.5px 15px;
+    margin: 11px 15px;
     float: left;
     font-size: 19px;
     color: #000;
@@ -258,7 +270,6 @@ page-home {
     padding:0;
     width: 100%;
     margin: 0 0!important;
-    border-radius: 8px;
     border: none !important;
 }
 .presentItem{
@@ -288,7 +299,7 @@ page-home {
     padding: 0;
         margin: 0;
         width:100%; 
-        background: #fff !important;
+        background: transparent;
         box-shadow: none;
 }
 .presentCard{
@@ -301,9 +312,9 @@ page-home {
 
 .pastVisitHeading{
     font-family: 'Segoe UI';
-    font-size: 18px;
+    font-size: 19px;
     color:#000 !important;
-    padding: 2.82% 0px 4.24% 4%;
+    padding: 2.82% 0px 3.24% 4%;
     border:none;
     margin: 0 !important;
 
@@ -320,9 +331,9 @@ page-home {
 
 .pastView{
     float: right;
-    background: #fff;
+    background: transparent;
     border:none;
-    color:#0099cc;
+    color:#00677f;
     font-size: 17px;
     font-weight:500;
     padding: 0;
@@ -331,10 +342,10 @@ page-home {
 
 .arrowRight{
     position: relative;
-    top: 0.1px;
+    top: -1px;
     font-size: 20px !important;
     margin:0  !important;
-    color: #0099cc !important;
+    color: #00677f !important;
 }
 
 .daysCount{
@@ -344,7 +355,7 @@ page-home {
 }
 .daysCountPast{
     font-weight:400;
-    color:#333 !important;
+    color:#666 !important;
     font-size: 13px;
 }
 .noOfDaysPast{
@@ -386,7 +397,7 @@ ion-card-content{
 padding: 0 !important;
 }
 .fa{
-    margin: 0 4% 4% 4.4%;
+    margin: 0 2.5% 2% 4.4%;
     font-size: 23px;
     color: #888684;
 }
@@ -395,8 +406,12 @@ padding: 0 !important;
     border: none !important;
    
 }
+.pastItem:nth-child(odd){
+    background: #f5f5f5;
+    
+}
 .item-ios{
-    background: transparent !important; 
+    background: transparent; 
 }
 .subtitlesContainer{
     width: 78%;

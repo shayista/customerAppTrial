@@ -1,4 +1,5 @@
 page-login {
+  
 .loginContent{
    margin: 0 auto;
    width: 100%;
@@ -6,10 +7,9 @@ page-login {
 
 // HEADER SECTION //
 .logo{
-    margin:123.5px 0 76.5px 0 !important;
-    max-width:57.8%;
+    margin:124px 0 74px 0;
+    max-width:65%;
     height:auto;
-   
     text-align: center;
 }
 
@@ -36,6 +36,9 @@ page-login {
 
 
 // INPUT SECTION //
+.loginInput:first-child{
+    margin-bottom: 16px;
+}
 .loginInput{
     padding-left: 20px;
     border-radius: 36px;
@@ -72,15 +75,37 @@ page-login {
 
 // FOOTER SECTION //
 .footer{
-    font-size: 10px;
-    color: #8f9296;
+    position: absolute;
+    bottom: 27px;
     text-align: center;
-    margin: 50% 0 9.1% 0;
+    width: 77.4%;
+}
+.footer p{
+    font-size: 10px;
+    color: #fff;
     font-weight: 400;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .text-input{
     margin: 0 !important;
+  
+}
+#loginForm input[disabled]{
+background: green;
+
+}
+
+.scroll-content {
+    overflow-y: auto;
+}
+.usernameRequirement{
+    padding: 0;
+    margin: 0;
+
+}
+.passwordRequirement{
+    padding: 0;
+    margin: 0;
 }
 }

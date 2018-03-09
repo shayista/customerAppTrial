@@ -1,0 +1,61 @@
+page-notificationModule{
+.notificationHeader{
+     padding: 16px 10px;
+     box-shadow: 0px 1px 5px rgba(170, 170, 170, 0.7);
+}
+.heading{
+    font-size: 17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+.backArrow{
+    margin: 3px 6px 0 0;
+    float: left;
+    font-size: 20px;
+    font-weight: lighter;
+    color: #00677f;
+}
+.notificationRead {
+    margin: 4px 0 0;
+}
+.notificationTime {
+    text-align: right;
+}
+.notificationContainer {
+    margin-top: 2px;
+    overflow: hidden;
+}
+.notificationContainer ul {
+    margin: 0 10px;
+    padding-left: 0;
+    box-shadow: 0px 0 10px 1px gainsboro;
+}
+.notificationContainer li.unread {
+    background-color: #e6f2f6;
+}
+.notificationContainer li.unread .notificationContent {
+    font-weight: 400;
+}
+.notificationContainer li {
+    list-style: none;
+    padding: 15px 10px 10px 15px;
+    border-bottom: 1px solid gainsboro;
+}
+.notificationContainer li p {
+    margin-bottom: 0px;
+}
+.notificationName {
+    font-size: 12px;
+    color: #666;
+}
+.notificationContent {
+    font-size: 16px;
+    color: #2d2926;
+    font-weight: 300;
+}
+.notificationTime {
+    font-size: 12px;
+    color: #78797a
+}
+}

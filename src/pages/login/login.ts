@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { HomePage } from '../home/home';
+
 import { DataServiceProvider } from '../../providers/data-service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { mainHeader } from '../mainHeader/mainHeader';
 
 @Component({
   selector: 'page-login',
@@ -20,19 +21,6 @@ export class loginPage implements OnInit {
   ngOnInit() {
 
   }
-
-
-  // getUserDetails(){ 
-  //   this.dataService.getUser()
-  //                   .subscribe(res=> 
-  //                                 {
-  //                                     this.result = res; 
-  //                                     console.log(res);                                          ;
-  //                                 },
-  //                               error => console.log("Error :: " + error)  
-  //                             );
-
-  // }
 
   validUser() {
 
@@ -54,7 +42,7 @@ export class loginPage implements OnInit {
       sessionStorage.setItem("attendeeId", userDetails.data.result._id);
       sessionStorage.setItem("attendeeName", userDetails.data.result.name);
       sessionStorage.setItem("attendeePath", userDetails.data.result.attendee_path);
-      this.navCtrl.push(HomePage);
+      this.navCtrl.push(mainHeader);
     } else {
       alert("Invalid credentials entered....");
     }

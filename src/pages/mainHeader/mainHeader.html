@@ -1,0 +1,18 @@
+<ion-header class="header">
+        <ion-navbar>
+          <ion-title class="logoTitle" (click)="goBack()">
+            <img class="mainLogo" src="assets/imgs/logo1.png">
+          </ion-title>
+          <div class=profile>
+            <i class="fa fa-bell-o notifiation " (click)="notificationPopover()" aria-hidden="true"></i>
+            <span class="badge count">02</span>
+            <ion-avatar class="userDetails" (click)="presentPopover($event)" item-start>
+              <img class="avatar" src="assets/imgs/Profile_M_AgendaScreen.png">
+            </ion-avatar>
+          </div>
+        </ion-navbar>
+ </ion-header> 
+ 
+<ion-content>
+        <ion-nav id="nav"  [root]="tab1"></ion-nav>
+</ion-content>

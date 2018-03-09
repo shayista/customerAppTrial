@@ -7,6 +7,7 @@ import { rootModulePage } from '../rootModule/rootModule';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DataServiceProvider } from '../../providers/data-service';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -28,7 +29,9 @@ export class HomePage implements OnInit{
     this.getCustlatestVisit();
     this.getCustPastVisit();
   }
-
+  // futureVisitData(){
+    
+  // }
   getCustlatestVisit() {
     this._dataservice.getCustFutureAndPastVisit(sessionStorage.getItem("attendeeId"), 1)
                      .subscribe(res=> 
@@ -85,7 +88,7 @@ export class HomePage implements OnInit{
                                     { 
                               
                                       this.pastVisits = this.processPastVisits(res.data);
-                                      console.log(JSON.stringify(this.pastVisits)+ "blah");
+                                      // console.log(JSON.stringify(this.pastVisits)+ "blah");
                                     },
                                 error => console.log("Error :: " + error)  
                                );
@@ -127,11 +130,7 @@ export class HomePage implements OnInit{
       this.navCtrl.push(MyVisitPage, {"visitId":visitId, "visitDetails": visitDetails });
     }
   
-      presentPopover(myEvent) {
-        let popover = this.popoverCtrl.create(rootModulePage);
-        popover.present({
-          ev: myEvent
-        });
-      }
+     
+     
 }
 

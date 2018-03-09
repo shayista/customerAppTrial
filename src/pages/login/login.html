@@ -7,34 +7,35 @@
     </p>
     <p class="loginTitle">User Login</p>
 
-    <form #f="ngForm" (ngSubmit)="f.valid && validUser(f)">
+    <form #f="ngForm" id="loginForm" (ngSubmit)="f.valid && validUser(f)">
       <ion-item class="loginInput">
         <ion-input type="email" name="username" placeholder="User Name" [(ngModel)]="username" #user="ngModel" required>
         </ion-input>
      
       </ion-item>
-     
+  
       <ion-item class="loginInput">
         <ion-input type="password" placeholder="Password " name="password" [(ngModel)]="password" #pwd="ngModel" required>
         </ion-input>
       </ion-item>
-      
-      <input type="submit" class="page-button" value="Login">
+  
+      <input type="submit" class="page-button" value="Login" [disabled]=f.invalid>
 
 
 
     </form>
-    <div  style="color:white" *ngIf ="user.touched && !user.valid">
-      Username is required
-    </div>
-    <div  style="color:white" *ngIf ="pwd.touched && !pwd.valid">
-      Password is required
-   </div>
+  
+  
  
   <p class="forgotPassword">
     Forgot Password?
   </p>
-
-  <p class="footer">&copy; 2017 Cognizant, all rights reserved</p>
+  <div  class="usernameRequirement" style="color:white" *ngIf ="user.touched && !user.valid">
+    Username is required
+  </div>
+  <div  class="passwordRequirement" style="color:white" *ngIf ="pwd.touched && !pwd.valid">
+    Password is required
+ </div>
+ <div class="footer"><p >&copy; 2018 Cognizant, all rights reserved</p></div> 
 </div>
 </ion-content>

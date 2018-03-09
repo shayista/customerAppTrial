@@ -7,15 +7,17 @@ import { HTTP } from '@ionic-native/http';
 import { HttpModule } from '@angular/http';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-
+import { IonicPageModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MyVisitPage } from '../pages/my-visit/my-visit';
 import { loginPage } from '../pages/login/login';
-import { rootModulePage } from '../pages/rootModule/rootModule'
-import { DataServiceProvider } from '../providers/data-service'
-
+import { rootModulePage } from '../pages/rootModule/rootModule';
+import { DataServiceProvider } from '../providers/data-service';
+import { NotificationService } from '../providers/notification';
+import { notificationModulePage } from '../pages/notification/notification';
+import { mainHeader } from '../pages/mainHeader/mainHeader';
 
 @NgModule({
   declarations: [
@@ -23,14 +25,15 @@ import { DataServiceProvider } from '../providers/data-service'
     HomePage,
     MyVisitPage,
     loginPage,
-    rootModulePage
-   
+    rootModulePage,
+    notificationModulePage,
+    mainHeader
   
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-
+    IonicPageModule.forChild(mainHeader),
     HttpClientModule,
     HttpModule
 
@@ -41,13 +44,15 @@ import { DataServiceProvider } from '../providers/data-service'
     HomePage,
     MyVisitPage,
     loginPage,
-    rootModulePage
+    rootModulePage,
+    notificationModulePage,
+    mainHeader
       ],
   providers: [
     StatusBar,
     SplashScreen,
     DataServiceProvider,
-      
+    NotificationService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
