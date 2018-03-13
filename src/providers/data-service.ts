@@ -5,11 +5,13 @@ import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+const API_ENDPOINT = "http://192.168.1.103:8080"
+
 @Injectable()
 export class DataServiceProvider {
 
   constructor(private _http: HttpClient) {
-   
+
   }
 
   // getUser(): Observable<any> {
@@ -22,7 +24,7 @@ export class DataServiceProvider {
     * inputs are  username is emailID and password
    **/
   validateUser(name, password): Observable<any> {
-    return this._http.post("http://localhost:8080/api/loginAuthCust", {name: name, pflag: password})
+    return this._http.post(API_ENDPOINT+"/api/loginAuthCust", {name: name, pflag: password})
                     .map((res: Response) => res)
                     .catch((error: any) => Observable.throw(error || 'Server error'));
   }
@@ -32,21 +34,21 @@ export class DataServiceProvider {
     *input future = 1 for future vists and 0 for past visits
   **/
   getCustFutureAndPastVisit(loginCustId, future): Observable<any> { console.log(loginCustId + "---loginCustId");
-    return this._http.post('http://localhost:8080/api/getCustFutureAndPastVisit', {"attendeeId": loginCustId,"future": future}) 
+    return this._http.post(API_ENDPOINT+'/api/getCustFutureAndPastVisit', {"attendeeId": loginCustId,"future": future})
                      .map((res: Response) => res)
-                     .catch((error:any) => Observable.throw(error || 'Server error')); 
+                     .catch((error:any) => Observable.throw(error || 'Server error'));
   }
 
    /** Fetched visit agendas for a particular visit
     *inputs is visitId
   **/
-  getCustVisitAgendas(VisitId): Observable<any> { 
+  getCustVisitAgendas(VisitId): Observable<any> {
 
-    return this._http.post('http://localhost:8080/api/getCustVisitAgendas', {"visitId": VisitId}) 
+    return this._http.post(API_ENDPOINT+'/api/getCustVisitAgendas', {"visitId": VisitId})
                      .map((res: Response) => res)
-                     .catch((error:any) => Observable.throw(error || 'Server error')); 
+                     .catch((error:any) => Observable.throw(error || 'Server error'));
   }
 
- 
+
 
 }
