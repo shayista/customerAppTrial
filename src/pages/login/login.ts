@@ -29,7 +29,7 @@ export class loginPage implements OnInit {
         .subscribe(res => {
           this.navigateUser(res);;
         },
-        error => console.error("Error :: " + error)
+        error => console.log(error)
         );
     } else {
       alert("Please enter username and password...");
