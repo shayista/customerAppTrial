@@ -5,7 +5,7 @@ import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-const API_ENDPOINT = "192.168.43.192:8080"
+const API_ENDPOINT = "192.168.1.103:8080"
 
 @Injectable()
 export class NotificationService {
