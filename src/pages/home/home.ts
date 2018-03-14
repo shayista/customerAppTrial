@@ -36,7 +36,9 @@ export class HomePage implements OnInit{
     this._dataservice.getCustFutureAndPastVisit(sessionStorage.getItem("attendeeId"), 1)
                      .subscribe(res=> 
                                     {
+                                      console.log(res );
                                        this.processFutureVisit(res.data);
+                                       
                                     },
                                 error => console.log("Error :: " + error)  
                                 );
