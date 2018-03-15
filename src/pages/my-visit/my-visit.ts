@@ -19,7 +19,7 @@ export class MyVisitPage implements OnInit {
     constructor(public navCtrl: NavController, public navParams: NavParams , public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider) {
       this.visitId = navParams.get('visitId');
       this.visitDetails = navParams.get('visitDetails');
-     //console.log(this.visitDetails);
+ 
     }
 
     ngOnInit() { 
@@ -57,7 +57,7 @@ export class MyVisitPage implements OnInit {
     }
 
     displayAgenda(agendaData){
-         
+   
       let dayCount:Array<number> = []
       if(agendaData.length>0){
         this.agendaStatus = true;

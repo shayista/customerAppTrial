@@ -14,9 +14,9 @@ import { DataServiceProvider } from '../../providers/data-service';
 })
 export class HomePage implements OnInit{
   
-  daysRemaining : any ;
+  daysRemaining : any = null;
   firstVisit: any;
-  pastVisits: Array<Object>;
+  pastVisits: Array<Object>=[];
   visitStatus: boolean;
    
   constructor(public navCtrl: NavController , public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider) {
@@ -45,6 +45,7 @@ export class HomePage implements OnInit{
   }
 
   processFutureVisit(futureVisits) {
+   
       console.log(JSON.stringify(futureVisits)+"---futureVisits");
       if(futureVisits.length > 0) {
           this.visitStatus = true;
@@ -58,8 +59,8 @@ export class HomePage implements OnInit{
           this.firstVisit.noOfDays = noOfDays;
 
           //days remaining
-          let daysRemained = Math.ceil(this.dateDifference(new Date().toUTCString(), futureVisits[0].startDate));
-
+        let  daysRemained = Math.ceil(this.dateDifference(new Date().toUTCString(), futureVisits[0].startDate));
+          
           switch (true) {
              case daysRemained <= 0  : this.daysRemaining = "Ongoing"; break;
              //case daysRemained == 0 : this.daysRemaining = "Today"; break;
@@ -68,7 +69,10 @@ export class HomePage implements OnInit{
           }
           //console.log(JSON.stringify(this.firstVisit) + "--futurevisits");
       } else {
+       
+      
           this.visitStatus = false;
+          
       }
   }
 
@@ -98,7 +102,7 @@ export class HomePage implements OnInit{
 
   processPastVisits(pastVisits){
     let visitsLists: Array<Object> = [];
-     //console.log(JSON.stringify(pastVisits) + "--pastVisits");
+     console.log(JSON.stringify(pastVisits) + "--pastVisits");
     if(pastVisits.length > 0) {
       for(let visit of pastVisits ){
           //console.log(visit + "---visit");
@@ -112,6 +116,7 @@ export class HomePage implements OnInit{
       }
       //console.log(JSON.stringify(visitsLists)+"---visitsLists");
     } else {
+           
         this.visitStatus = false;
     }
     return visitsLists;
@@ -119,13 +124,16 @@ export class HomePage implements OnInit{
   }
 
     dateDifference(startDate, endDate){
+      
        let sDate:any = new Date(startDate);
        let eDate:any = new Date(endDate);
         //no.of daysdiff in hours
        let daysDiff = Date.parse(eDate)  - Date.parse(sDate);
        //no.of daysdiff in days
        let inDays = (daysDiff / 1000 / 60 / 60 /24) + 1;
+      
        return inDays;
+     
     }
     
     goToAgenda(visitId, visitDetails) { 

@@ -19,12 +19,14 @@
     <div class="myVisitHeader">
       <h4> My Visit</h4>
       <span class="daysLeft">
-        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"  *ngIf="daysRemaining"></i>
         {{ daysRemaining }}
       </span>
     </div>
     <ion-list class="list listMyVisit"  style="  background: url(assets/imgs/Panel_BG.png);background-size: cover;">
-    
+   <div class="clearLeft"></div>
+        <p *ngIf="!firstVisit"  class="noUpcomingVisitsfuture">No Upcoming Visits.</p>
+      
         <ion-item class="presentItem" *ngIf="firstVisit">
           <div class="presentContent" item-content>
             <ion-card class="presentCard">
@@ -51,6 +53,7 @@
             </ion-card>
           </div>
         </ion-item>
+       
       </ion-list>
         
       
@@ -59,13 +62,17 @@
   </div>
  
 
-  <div class="visitsPast"  *ngIf="pastVisits">
+  <div class="visitsPast"  >
     <div class="pastVisitHeader">
       <h4>Past Visits</h4>
       <div class="closed">
         <i class="fa fa-circle circle" aria-hidden="true"></i>Closed</div>
     </div>
-    <ion-list class="list">
+    <div class="clearLeft"></div>
+    <p *ngIf="!pastVisits.length" class="noUpcomingVisits" >No Past Visits.</p>
+
+    <ion-list class="list" *ngIf="pastVisits">
+       
       <ion-item class="pastItem" *ngFor="let visits of pastVisits;let i =index;">
         <div class="pastContent" item-content>
           <ion-card class="pastCard">
@@ -81,7 +88,7 @@
                   <p class="noOfDaysPast">
                     <i class="fa fa-calendar fa-lg icon-color calendar"></i>
                     <span class="daysCountPast">   
-                        {{visits.startDate | date : "d"}}<sup>{{visits.startSuperScript}}</sup>{{visits.startDate | date : "MMM"}}- {{visits.endDate | date : "d"}}<sup>{{visits.endSuperScript}}</sup>{{visits.endDate | date : "MMM"}}</span> | {{visits.noOfDays}} Day(s)
+                        {{visits.startDate | date : "d"}}<sup>{{visits.startSuperScript}}</sup> {{visits.startDate | date : "MMM"}} - {{visits.endDate | date : "d"}}<sup>{{visits.endSuperScript}}</sup> {{visits.endDate | date : "MMM"}}</span> | {{visits.noOfDays}} Day(s)
                   </p>
                 </div>
                 <div>
