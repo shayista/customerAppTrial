@@ -107,19 +107,13 @@ page-my-visit {
 }
 
 .details{
-    padding: 3px 10px 5px 5px;
+    padding: 3px 5px 5px 5px;
     height: 34px;
     display: inline-block;
     background: #f5f5f5;
     width: auto;
     border-radius: 25px;
     margin-left: 10px;
-    // width:53%;
-    // background: transparent !important;
-    // margin: 0 !important;
-    // padding: 0 !important; 
-    // text-transform: none !important;
-    // max-height: 30px !important;
 }
 .details.segment .detailsHeader{
     background-color: transparent;
@@ -127,14 +121,14 @@ page-my-visit {
     float: left;
     border: none;
     padding: 2px 10px;
-    margin: 1px 10px 1px 3px;
+    margin: 1px 3px;
     background: transparent;
     font-size: 15px;
     color: #000;
     line-height:2.3rem;
     max-height: 26px;
     width: auto;
-
+    transition: none;
 }
 
 
@@ -258,6 +252,7 @@ ion-list.agendaList:last-child .item-block{
     border-radius: 20px;
     color: #fff;
     max-height: 26px;
+    transition: none;
 }
 
 .label{
