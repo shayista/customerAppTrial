@@ -101,13 +101,16 @@ $popover-wp-width: 245px;
 $popover-md-border-radius: 8px;
 $popover-ios-border-radius: 8px;
 $popover-wp-border-radius: 8px;
-
-.popover-content{
-padding: 0;
-height: 216.5px;
-//border-bottom: 1px solid #808080;
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI';
 } 
 ion-navbar.toolbar-ios{
+  min-height:44px;
+  padding: 8px;
+}
+ion-navbar.toolbar-md{
   min-height:44px;
   padding: 8px;
 }
@@ -211,4 +214,20 @@ ion-content{
 .toolbar-md {
   padding: 0px !important;
   min-height: auto !important;
+}
+.toolbar-ios {
+  padding: 0px !important;
+  min-height: auto !important;
+}
+.toolbar-title-ios {
+  padding: 0px !important;
+}
+
+
+ .popover-content{
+  // top: 24.5px !important ;
+  left: 128px;
+  padding: 0;
+  height: 216.5px;
+  transform-origin: right top 0px;
 }

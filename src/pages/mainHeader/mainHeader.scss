@@ -2,11 +2,6 @@
     margin: 0;
     padding: 0 0 0 0px;
 }
-*{
-    padding: 0;
-    margin: 0;
-    font-family: 'Segoe UI';
-}
 .title .toolbar-title {
     width: auto;
     display:inline-block;
@@ -14,13 +9,13 @@
 .logoTitle{
     padding: 0 !important;
     display: inline-block;
-    width: 50%;
+    width: auto;
 }
 .mainLogo{
-    max-width:100%;
+    max-width: 100%;
     height: 32px !important;
     float: left;
-    margin: 16px 0 0 10px !important;
+    margin: 8px 0 0 10px !important;
 }
 .badge{
     font-size: 10px !important;
