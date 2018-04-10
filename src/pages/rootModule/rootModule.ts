@@ -13,7 +13,8 @@ export class rootModulePage {
   
   constructor(public viewCtrl: ViewController , public navCtrl: NavController ) {
     if (sessionStorage.getItem("attendeeId") == "undefined") {
-        this.navCtrl.push(loginPage);
+      this.navCtrl.setRoot(loginPage);
+      this.navCtrl.push(loginPage);
     } else {
       this.attendeeName = sessionStorage.getItem("attendeeName");
       //console.log(this.attendeeName);
@@ -26,7 +27,11 @@ export class rootModulePage {
     
     goBack() {
       this.viewCtrl.dismiss();
-      this.navCtrl.push(loginPage);
+      this.navCtrl.setRoot(loginPage).then(() =>{
+        this.navCtrl.popToRoot();
+        window.location.reload();
+      });
+      //this.navCtrl.popToRoot();
     }    
 }
 

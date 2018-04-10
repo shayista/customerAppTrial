@@ -3,388 +3,334 @@ page-home {
         padding: 0;
         margin: 0;
         font-family: 'Segoe UI';
-       
-    }
-
-// HEADER SECTION //
-
-// VISITS SECTION //
-
-/* COMMON FOR PAST AND MY VISITS */
-.container{
-    width: 100%;
-    padding: 0 10px !important;
-    background: #f5f5f5;
-}
-
-.list{
-    list-style-type: none;
-    width:100%;
-    padding: 0;
-    float: left;
-    margin: 0px;
-    border-bottom: none;    
-}
-
-/* MY VISITS  SECTION */
-.visits{
-    box-shadow: 1px 0 10px 1px gainsboro;
-    width: calc(100% - 20px);
-    margin: 10px 10px 10px 10px;
-    float: left;
-    border-radius: 8px;
-    background: #fff;
-}
-
-.myVisitHeader{
-    min-height: 36px;
-    float: left;
-    width: 100%;
-}
-
-.myVisitHeader h4 {
-    margin: 7px 15px;
-    float: left;
-    font-size: 19px;
-    color: #000;
-    font-weight: semibold;
-}
-
-.daysLeft{    
-    color: #999;
-    margin: 9px 15px 0px 0px;
-    font-size: 13px;
-    float: right;
-    font-weight: normal;
-    width: 27%;
-    text-align: right;
-}
-
-.daysLeft i{
-    color: #f3a109;
-    position: relative;
-    left: 3px;
-    top:0px;
-    font-size: 14px;
-}
-.noUpcomingVisits{
-    margin-top: 5px;
-    padding: 15px;
-    font-weight: bold; 
-   
-}
-.clearLeft{
-    clear: both;
-}
-.noUpcomingVisitsfuture{
-    padding: 15px;
-    color: #fff;
-    background: rgba(0, 0, 0, .7);
-    border-radius: 5px;
-}
-
-.listMyVisit{
-    padding-top: 134px; 
-    border-radius: 0 0 8px 8px;
-}
-
-.detailsLi{
-    //background:rgba(0, 0, 0, .76) !important;
-    margin: 0px 10px 10px 10px ;
-    padding: 0;
-    width: 95%;
-    float: left;
-    opacity: 0.8;
-    border-radius: 7px;
-    color: #fff;
-    border: none !important;
-}
-
-.detailswindow{
-    float: left;
-    width: 100%;
-    border-radius: 2px;
-    
-}
-
-.myVisitHeading{
-    color: #fff !important;
-    font-weight: normal;
-    font-size: 15px;
-    padding:15px 0 15px 65px; 
-    width:100%;
-    border-bottom: 1px solid gainsboro ;   
-}
-
-.dateVenueDetails{
-    width: 100%;
-    padding: 0;
-    float: left;
-    margin-bottom: 5px;
-}
-
-.dateContainer{
-    width:100% !important;
-    margin: 10px 0;
-    float: left;
-}
-
-.date{
-    float: left;
-    width: 50%;
-    text-align: center;
-    border-right: 1px dashed gainsboro;
-}
-
-.venue{
-   margin-bottom:4%; 
-}
-
-.viewDetails {
-    min-height: 40px;
-    width: 92%;
-    margin: 0 4% 4%;
-    color: #fff;
-    font-size: 20px;
-    font-weight: initial;
-    border-radius: 20px;
-    background: #00667f;
-}
-
-.noOfDays {
-    font-size: 15px !important;
-    color: #fff !important;
-    font-weight: normal;
-}
-
-/* PAST VISITS  SECTION */
-.visitsPast{
-    box-shadow: 0px 0 10px 1px gainsboro;
-    width: calc(100% - 20px);
-    margin: 0px 10px 10px 10px;
-    float: left;
-    border-radius: .25em;
-    background: #fff;
-}
-
-.pastVisitHeader{
-    float: left;
-    width: 100%;
-    min-height: 43px;
-    // border: 1px solid #888;
-    border-bottom: 1px solid gainsboro;
-}
-
-.pastVisitHeader h4 {
-    margin: 11px 15px;
-    float: left;
-    font-size: 19px;
-    color: #000;
-    font-weight: 500;
-}
-
-.closed{
-    // width: 63px;
-    height: 23px;
-    font-family: 'Segoe UI';
-    background-color: #fff;
-    color: #999;
-    font-size: 13px;
-    float: right;
-    // padding-top: 12px;
-    font-weight: normal;
-    margin: 14px 15px 0 0;
-}
-
-.circle{
-    font-size: 15px !important;
-    color:#aba9a8 !important;
-    margin: 0 5px 0 0 !important; 
-}
-
-.pastItem{
-    padding:0;
-    width: 100%;
-    margin: 0 0!important;
-    border: none !important;
-}
-.presentItem{
-    padding:0;
-    width: 94.8%;
-    margin: 2.6% !important;
-    border-radius: 8px;
-    border: none !important;
-    background-color: transparent;
-}
-.presentContent{
-    width: 100%;
-    float:left;
-   background:rgba(0, 0, 0, .7) ;
-}
-.pastContent{
-    color: #000;
-    width: 100%;
-    float:left;
- 
-}
-.pastContent:nth-child(odd)  {
-  background-color: #f5f5f5;
-}
-
-
-.pastCard{
-    padding: 0;
+   }
+    // HEADER SECTION // // VISITS SECTION // 
+   /* COMMON FOR PAST AND MY VISITS */
+    .container{
+        width: 100%;
+        padding: 0 10px !important;
+        background: #f5f5f5;
+   }
+    .list{
+        list-style-type: none;
+        width:100%;
+        padding: 0;
+        float: left;
+        margin: 0px;
+        border-bottom: none;
+   }
+   /* MY VISITS SECTION */
+    .visits{
+        box-shadow: 1px 0 10px 1px gainsboro;
+        width: calc(100% - 20px);
+        margin: 10px 10px 10px 10px;
+        float: left;
+        border-radius: 8px;
+        background: #fff;
+   }
+    .myVisitHeader{
+        min-height: 36px;
+        float: left;
+        width: 100%;
+   }
+    .myVisitHeader h4 {
+        margin: 7px 15px;
+        float: left;
+        font-size: 19px;
+        color: #000;
+        font-weight: bold;
+   }
+    .daysLeft{
+        color: #999;
+        margin: 9px 15px 0px 0px;
+        font-size: 13px;
+        float: right;
+        font-weight: normal;
+        width: 27%;
+        min-width: 100px;
+        text-align: right;
+   }
+    .daysLeft i{
+        color: #f3a109;
+        position: relative;
+        left: 3px;
+        top:0px;
+        font-size: 14px;
+   }
+    .noUpcomingVisits{
+        margin-top: 5px;
+        padding: 15px;
+        font-weight: bold;
+   }
+    .clearLeft{
+        clear: both;
+   }
+    .noUpcomingVisitsfuture{
+        padding: 15px;
+        color: #fff;
+        background: rgba(0, 0, 0, .7);
+        border-radius: 5px;
+   }
+    .listMyVisit{
+        padding-top: 134px;
+        border-radius: 0 0 8px 8px;
+   }
+    .detailsLi{
+        //background:rgba(0, 0, 0, .76) !important;
+        margin: 0px 10px 10px 10px ;
+        padding: 0;
+        width: 95%;
+        float: left;
+        opacity: 0.8;
+        border-radius: 7px;
+        color: #fff;
+        border: none !important;
+   }
+    .detailswindow{
+        float: left;
+        width: 100%;
+        border-radius: 2px;
+   }
+    .myVisitHeading{
+        color: #fff !important;
+        font-weight: normal;
+        font-size: 15px;
+        padding:15px 0 15px 65px;
+        width:100%;
+        border-bottom: 1px solid gainsboro ;
+   }
+    .dateVenueDetails{
+        width: 100%;
+        padding: 0;
+        float: left;
+        margin-bottom: 5px;
+   }
+    .dateContainer{
+        width:100% !important;
+        margin: 10px 0;
+        float: left;
+   }
+    .date{
+        float: left;
+        width: 50%;
+        text-align: center;
+        border-right: 1px dashed gainsboro;
+   }
+    .venue{
+        margin-bottom:4%;
+   }
+    .viewDetails {
+        min-height: 40px;
+        width: 92%;
+        margin: 0 4% 4%;
+        color: #fff;
+        font-size: 20px;
+        font-weight: initial;
+        border-radius: 20px;
+        background: #00667f;
+   }
+    .noOfDays {
+        font-size: 15px !important;
+        color: #fff !important;
+        font-weight: normal;
+   }
+   /* PAST VISITS SECTION */
+    .visitsPast{
+        box-shadow: 0px 0 10px 1px gainsboro;
+        width: calc(100% - 20px);
+        margin: 0px 10px 10px 10px;
+        float: left;
+        border-radius: .25em;
+        background: #fff;
+   }
+    .pastVisitHeader{
+        float: left;
+        width: 100%;
+        min-height: 43px;
+        // border: 1px solid #888;
+        border-bottom: 1px solid gainsboro;
+   }
+    .pastVisitHeader h4 {
+        margin: 11px 15px;
+        float: left;
+        font-size: 19px;
+        color: #000;
+        font-weight: bold;
+   }
+    .closed{
+        // width: 63px;
+        height: 23px;
+        font-family: 'Segoe UI';
+        background-color: #fff;
+        color: #999;
+        font-size: 13px;
+        float: right;
+        // padding-top: 12px;
+        font-weight: normal;
+        margin: 14px 15px 0 0;
+   }
+    .circle{
+        font-size: 15px !important;
+        color:#aba9a8 !important;
+        margin: 0 5px 0 0 !important;
+   }
+    .pastItem{
+        padding:0;
+        width: 100%;
+        margin: 0 0!important;
+        border: none !important;
+   }
+    .presentItem{
+        padding:0;
+        width: 94.8%;
+        margin: 2.6% !important;
+        border-radius: 8px;
+        border: none !important;
+        background-color: transparent;
+   }
+    .presentContent{
+        width: 100%;
+        float:left;
+        background:rgba(0, 0, 0, .7) ;
+   }
+    .pastContent{
+        color: #000;
+        width: 100%;
+        float:left;
+   }
+    .pastContent:nth-child(odd) {
+        background-color: #f5f5f5;
+   }
+    .pastCard{
+        padding: 0;
         margin: 0;
-        width:100%; 
+        width:100%;
         background: transparent;
         box-shadow: none;
+   }
+    .presentCard{
+        padding: 0;
+        margin: 0;
+        width:100%;
+        background: transparent !important;
+        box-shadow: none;
+   }
+    .pastVisitHeading{
+        font-family: 'Segoe UI';
+        font-size: 19px;
+        color:#000 !important;
+        padding: 2.82% 0px 3.24% 4%;
+        border:none;
+        margin: 0 !important;
+        font-weight: 500;
+   }
+    .presentVisitHeading{
+        // font-family: Interstate;
+        font-size: 20px;
+        color:#fff !important;
+        padding: 3.2% 4% 4%;
+        border:none;
+        font-weight: normal;
+   }
+    .pastView{
+        float: right;
+        background: transparent;
+        border:none;
+        color:#00677f;
+        font-size: 17px;
+        font-weight:500;
+        padding: 0;
+        margin: 1% 4.41% 0 0;
+   }
+    .arrowRight{
+        position: relative;
+        top: -1px;
+        font-size: 20px !important;
+        margin:0 !important;
+        color: #00677f !important;
+   }
+    .daysCount{
+        font-weight:400;
+        color:#fff !important;
+        font-size: 15px;
+   }
+    .daysCountPast{
+        font-weight:400;
+        color:#666 !important;
+        font-size: 13px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+   }
+    .noOfDaysPast{
+        color: #999 !important;
+   }
+    .icon-color{
+        color: #000;
+   }
+    .location{
+        padding:6px;
+        color: #999;
+   }
+    .calendar{
+        padding:1px;
+        color: #999;
+   }
+    // COMMON AND DEFAULT STYLE SECTION // 
+    .label{
+        text-align: -webkit-left;
+        display: none;
+   }
+    .back-button.show-back-button{
+        display: none;
+   }
+    // .card{
+        // padding: 0;
+        // margin: 0;
+        // width:100%;
+        // background: #f5f5f5 !important;
+        // box-shadow: none;
+        // 
+   //}
+    ion-card-content{
+        padding: 0 4% !important;
+   }
+   ion-card-content .fa{
+        margin: 0 2.5% 2% 0;
+        font-size: 23px;
+        color: #888684;
+        width: 23px;
+   }
+    .item-inner{
+        border: none !important;
+   }
+    .pastItem:nth-child(odd){
+        background: #f5f5f5;
+   }
+    .item-ios{
+        background: transparent;
+   }
+    .subtitlesContainer{
+        width: 78%;
+        margin: 0 auto;
+   }
+    .card-header p{
+        color: #fff !important;
+        font-weight: lighter;
+        font-size: 15px;
+        padding:0px 0 7px 40px;
+        width:100%;
+   }
+    .item-inner{
+        width: 100% !important;
+        padding: 0 !important;
+   }
+    .item-block:first-child {
+        border:0;
+   }
+    .presentCard .card-content p{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+   }
 }
-.presentCard{
-    padding: 0;
-    margin: 0;
-    width:100%; 
-    background: transparent !important;
-    box-shadow: none;
-}
-
-.pastVisitHeading{
-    font-family: 'Segoe UI';
-    font-size: 19px;
-    color:#000 !important;
-    padding: 2.82% 0px 3.24% 4%;
-    border:none;
-    margin: 0 !important;
-
-    font-weight: 500;  
-}
-.presentVisitHeading{
-    // font-family: Interstate;
-    font-size: 20px;
-    color:#fff !important;
-    padding: 3.2% 4% 4%;
-    border:none;
-    font-weight: normal; 
-}
-
-.pastView{
-    float: right;
-    background: transparent;
-    border:none;
-    color:#00677f;
-    font-size: 17px;
-    font-weight:500;
-    padding: 0;
-    margin: 1% 4.41% 0 0;
-}
-
-.arrowRight{
-    position: relative;
-    top: -1px;
-    font-size: 20px !important;
-    margin:0  !important;
-    color: #00677f !important;
-}
-
-.daysCount{
-    font-weight:400;
-    color:#fff !important;
-    font-size: 15px;
-}
-.daysCountPast{
-    font-weight:400;
-    color:#666 !important;
-    font-size: 13px;
-}
-.noOfDaysPast{
-    color: #999 !important;
-}
-
-.icon-color{
-    color: #000;
-} 
-
-.location{
-    padding:6px;
-    color: #999;
-}
-
-.calendar{
-    padding:1px;
-    color: #999;
-}
-
-// COMMON AND DEFAULT STYLE SECTION //
-.label{
-    text-align: -webkit-left;
-    display: none;
-}
-
-.back-button.show-back-button{
-    display: none;
-}
-
-// .card{
-//     padding: 0;
-//     margin: 0;
-//     width:100%; 
-//     background: #f5f5f5 !important;
-//     box-shadow: none;
-// }
-ion-card-content{
-padding: 0 4% !important;
-}
-.fa{
-    margin: 0 2.5% 2% 0;
-    font-size: 23px;
-    color: #888684;
-    width: 23px;
-}
-
-.item-inner{
-    border: none !important;
-   
-}
-.pastItem:nth-child(odd){
-    background: #f5f5f5;
-    
-}
-.item-ios{
-    background: transparent; 
-}
-.subtitlesContainer{
-    width: 78%;
-    margin: 0 auto; 
-}
-
-.card-header p{
-    color: #fff !important;
-    font-weight: lighter;
-    font-size: 15px;
-    padding:0px 0 7px 40px; 
-    width:100%;
-}
-
-.item-inner{
-    width: 100% !important;
-    padding: 0 !important;
-}
-
-.item-block:first-child {
-     border:0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-

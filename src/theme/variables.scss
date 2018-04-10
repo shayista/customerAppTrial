@@ -152,8 +152,8 @@ $item-border: none;
    top:5px;
    padding: 0 !important;
    margin: 0 !important;
-   right: -15px;
-   color: #000 !important;
+   right: 0px; 
+   color: #888684 !important;
 }
 
 .count{
@@ -161,9 +161,10 @@ $item-border: none;
    padding: 4px;
    border-radius: 50%;
    color: #fff;
-   position: relative;
-   left: 0px;
-   top: -6px;
+   position: absolute;
+   right: -8px;
+   top: -2px;
+   min-width: 20px;
 }
 
 .userDetails{
@@ -202,4 +203,12 @@ input.text-input:-webkit-autofill{
 ion-content{
   font-family: 'Segoe UI';
 
+}
+
+.toolbar-title-md {
+  padding: 0px !important;
+}
+.toolbar-md {
+  padding: 0px !important;
+  min-height: auto !important;
 }

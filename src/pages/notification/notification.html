@@ -15,14 +15,14 @@
 <ion-content >
 <div class="notificationHeader clearfix">
     <i class="fa fa-chevron-left backArrow" aria-hidden="true" (click)="goBack()"></i><p class="heading pull-left">Notifications</p>
-    <p class="notificationRead pull-right">Mark all as Read</p>
+    <p class="notificationRead pull-right" (click)="notificationRead()">Mark all as Read</p>
 </div>
 <div class="notificationContainer" *ngIf="notifications" >
-    <ul>
-        <li class="unread" *ngFor="let notification of notifications; let i =index;" (click)="gotoAgenda(notification.visitId)">
-            <p class="notificationName">{{notification.title}}</p>
+    <ul id="notification-list">
+        <li class="{{notification.read_flag==1?'read':'unread'}}" *ngFor="let notification of notifications; let i =index;" (click)="gotoAgenda(notification.visitId)">
+            <p class="notificationName pull-left">{{notification.title}}</p>
+            <p class="notificationTime pull-right" *ngIf=" notification.periodAgo">{{notification.periodAgo}}</p>
             <p class="notificationContent">{{notification.description}}</p>
-            <p class="notificationTime" *ngIf=" notification.periodAgo">{{notification.periodAgo}}</p>
         </li>
         <!-- <li>
             <p class="notificationName">Cognizant's Digital Capabilities</p>

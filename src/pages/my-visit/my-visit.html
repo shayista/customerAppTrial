@@ -1,5 +1,3 @@
-
-
 <ion-content padding class="mainContainer" *ngIf="visitDetails">
   <div ng-disabled="clicked">
     <div class="subHeader">
@@ -19,7 +17,7 @@
 <div class="agendaTabs">
     <ion-icon class="active" (click)="agendaTabsFunc(0)" id="agendaLink"><i aria-hidden="true" class="fa fa-list-alt"></i>Agenda</ion-icon> 
     <span class="separator">|</span>
-    <ion-icon  (click)="agendaTabsFunc(1)" id="itenaryLink"><i aria-hidden="true" class="fa fa-file-text-o"></i>Itenary</ion-icon>
+    <ion-icon  (click)="agendaTabsFunc(1)" id="itenaryLink"><i aria-hidden="true" class="fa fa-file-text-o"></i>Itinerary</ion-icon>
 </div>
     <div padding [class.hide]="!checkStatus"  class="routingContainer" *ngIf="agendaData" >
       
@@ -75,7 +73,11 @@
             </div>
     </div>
  
+<<<<<<< HEAD
+<div [class.hide]="checkStatus" class="itinerary-container" > Itinerary Future Scope</div>
+=======
 <div [class.hide]="checkStatus" > Itineary Future Scope</div>
+>>>>>>> 35bd70addfbd4172df90b6c3aedc14e2f23828d8
   </div>
   </div>
 </ion-content>

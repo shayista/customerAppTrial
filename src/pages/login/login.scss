@@ -1,9 +1,110 @@
 page-login {
-  
-.loginContent{
-   margin: 0 auto;
-   width: 100%;
+    *{
+        padding: 0;
+        margin: 0;
+        font-family: 'Segoe UI';
+   }
+    .loginContent{
+        margin: 0 auto;
+        width: 100%;
+   }
+    // HEADER SECTION // 
+    .logo{
+        margin:124px 0 74px 0;
+        max-width:65%;
+        height:auto;
+        text-align: center;
+   }
+    .loginTitle{
+        padding: 0 !important;
+        margin-bottom: 14px;
+        font-size: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 400;
+        color: #8f9296;
+        // position: relative;
+        // left: 42px;
+        font-weight: normal;
+   }
+    .logoImage{
+        width: 100%;
+        text-align: center;
+        margin: 0 !important;
+   }
+    // INPUT SECTION // 
+    .loginInput:first-child{
+        margin-bottom: 16px;
+   }
+    .loginInput{
+        padding-left: 20px;
+        border-radius: 36px;
+        min-height: 35px;
+        max-width:290px;
+        margin:0 0 20px 0;
+        font-size: 15px;
+        font-weight: normal;
+   }
+    .conatiner{
+        margin: 0 auto;
+        width: 290px;
+   }
+    // LOGIN BUTTON and FORGOT PASSWORD SECTION // 
+    .page-button{
+        font-size: 20px;
+        width:290px;
+        border-radius: 36px;
+        margin:0 0 15px 0;
+        min-height: 35px;
+        color: #fff;
+        border:none;
+        font-weight: lighter;
+        background: #00667f !important;
+   }
+    .forgotPassword{
+        text-align: left;
+        font-size: 15px;
+        color: #0099cc;
+        //position: relative;
+        //left: 11.3%;
+        margin:0;
+   }
+    // FOOTER SECTION // 
+    .footer{
+        // position: absolute;
+        // bottom: 27px;
+        // width: 77.4%;
+        text-align: center;
+        margin-top: 70px;
+   }
+    .footer p{
+        font-size: 12px;
+        color: #999;
+        font-weight: 400;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   }
+    .text-input{
+        margin: 0 !important;
+   }
+    #loginForm input[disabled]{
+        background: green;
+   }
+    .scroll-content {
+        overflow-y: auto;
+   }
+    .usernameRequirement{
+        padding: 0;
+        margin: 0;
+   }
+    .passwordRequirement{
+        padding: 0;
+        margin: 0;
+   }
+   .error {
+       color: red;
+   }
 }
+<<<<<<< HEAD
+=======
 
 // HEADER SECTION //
 .logo{
@@ -111,3 +212,4 @@ background: green;
     margin: 0;
 }
 }
+>>>>>>> 35bd70addfbd4172df90b6c3aedc14e2f23828d8

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController } from 'ionic-angular';
+import { NavController, ViewController, Events } from 'ionic-angular';
 import { loginPage } from '../login/login';
-
+import { PopoverController } from 'ionic-angular';
 import { NotificationService } from '../../providers/notification';
 import { HomePage } from '../home/home';
+import { rootModulePage } from '../rootModule/rootModule';
 
 @Component({
   selector: 'page-notificationModule',
@@ -12,8 +13,10 @@ import { HomePage } from '../home/home';
 export class notificationModulePage {
   attendeeId:string;
   notifications: any;
+  notificationId = [];
+  notificationUnreadCount = 0;
   
-  constructor(public viewCtrl: ViewController , public navCtrl: NavController, private _notificationService: NotificationService ) {
+  constructor(public viewCtrl: ViewController , public navCtrl: NavController, private _notificationService: NotificationService,public popoverCtrl: PopoverController, public events: Events ) {
     if (sessionStorage.getItem("attendeeId") == "undefined") {
         this.navCtrl.push(loginPage);
     } else {
@@ -24,16 +27,21 @@ export class notificationModulePage {
   ngOnInit() {
     this.getCustomerNotifications();
     //this.notificationRead();//don't use this
+    this.events.publish("notificationUnreadCount", 0);
   }
   
-  
-  close() {
-    this.viewCtrl.dismiss();
-  }
-    
   goBack() {
-   this.viewCtrl.dismiss();
+    //this.navCtrl.pop();
+    //this.viewCtrl.dismiss();
+   
     // this.navCtrl.push(HomePage);
+    document.getElementById('mainLogo').click();
+  }
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(rootModulePage);
+    popover.present({
+      ev: myEvent
+    });
   }
     
   getCustomerNotifications() { //console.log(this.attendeeId+"---this.attendeeId");
@@ -41,24 +49,32 @@ export class notificationModulePage {
                       .subscribe(res=>
                                 {
                                   this.notifications= res.data.notifications; 
-                                  //console.log(JSON.stringify(this.notifications) + "notification"); 
+                               
+                                  console.log(JSON.stringify(this.notifications[0]._id) + "notification"); 
                                   for (let notification of this.notifications) {
                                     console.log('notification---', this.daysLeft(notification.lastUpdatedDate));
+                                    this.notificationId.push(notification._id);
                                     notification.periodAgo = this.daysLeft(notification.lastUpdatedDate);
+                                    if(notification.read_flag == 0){
+                                      this.notificationUnreadCount++;
+                                    }
                                   }
-                                  console.log(JSON.stringify(this.notifications) + "notification"); 
+                                  // console.log(this.notificationId); 
                                   
                                 },
                                 error => console.log("Error :: " + error)  
                             );
   }
 
-  notificationRead() { //console.log(this.attendeeId+"---this.attendeeId");
-    const notificationIds = ["5a98f4d698686723d8a7ec20","5a98f4d698686723d8a7ec21"];
-    this._notificationService.updateNotificationStatus(notificationIds)
+  notificationRead() { //console.log(this.notificationId);
+  
+    this._notificationService.updateNotificationStatus(this.notificationId)
                              .subscribe(res=>
                                 {
-                                    res; console.log(res);     
+                                    res; console.log(res);
+                                   this.markRead(res.data.nModified);
+                                   document.getElementById('notification-icon').click();
+                                         
                                 },
                                 error => console.log("Error :: " + error)  
                             );
@@ -88,5 +104,16 @@ daysLeft(notifyDate){
  });
  
 }
+markRead(x){
+  console.log(x);
+  if(x > 0) {
+    document.getElementById('notification-list').classList.add("all-notificaitons-read");
+    this.notificationUnreadCount = 0;
+    this.events.publish("notificationUnreadCount", this.notificationUnreadCount);
+  }
+  
+
+}
+
 
 }

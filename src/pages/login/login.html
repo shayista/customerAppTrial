@@ -27,15 +27,16 @@
   
   
  
-  <p class="forgotPassword">
-    Forgot Password?
-  </p>
-  <div  class="usernameRequirement" style="color:white" *ngIf ="user.touched && !user.valid">
+  
+  <div  class="usernameRequirement" class="error" *ngIf ="user.touched && !user.valid">
     Username is required
   </div>
-  <div  class="passwordRequirement" style="color:white" *ngIf ="pwd.touched && !pwd.valid">
+  <div  class="passwordRequirement" class="error" *ngIf ="pwd.touched && !pwd.valid">
     Password is required
  </div>
+ <p class="forgotPassword">
+    Forgot Password?
+  </p>
  <div class="footer"><p >&copy; 2018 Cognizant, all rights reserved</p></div> 
 </div>
 </ion-content>

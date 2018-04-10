@@ -18,6 +18,7 @@ export class HomePage implements OnInit{
   firstVisit: any;
   pastVisits: Array<Object>=[];
   visitStatus: boolean;
+  pageNavigation: any;
    
   constructor(public navCtrl: NavController , public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider) {
     if (sessionStorage.getItem("attendeeId") == "undefined") {
@@ -59,7 +60,7 @@ export class HomePage implements OnInit{
           this.firstVisit.noOfDays = noOfDays;
 
           //days remaining
-        let  daysRemained = Math.ceil(this.dateDifference(new Date().toUTCString(), futureVisits[0].startDate));
+        let  daysRemained = Math.floor(this.dateDifference(new Date().toUTCString(), futureVisits[0].startDate));
           
           switch (true) {
              case daysRemained <= 0  : this.daysRemaining = "Ongoing"; break;
@@ -78,13 +79,20 @@ export class HomePage implements OnInit{
 
   daysSuperScript(sDate){
     var dateSuperScript= "th";
+    var last =  (new Date (sDate).getDate() )  / 10;
+   
     var end =  (new Date (sDate).getDate() ) % 10;
+    if(Math.floor(last) == 1){
+     end = 4;
+        }
+  
+   
     switch(end){
       case 1: dateSuperScript = "st"; break;
       case 2: dateSuperScript = "nd"; break;
       case 3: dateSuperScript = "rd"; break;
       default: dateSuperScript ="th"; break;
-    }
+      }
     return dateSuperScript;
   }
 
@@ -137,6 +145,7 @@ export class HomePage implements OnInit{
     }
     
     goToAgenda(visitId, visitDetails) { 
+      //this.pageNavigation = MyVisitPage;
       this.navCtrl.push(MyVisitPage, {"visitId":visitId, "visitDetails": visitDetails });
     }
   

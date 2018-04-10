@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { NavController, ViewController, App } from 'ionic-angular';
+import { Component,Input } from '@angular/core';
+import { NavController, ViewController, App, Events, NavParams } from 'ionic-angular';
 import { loginPage } from '../login/login';
 import { MyVisitPage } from '../my-visit/my-visit';
 import { PopoverController } from 'ionic-angular';
 import { rootModulePage } from '../rootModule/rootModule';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DataServiceProvider } from '../../providers/data-service';
+import { NotificationService } from '../../providers/notification';
 import { notificationModulePage } from '../notification/notification';
 import { HomePage } from '../home/home';
 
@@ -14,15 +15,49 @@ import { HomePage } from '../home/home';
   templateUrl: 'mainHeader.html'
 })
 export class mainHeader implements OnInit{
-    tab1:any = HomePage;
-    tab2:any = notificationModulePage;
-  constructor(public navCtrl: NavController , public popoverCtrl: PopoverController, public viewCtrl: ViewController,
-    public appCtrl: App) {
+    home:any = HomePage;
+    notificationsPage:any = notificationModulePage;
+    pageNavigation: any;
+    attendeeId:string;
+    notifications: any;
+    notificationId = [];
+    notificationUnreadCount=0;
+    myIndex: number;
 
+    //@Input() notificationUnreadCount=0;  
+    
+  constructor(public navCtrl: NavController ,private _notificationService: NotificationService, public popoverCtrl: PopoverController, public viewCtrl: ViewController,
+    public appCtrl: App, public events: Events,navParams: NavParams) {
+      this.myIndex = navParams.data.tabIndex || 0;
+      if (sessionStorage.getItem("attendeeId") == "undefined") {
+        this.navCtrl.push(loginPage);
+    } else {
+      this.attendeeId   = sessionStorage.getItem("attendeeId");
+    }
   }
 
   ngOnInit() {    
-   
+    this.getCustomerNotifications();
+    console.log('Home Page called');
+    this.pageNavigation = this.home;
+  }
+
+  getCustomerNotifications() { //console.log(this.attendeeId+"---this.attendeeId");
+    this._notificationService.getCustomerNotifications(this.attendeeId)
+      .subscribe(res=>
+                {
+                  this.notifications= res.data.notifications; 
+                  for (let notification of this.notifications) {
+                    if(notification.read_flag == 0){
+                      this.notificationUnreadCount++;
+                    }
+                    else{
+                      this.notificationUnreadCount=0;
+                    }
+                  }
+                },
+                error => console.log("Error :: " + error)  
+            );
   }
  
       presentPopover(myEvent) {
@@ -31,13 +66,13 @@ export class mainHeader implements OnInit{
           ev: myEvent
         });
       }
-      notificationPopover() {
-        // this.viewCtrl.dismiss();
-    
-        this.appCtrl.getRootNav().push(notificationModulePage);
+      notificationPopover(e) {
+        document.getElementById('tab-t1-1').click();
+        this.getCustomerNotifications();
       }
-      goBack(){
-        this.navCtrl.push(mainHeader);
+      goBack(e){
+        document.getElementById('tab-t1-0').click();
+        this.getCustomerNotifications();
       }
 }
 

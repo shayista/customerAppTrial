@@ -1,11 +1,13 @@
 <ion-header class="header">
         <ion-navbar>
-          <ion-title class="logoTitle" (click)="goBack()">
+          <ion-title id="mainLogo" class="logoTitle" (click)="goBack($event)">
             <img class="mainLogo" src="assets/imgs/logo1.png">
           </ion-title>
           <div class=profile>
-            <i class="fa fa-bell-o notifiation " (click)="notificationPopover()" aria-hidden="true"></i>
-            <span class="badge count">02</span>
+            <div id="notification-icon" class="notification-icon" (click)="notificationPopover($event)">
+              <i class="fa fa-bell-o notifiation" aria-hidden="true"></i>
+              <span *ngIf="notificationUnreadCount" class="badge count">{{notificationUnreadCount}}</span>
+            </div>
             <ion-avatar class="userDetails" (click)="presentPopover($event)" item-start>
               <img class="avatar" src="assets/imgs/profilepic_male.png">
             </ion-avatar>
@@ -13,6 +15,11 @@
         </ion-navbar>
  </ion-header> 
  
-<ion-content>
-        <ion-nav id="nav"  [root]="tab1"></ion-nav>
-</ion-content>
+<!-- <ion-content>
+        <ion-nav id="nav"  [root]="pageNavigation"></ion-nav>
+</ion-content> -->
+<ion-tabs [selectedIndex]="myIndex">
+  
+  <ion-tab [root]="home"></ion-tab>
+  <ion-tab [root]="notificationsPage"></ion-tab>
+</ion-tabs>

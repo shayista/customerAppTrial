@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
 import { DataServiceProvider } from '../../providers/data-service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { mainHeader } from '../mainHeader/mainHeader';
@@ -27,7 +26,8 @@ export class loginPage implements OnInit {
     if (this.username.length > 0 && this.password.length > 0) {
       this.dataService.validateUser(this.username, this.password)
         .subscribe(res => {
-          this.navigateUser(res);;
+          this.navigateUser(res);
+          this.navCtrl.setRoot(mainHeader);
         },
         error => console.log(error)
         );
