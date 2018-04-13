@@ -1,9 +1,9 @@
 page-my-visit {
-    *{
+    
         padding: 0;
         margin: 0;
         font-family: 'Segoe UI';
-   }
+       
     // HEADER SECTION // // AGENDA VIEW SECTION // 
     .mainContainer{
         float: left !important;
@@ -11,6 +11,7 @@ page-my-visit {
         padding: 0 0px !important;
         margin: 0 auto;
         top: 0px !important;
+        background-color: #f5f5f5;
    }
     .container{
         padding: 0 !important;
@@ -23,6 +24,7 @@ page-my-visit {
     .subHeader{
         min-height: 31px;
         min-width: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .button-clear{
         font-size: 20px;
@@ -45,6 +47,7 @@ page-my-visit {
         border-radius: 7px;
         font-size: 15px;
         color:#fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .locationDetails p .fa{
         margin-right: 8px;
@@ -58,6 +61,7 @@ page-my-visit {
         font-weight: 400;
         font-family: 'Segoe UI';
         font-size: 12px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .visitingLocationDetails{
         margin-bottom: 1.199%;
@@ -65,12 +69,15 @@ page-my-visit {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .visitingLocationDetails span{
         font-size: 16px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .meetingRoomDetails span{
         font-size: 16px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .meetingRoomDetails{
         padding: 0 !important;
@@ -79,6 +86,7 @@ page-my-visit {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .locationDetails p{
         padding: 10px 0px 0px 10px;
@@ -87,6 +95,7 @@ page-my-visit {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .profilesPresenters{
         margin-top: 4.79%;
@@ -96,10 +105,12 @@ page-my-visit {
         padding-bottom: 10px !important;
         font-size: 13px !important;
         color: #999;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .daysCount span{
         color: #fff;
         font-size: 13px !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .routingContainer{
         border-radius:2px;
@@ -130,6 +141,7 @@ page-my-visit {
         width: auto;
         transition: none;
         opacity: 1;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .agenda{
         margin: 2px 7.46% 2px 3px!important;
@@ -141,12 +153,15 @@ page-my-visit {
         font-weight: bold !important;
         color: #fff !important;
         max-height: 28px !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .dynamic{
         color: #01677e !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .agendaList{
         color: #000;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         padding: 0 !important;
         margin: 0 !important;
    }
@@ -165,6 +180,7 @@ page-my-visit {
     .day {
         color: #000;
         font-size: 17px !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: normal !important;
         padding:10px 0px 0 0 !important;
         border: none !important;
@@ -174,7 +190,7 @@ page-my-visit {
         color: #2d2926;
         font-weight: 500;
         font-size: 16px;
-        font-family: 'Segoe UI';
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin-bottom: 26px !important;
    }
     .titleTopicLunch{
@@ -182,14 +198,15 @@ page-my-visit {
         color: #2d2926;
         font-weight: 500;
         font-size: 16px;
-        font-family: 'Segoe UI';
+
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin-bottom: 15px !important;
    }
     .timingLunch{
         margin: 15px 0 0 0 !important;
         padding-bottom: 5px;
         color: #666;
-        font-family: 'Segoe UI';
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: 500;
         font-size: 12px;
         max-height: 106px;
@@ -197,14 +214,16 @@ page-my-visit {
     .timing{
         margin: 26px 0 0 0 !important;
         color: #666;
-        font-family: 'Segoe UI';
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: 500;
         font-size: 14px;
+
         max-height: 106px;
    }
     .confRoom{
         color: #0099cc;
         font-weight: lighter;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .lunchBreak{
         background-color: #f5f5f5;
@@ -230,6 +249,7 @@ page-my-visit {
         height: 26px;
         background-color: #00667f;
         border-radius: 20px;
+
         color: #fff;
         max-height: 26px;
         transition: none;
@@ -240,6 +260,7 @@ page-my-visit {
         padding: 0 0 0 5px;
         margin: 0;
         max-height: 100%;
+
    }
     .inner-item{
         border: none !important;
@@ -278,6 +299,7 @@ page-my-visit {
    }
     .agendaTabs ion-icon{
         font-size: 17px;
+        
         width: 48%;
         font-family: 'segoe UI';
         color: #666;
@@ -294,9 +316,204 @@ page-my-visit {
     .agendaTabs ion-icon.active{
         color: #00677f;
         font-weight: bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         border-bottom: 2px solid #00677f;
    }
     .itinerary-container {
         padding: 15px;
    }
+   //Itineary 
+   .flightDetails{
+       margin-top: 15px;
+       border-radius: 9px;
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       background-color: #64A70B;
+       color: #fff;
+       width: 100%;
+   }
+   .flightNumber{
+       font-size: 14px;
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       color: #ffffff;
+       font-weight: lighter;
+       padding-top:15px; 
+       margin: 0px 0 20px 10px;
+   }
+   .flightNumber span{
+       font-weight: normal;
+       padding-top: 0;
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   }
+   .source{
+       color: #fff;
+       font-size: 17px;
+       font-weight: 400;
+         width: 39%;
+         margin-bottom: 10px;
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+   }
+   .destination{
+    color: #fff;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   }
+   .detailsContainer{
+    //    width: 96%;
+       margin: 0 10px;
+       
+   }
+
+.flightTimings{
+  width: 100%;
+  float: left;
+  margin-bottom: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.startingTime{
+    width: 34%;
+    font-size: 13px;
+    color: #e6efde;
+    font-weight: normal;
+    float: left;
+ // padding-bottom: 10px; 
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.reachingTime{
+    width: 26%;
+    font-size: 13px;
+    color: #e6efde;
+    font-weight: normal;
+    float: right;
+    text-align: right;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+}
+.airportAssistancePic{
+    width: 60px !important;
+    height: 60px !important;
+    
+}
+.avtar{
+    margin: 8px 10px 8px 0 !important;
+}
+.clearfix{
+    clear: both;
+  
+}
+.stayDeatils{
+    width: 96%;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+.hotelDetails{
+    width: 96%;
+    background: transparent;
+    margin: 0 0 15px 0;
+    padding: 0; 
+}
+.hotelDetails h2{
+    font-size: 17px;
+    font-weight: bold;
+    color: #000;
+    margin: 0 0 10px 0;
+
+}
+.hotelName{
+    color: #666;
+    font-weight: 400;
+    font-size: 15px;
+    margin: 0 0 10px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.distance{
+    color: #666;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+.stay {
+    margin: 15px 0px 0 0;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+.stayDeatils{
+ width: 100%;
+ background-color: transparent;
+ //border: 1px solid #000;
+ box-shadow: none !important;
+}
+.checkinDetails{
+    color: #000;
+    font-size: 14px;
+    font-weight: normal;
+    
+}
+.hotelPic{
+    border-radius: 6px 6px 0 0;
+   // margin: 0 0 15px 0;
+}
+.checkinDetails{
+    background-color: gainsboro;
+    border-radius:0 0 8px 8px;
+    font-size: 13px;
+    color: #000;
+    font-weight: normal;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 15px 0 15px 0;
+    margin: 0 0 15px 0;
+}
+.checkinDetails span{
+    background-color: gainsboro;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.airportTransfer h6{
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .airportTransfer p{
+        color: #666;
+        font-size: 14px;
+        font-weight: normal;
+        margin-bottom: 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .airportMediator{
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+        background: transparent !important;
+       
+    }
+    .airportAsssitance h2{
+        font-size: 16px;
+        color: #333;
+        font-weight: bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .airportAsssitance p{
+        font-size: 13px;
+        color: #666;
+        font-weight: bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .airportTransfer{
+        margin: 0 0 5px 0;
+    }
+    .airportAsssitance{
+        width: 100%;
+        background: transparent !important;
+    }
+}
+

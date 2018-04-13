@@ -18,6 +18,7 @@ import { DataServiceProvider } from '../providers/data-service';
 import { NotificationService } from '../providers/notification';
 import { notificationModulePage } from '../pages/notification/notification';
 import { mainHeader } from '../pages/mainHeader/mainHeader';
+import { commentPage } from '../pages/comments/comments';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { mainHeader } from '../pages/mainHeader/mainHeader';
     loginPage,
     rootModulePage,
     notificationModulePage,
-    mainHeader
+    mainHeader,
+    commentPage
   
   ],
   imports: [
@@ -46,7 +48,8 @@ import { mainHeader } from '../pages/mainHeader/mainHeader';
     loginPage,
     rootModulePage,
     notificationModulePage,
-    mainHeader
+    mainHeader,
+    commentPage
       ],
   providers: [
     StatusBar,

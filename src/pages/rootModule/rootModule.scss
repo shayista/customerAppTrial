@@ -1,9 +1,8 @@
 page-rootmodule{
-    *{
-        padding: 0;
+         padding: 0;
         margin: 0;
         font-family: 'Segoe UI';
-   }
+   
     .popOverDisplay .label{
         width: 245px !important;
         color: #2d2926 !important;
@@ -19,7 +18,7 @@ page-rootmodule{
         //padding: 2.5px 0 !important;
         font-size: 15px;
         color: #00667f;
-      
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0 !important;
         border: 0 !important;
         height: 43px !important;

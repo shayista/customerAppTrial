@@ -10,6 +10,7 @@
     padding: 0 !important;
     display: inline-block;
     width: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .mainLogo{
     max-width: 100%;
@@ -27,6 +28,7 @@
 .userDetails{
     display:inline-block;
     margin: 0 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .avatar{
     max-width: 100% !important;
@@ -36,6 +38,7 @@
 ion-avatar.userDetails:after {
     content: "\f078";
     font-family: FontAwesome;
+    //font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #888684;
     font-size: 9px;
 }
@@ -55,9 +58,11 @@ ion-avatar.userDetails:after {
 .notification-icon {
     float: left;
     position: relative;
+   // font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .platform-android .profile {
     padding-top: 9px;
+    
 }
 .tabbar {
     display: none;

@@ -1,53 +1,56 @@
 page-notificationModule{
-    *{
-        padding: 0;
-        margin: 0;
-        font-family: 'Segoe UI';
-   }
-    .notificationHeader{
+      .notificationHeader{
         padding: 16px 10px;
         box-shadow: 0px 1px 5px rgba(170, 170, 170, 0.7);
    }
     .heading{
-        font-size: 17px;
+        font-size: 20px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-weight: 400;
+        font-weight: normal;
         margin-bottom: 0;
    }
     .backArrow{
         margin: 5px 6px 0 0;
         float: left;
-        font-size: 17px;
+        font-size: 20px;
         font-weight: lighter;
         color: #00677f;
+        // font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         
    }
     .notificationRead {
         margin: 4px 0 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .notificationTime {
         text-align: right;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .notificationContainer {
         margin-top: 2px;
         overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .notificationContainer ul {
         margin: 0 10px;
         padding-left: 0;
         box-shadow: 0px 0 10px 1px gainsboro;
+        
    }
     .notificationContainer li.unread  {
         background-color: #e6f2f6;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       
         
    }
    .notificationContainer li.unread p  {
    color: #000;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }  
     
    .notificationContainer li.read p  {
     color: #888888 !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
    
     .notificationContainer li {
@@ -57,6 +60,7 @@ page-notificationModule{
    }
     .notificationContainer li p {
         margin-bottom: 0px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
    }
     .notificationContainer .all-notificaitons-read li {
@@ -68,6 +72,7 @@ page-notificationModule{
         text-overflow: ellipsis;
         overflow: hidden;
         width: 74%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .notificationContent {
         font-size: 17px;
@@ -77,11 +82,13 @@ page-notificationModule{
         overflow: hidden;
         float: none;
         clear: both;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .notificationTime {
         font-size: 14px;
         width: 26%;
       color: #888 !important;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         
    }
 }

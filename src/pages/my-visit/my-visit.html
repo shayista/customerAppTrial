@@ -1,4 +1,4 @@
-<ion-content padding class="mainContainer" *ngIf="visitDetails">
+<ion-content padding class="mainContainer" *ngIf="visitDetails" no-border>
   <div ng-disabled="clicked">
     <div class="subHeader">
       <p class="button-clear" ng-disabled="clicked" (click)="goBack()">
@@ -73,8 +73,69 @@
             </div>
     </div>
  
-<div [class.hide]="checkStatus" class="itinerary-container" > Itinerary Future Scope</div>
-
+<div [class.hide]="checkStatus" class="itinerary-container" > 
+<div class="flightDetails">
+ 
+  <p class="flightNumber ">Flight Number : <span>AR8484</span></p>
+  <div class="detailsContainer">
+   
+  <p class="source pull-left"> San Fransisco </p>
+  <span class="connectors pull-left ">----<i class="fa fa-space-shuttle flight" aria-hidden="true"></i></span>
+ 
+  <span class="connectors pull-left">----</span>
+  <p class="destination pull-right"> Hyderabad</p>
+  <div class="clearfix"></div>
+  <div class="flightTimings">
+      <p class="startingTime ">2 <sup>nd</sup> Oct, 8am (Arrival)</p>
+      <p class="reachingTime">3 <sup>rd</sup> Oct, 7am (Departure)</p>
   </div>
+  <div class="clearfix"></div>
+  </div>
+  </div>
+<div class="stay">
+    <ion-card  class="stayDeatils" no-border>
+        
+          <ion-item class="hotelDetails" no-border>
+          
+            <h2>Your Stay at Hyderabad</h2>
+            <p class="hotelName">Hyatt International</p>
+            <p class="distance">0.9 miles from Airport</p>
+          </ion-item>
+        
+          
+        
+          <ion-card-content no-border no-box-shadow no-padding>
+              <img class="hotelPic" src="assets/imgs/hotel.jpg">
+          </ion-card-content>
+        
+          <ion-row no-margin no-border no-padding>
+            
+         
+            <ion-col center text-center class="checkinDetails">
+              <ion-note class="checkinDetails">
+               Check In & Check Out Dates:<span> 2<sup>nd</sup> Oct - 3<sup>rd</sup>Oct</span>
+              </ion-note>
+            </ion-col>
+          </ion-row>
+        
+        </ion-card>
+        <div class="airportTransfer">
+          <h6>Airport Transfer</h6>
+          <p>Pickup Info: RGIA, <span>2<sup>nd</sup> Oct 2017 | 5:30 AM</span></p>
+            <ion-card no-border no-padding class="airportMediator">
+                
+                  <ion-item class="airportAsssitance" no-border no-margin no-padding >
+                    <ion-avatar class="avtar" item-start>
+                      <img class="airportAssistancePic" src="assets/imgs/profile_picture.png">
+                    </ion-avatar>
+                    <h2>Marty McFly</h2>
+                    <p>9962416185</p>
+                    </ion-item>
+                    </ion-card>
+        </div>
+</div>
+  </div>
+
+</div>
   </div>
 </ion-content>

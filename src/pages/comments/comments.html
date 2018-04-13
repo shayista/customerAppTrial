@@ -1,0 +1,47 @@
+<ion-content>
+    <div class="subHeader">
+        <p class="button-clear" ng-disabled="clicked" (click)="goBack()">
+          <i class="fa fa-chevron-left back-arrow" aria-hidden="true"></i>Purpose
+        </p>
+    
+      </div>
+     <div class="container">
+       <p class="commentHeader">Comment</p>
+       <p class="feedbackSelector">Share your feedback after selecting a category</p>
+       <form>
+
+    
+    <label class="category">Category</label>
+  
+    <select class="selectCategory" placeholder="Select a category name">
+        <option value="Presenter">Presenter</option>
+        <option value="Cab">Cab</option>
+        <option value="Food">Food</option>
+    </select>
+    <div class="rangeConatiner">
+      <p class="rating">Rating</p>
+      <input class="rangeIndicator slider" type="range" min="1" max="10" step="1" list="tickmarks" value="10"/>
+      <datalist id="tickmarks">
+          <option value="0">
+          <option value="1">
+          <option value="2">
+          <option value="3">
+          <option value="4">
+          <option value="5">
+          <option value="6">
+          <option value="7">
+          <option value="8">
+          <option value="9">
+          <option value="10">
+        </datalist>
+    </div>
+   
+    <label class="messageTextarea">Message</label>
+    <textarea class="textBox">Enter your text here</textarea>
+   
+    
+    <input type="button" value="Cancel" class="cancelButton pull-right"/>
+    <input type="submit" value="Submit" class="submitButton pull-right"/>
+</form>
+     </div>
+</ion-content>
