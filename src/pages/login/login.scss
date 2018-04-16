@@ -1,9 +1,9 @@
 page-login {
-    *{
+    
         padding: 0;
         margin: 0;
-        font-family: 'Segoe UI';
-   }
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     .loginContent{
         margin: 0 auto;
         width: 100%;
@@ -167,6 +167,7 @@ page-login {
     color: #fff;
     border:none;
     font-weight: lighter;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #00667f !important;
 }
 
@@ -177,6 +178,7 @@ page-login {
     //position: relative;
     //left: 11.3%;
     margin:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 // FOOTER SECTION //
@@ -196,6 +198,7 @@ page-login {
 
 .text-input{
     margin: 0 !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   
 }
 #loginForm input[disabled]{

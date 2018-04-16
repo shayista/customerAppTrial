@@ -14,7 +14,7 @@ import { commentPage } from '../pages/comments/comments';
   templateUrl: 'app.html'
 })
 export class MyApp {
- rootPage:any = commentPage;
+ rootPage:any = loginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

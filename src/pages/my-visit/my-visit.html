@@ -8,7 +8,7 @@
         <p>Cognizant {{visitDetails.visit_locations[0].country}}, {{visitDetails.visit_locations[0].city}} - {{visitDetails.visit_locations[0].visitingLocation}}</p>
         <p class="daysCount">
           <i class="fa fa-calendar fa-lg"></i>
-          <span>{{visitDetails.startDate | date: "d"}}<sup>{{visitDetails.startSuperScript}}</sup> {{visitDetails.startDate | date: "MMM"}} - {{visitDetails.endDate | date: "d"}}<sup>{{visitDetails.endSuperScript}}</sup> {{visitDetails.endDate | date: "MMM"}}  </span> | {{visitDetails.noOfDays}} Day(s)
+          <span>{{visitDetails.startDate | date: "d"}}<sup class="subScript">{{visitDetails.startSuperScript}}</sup> {{visitDetails.startDate | date: "MMM"}} - {{visitDetails.endDate | date: "d"}}<sup class="subScript">{{visitDetails.endSuperScript}}</sup> {{visitDetails.endDate | date: "MMM"}}  </span> | {{visitDetails.noOfDays}} Day(s)
         </p>
 
       </div>
@@ -86,8 +86,8 @@
   <p class="destination pull-right"> Hyderabad</p>
   <div class="clearfix"></div>
   <div class="flightTimings">
-      <p class="startingTime ">2 <sup>nd</sup> Oct, 8am (Arrival)</p>
-      <p class="reachingTime">3 <sup>rd</sup> Oct, 7am (Departure)</p>
+      <p class="startingTime ">2 <sup class="subScript">nd</sup> Oct, 8am (Arrival)</p>
+      <p class="reachingTime">3 <sup class="subScript">rd</sup> Oct, 7am (Departure)</p>
   </div>
   <div class="clearfix"></div>
   </div>
@@ -113,7 +113,7 @@
          
             <ion-col center text-center class="checkinDetails">
               <ion-note class="checkinDetails">
-               Check In & Check Out Dates:<span> 2<sup>nd</sup> Oct - 3<sup>rd</sup>Oct</span>
+               Check In & Check Out Dates:<span> 2<sup class="subScript">nd</sup> Oct - 3<sup class="subScript">rd</sup>Oct</span>
               </ion-note>
             </ion-col>
           </ion-row>
@@ -121,7 +121,7 @@
         </ion-card>
         <div class="airportTransfer">
           <h6>Airport Transfer</h6>
-          <p>Pickup Info: RGIA, <span>2<sup>nd</sup> Oct 2017 | 5:30 AM</span></p>
+          <p>Pickup Info: RGIA, <span>2<sup class="subScript">nd</sup> Oct 2017 | 5:30 AM</span></p>
             <ion-card no-border no-padding class="airportMediator">
                 
                   <ion-item class="airportAsssitance" no-border no-margin no-padding >

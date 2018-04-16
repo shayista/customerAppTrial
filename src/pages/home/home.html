@@ -23,7 +23,7 @@
                   <div>
                     <p>
                       <i class="fa fa-calendar fa-lg icon-color calendar"></i>
-                      <span class="daysCount"> {{ firstVisit.startDate | date : "d" }}<sup>{{firstVisit.startSuperScript}} </sup>{{firstVisit.startDate | date : "MMM"}} - {{ firstVisit.endDate | date : "d" }}<sup>{{ firstVisit.endSuperScript }} </sup> {{ firstVisit.endDate | date : "MMM"}} </span> | {{firstVisit.noOfDays}} Day(s)</p>
+                      <span class="daysCount"> {{ firstVisit.startDate | date : "d" }}<sup class="subScript">{{firstVisit.startSuperScript}} </sup>{{firstVisit.startDate | date : "MMM"}} - {{ firstVisit.endDate | date : "d" }}<sup class="subScript">{{ firstVisit.endSuperScript }} </sup> {{ firstVisit.endDate | date : "MMM"}} </span> | {{firstVisit.noOfDays}} Day(s)</p>
                   </div>
                   <div>
                     <p>
@@ -73,7 +73,7 @@
                   <p class="noOfDaysPast">
                     <i class="fa fa-calendar fa-lg icon-color calendar"></i>
                     <span class="daysCountPast">   
-                        {{visits.startDate | date : "d"}}<sup>{{visits.startSuperScript}}</sup> {{visits.startDate | date : "MMM"}} - {{visits.endDate | date : "d"}}<sup>{{visits.endSuperScript}}</sup> {{visits.endDate | date : "MMM"}}</span> | {{visits.noOfDays}} Day(s)
+                        {{visits.startDate | date : "d"}}<sup class="subScript">{{visits.startSuperScript}}</sup> {{visits.startDate | date : "MMM"}} - {{visits.endDate | date : "d"}}<sup class="subScript">{{visits.endSuperScript}}</sup> {{visits.endDate | date : "MMM"}}</span> | {{visits.noOfDays}} Day(s)
                   </p>
                 </div>
                 <div>
