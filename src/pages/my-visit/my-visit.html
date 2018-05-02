@@ -74,16 +74,19 @@
     </div>
  
 <div [class.hide]="checkStatus" class="itinerary-container" > 
-<div class="flightDetails">
+  
+ <div class="flightDetails">
  
   <p class="flightNumber ">Flight Number : <span>AR8484</span></p>
   <div class="detailsContainer">
    
-  <p class="source pull-left"> San Fransisco </p>
-  <span class="connectors pull-left ">----<i class="fa fa-space-shuttle flight" aria-hidden="true"></i></span>
- 
-  <span class="connectors pull-left">----</span>
-  <p class="destination pull-right"> Hyderabad</p>
+  <p class="source pull-left"> San Fransisco</p>
+  <div class="connectoresFlight">
+  <span class="connectors pull-left ">--------</span>
+  <i class="fa fa-space-shuttle pull-left flight" aria-hidden="true"></i>
+  <span class="connectors pull-left">--------</span>
+  </div>
+  <p class="destination pull-right">Hyderabad</p>
   <div class="clearfix"></div>
   <div class="flightTimings">
       <p class="startingTime ">2 <sup class="subScript">nd</sup> Oct, 8am (Arrival)</p>
@@ -92,7 +95,7 @@
   <div class="clearfix"></div>
   </div>
   </div>
-<div class="stay">
+<div class="stay"> 
     <ion-card  class="stayDeatils" no-border>
         
           <ion-item class="hotelDetails" no-border>

@@ -1,8 +1,11 @@
 page-notificationModule{
+
+    background-color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       .notificationHeader{
         padding: 16px 10px;
         box-shadow: 0px 1px 5px rgba(170, 170, 170, 0.7);
+        background-color: #fff;
    }
     .heading{
         font-size: 20px;
@@ -28,7 +31,8 @@ page-notificationModule{
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .notificationContainer {
-        margin-top: 2px;
+        background-color: #fff;
+        margin-top: 15px;
         overflow: hidden;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
@@ -87,7 +91,7 @@ page-notificationModule{
    }
     .notificationTime {
         font-size: 14px;
-        width: 26%;
+       // width: 26%;
       color: #888 !important;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         

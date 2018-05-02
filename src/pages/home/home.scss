@@ -23,7 +23,7 @@ page-home {
     .visits{
         box-shadow: 1px 0 10px 1px gainsboro;
         width: calc(100% - 20px);
-        margin: 10px 10px 10px 10px;
+        margin: 0px 10px 10px 10px;
         float: left;
         border-radius: 8px;
         background: #fff;
@@ -38,7 +38,7 @@ page-home {
         float: left;
         font-size: 19px;
         color: #000;
-        font-weight: 600;
+        font-weight: 550 !important;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .daysLeft{
@@ -64,6 +64,7 @@ page-home {
         margin-top: 5px;
         padding: 15px;
         font-weight: bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .clearLeft{
         clear: both;
@@ -168,7 +169,7 @@ page-home {
         float: left;
         font-size: 19px;
         color: #000;
-        font-weight: 600;
+        font-weight: 550 !important;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .closed{

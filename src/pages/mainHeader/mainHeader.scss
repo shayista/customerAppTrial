@@ -25,6 +25,7 @@
 .profile{
     float: right;
     padding: 9.5px 0;
+    margin: 0px 0px 8px 0px;
 }
 .userDetails{
     display:inline-block;
@@ -59,6 +60,7 @@ ion-avatar.userDetails:after {
 .notification-icon {
     float: left;
     position: relative;
+ 
    // font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .platform-android .profile {
@@ -71,5 +73,5 @@ ion-avatar.userDetails:after {
 .fixed-content,
 .scroll-content{
     margin: 0px !important;
-    top: 50px;
+    top: 30px;
 }

@@ -31,17 +31,8 @@ export class notificationModulePage {
   }
   
   goBack() {
-    //this.navCtrl.pop();
-    //this.viewCtrl.dismiss();
+    this.navCtrl.pop();
    
-    // this.navCtrl.push(HomePage);
-    document.getElementById('mainLogo').click();
-  }
-  presentPopover(myEvent) {
-    let popover = this.popoverCtrl.create(rootModulePage);
-    popover.present({
-      ev: myEvent
-    });
   }
     
   getCustomerNotifications() { //console.log(this.attendeeId+"---this.attendeeId");

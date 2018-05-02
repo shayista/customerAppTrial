@@ -5,8 +5,9 @@ import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-const API_ENDPOINT = "http://10.242.251.141:8080"
-//const API_ENDPOINT = "http://localhost:8080"
+// const API_ENDPOINT = "http://10.242.251.141:3100"
+
+const API_ENDPOINT = "http://localhost:8080"
 
 @Injectable()
 export class NotificationService {

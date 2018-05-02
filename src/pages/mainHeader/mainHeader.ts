@@ -15,7 +15,7 @@ import { HomePage } from '../home/home';
   templateUrl: 'mainHeader.html'
 })
 export class mainHeader implements OnInit{
-    home:any = HomePage;
+    home:any ;
     notificationsPage:any = notificationModulePage;
     pageNavigation: any;
     attendeeId:string;
@@ -27,19 +27,21 @@ export class mainHeader implements OnInit{
     //@Input() notificationUnreadCount=0;  
     
   constructor(public navCtrl: NavController ,private _notificationService: NotificationService, public popoverCtrl: PopoverController, public viewCtrl: ViewController,
-    public appCtrl: App, public events: Events,navParams: NavParams) {
-      this.myIndex = navParams.data.tabIndex || 0;
+    public appCtrl: App, public events: Events,public navParams: NavParams) {
+     
       if (sessionStorage.getItem("attendeeId") == "undefined") {
         this.navCtrl.push(loginPage);
     } else {
+      this.home = HomePage;
       this.attendeeId   = sessionStorage.getItem("attendeeId");
+      console.log(sessionStorage.getItem("attendeeId"));
     }
   }
 
   ngOnInit() {    
     this.getCustomerNotifications();
     console.log('Home Page called');
-    this.pageNavigation = this.home;
+    // this.pageNavigation = this.home;
   }
 
   getCustomerNotifications() { //console.log(this.attendeeId+"---this.attendeeId");
@@ -66,12 +68,12 @@ export class mainHeader implements OnInit{
           ev: myEvent
         });
       }
-      notificationPopover(e) {
-        document.getElementById('tab-t1-1').click();
+      notificationPopover() {
+      this.navCtrl.push(notificationModulePage);
         this.getCustomerNotifications();
       }
-      goBack(e){
-        document.getElementById('tab-t1-0').click();
+      goBack(){
+ 
         this.getCustomerNotifications();
       }
 }

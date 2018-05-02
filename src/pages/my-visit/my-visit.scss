@@ -30,7 +30,7 @@ page-my-visit {
         margin: 20px 0 !important;
         line-height: 1;
         color: #000;
-        font-family: 'Segoe UI';
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: normal;
         padding: 0px 0px 0 0 !important;
    }
@@ -130,7 +130,7 @@ page-my-visit {
         text-transform: none;
         float: left;
         border: none;
-        padding: 2px 10px;
+        padding: 1px 10px;
         margin: 1px 3px;
         background: transparent;
         font-size: 15px;
@@ -298,9 +298,8 @@ page-my-visit {
    }
     .agendaTabs ion-icon{
         font-size: 17px;
-        
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         width: 48%;
-        font-family: 'segoe UI';
         color: #666;
         padding: 15px 0 13px 14px;
         border-bottom: 2px solid #fff;
@@ -330,6 +329,10 @@ page-my-visit {
        color: #fff;
        width: 100%;
    }
+   .flight{
+       padding-top: 3px;
+       margin: 0 !important;
+   }
    .flightNumber{
        font-size: 14px;
        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -343,11 +346,14 @@ page-my-visit {
        padding-top: 0;
        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
+ .connectors{
+     padding-top:2px; 
+ }
    .source{
        color: #fff;
        font-size: 17px;
        font-weight: 400;
-         width: 39%;
+       
          margin-bottom: 10px;
          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
@@ -356,6 +362,8 @@ page-my-visit {
     color: #fff;
     font-size: 17px;
     font-weight: 400;
+    margin: 0;
+    padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
    .detailsContainer{

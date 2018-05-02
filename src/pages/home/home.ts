@@ -6,6 +6,7 @@ import { PopoverController } from 'ionic-angular';
 import { rootModulePage } from '../rootModule/rootModule';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DataServiceProvider } from '../../providers/data-service';
+import { sessionFeedbackPage } from '../sessionFeedback/sessionFeedback';
 
 
 @Component({
@@ -19,10 +20,15 @@ export class HomePage implements OnInit{
   pastVisits: Array<Object>=[];
   visitStatus: boolean;
   pageNavigation: any;
+  attendeeId: any;
    
   constructor(public navCtrl: NavController , public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider) {
     if (sessionStorage.getItem("attendeeId") == "undefined") {
         this.navCtrl.push(loginPage);
+    }
+    else {
+   
+      this.attendeeId   = sessionStorage.getItem("attendeeId");
     }
   }
 
@@ -37,7 +43,7 @@ export class HomePage implements OnInit{
     this._dataservice.getCustFutureAndPastVisit(sessionStorage.getItem("attendeeId"), 1)
                      .subscribe(res=> 
                                     {
-                                      console.log(res );
+                                      console.log(res);
                                        this.processFutureVisit(res.data);
                                        
                                     },
@@ -149,7 +155,10 @@ export class HomePage implements OnInit{
       this.navCtrl.push(MyVisitPage, {"visitId":visitId, "visitDetails": visitDetails });
     }
   
-     
+    goToSessionFeedback(visitId){
+      console.log(visitId);
+      this.navCtrl.push(sessionFeedbackPage, {"visitId":visitId});
+    }  
      
 }
 

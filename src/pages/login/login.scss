@@ -50,19 +50,7 @@ page-login {
         width: 290px;
    }
     // LOGIN BUTTON and FORGOT PASSWORD SECTION // 
-    .page-button{
-        font-size: 20px;
-        width:290px;
-        border-radius: 36px;
-        margin:0 0 15px 0;
-        min-height: 35px;
-        color: #fff;
-        border:none;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-weight: lighter;
-        background: #00667f !important;
-   }
-    .forgotPassword{
+      .forgotPassword{
         text-align: left;
         font-size: 15px;
         color: #0099cc;
@@ -161,12 +149,12 @@ page-login {
 .page-button{
     font-size: 20px;
     width:290px;
-    border-radius: 36px;
+    border-radius: 20px;
     margin:0 0 15px 0; 
-    min-height: 35px;
+    min-height: 38px;
     color: #fff;
     border:none;
-    font-weight: lighter;
+    font-weight: normal;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #00667f !important;
 }

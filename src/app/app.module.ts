@@ -19,6 +19,9 @@ import { NotificationService } from '../providers/notification';
 import { notificationModulePage } from '../pages/notification/notification';
 import { mainHeader } from '../pages/mainHeader/mainHeader';
 import { commentPage } from '../pages/comments/comments';
+import { sessionFeedbackPage } from '../pages/sessionFeedback/sessionFeedback';
+import { changePasswordPage } from '../pages/changePasswordFirst/changePassword';
+import { securityQuestionPage } from '../pages/securityQuestion/securityQuestion';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { commentPage } from '../pages/comments/comments';
     rootModulePage,
     notificationModulePage,
     mainHeader,
-    commentPage
+    commentPage,
+    sessionFeedbackPage,
+    changePasswordPage,
+    securityQuestionPage
   
   ],
   imports: [
@@ -49,7 +55,10 @@ import { commentPage } from '../pages/comments/comments';
     rootModulePage,
     notificationModulePage,
     mainHeader,
-    commentPage
+    commentPage,
+    sessionFeedbackPage,
+    changePasswordPage,
+    securityQuestionPage
       ],
   providers: [
     StatusBar,

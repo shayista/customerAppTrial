@@ -1,0 +1,68 @@
+<ion-content class="sessionFeedbackConatiner">
+    <div class="subHeader">
+        <p class="button-clear" ng-disabled="clicked" (click)="goBack()">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>FeedBack Cognizant Digital Capabilities
+        </p>
+  
+    </div>
+    <form >
+    <div class="sessionDeatilsConatiner">
+    <h3>Session Feedback</h3>
+    <ul class="feedbackUl">
+        <li class="contentQuality">
+          <p>Content Quality</p>
+          <input class="rangeIndicator slider" id="slider0" type="range" list="tickmarks" min="1" max="100" step="1"  value="0"  (change)="rangeCal($event)">
+          <!-- <datalist id="tickmarks">
+            <option class="tick" value="0">0 </option>
+            <option class="tick"value="10">1</option>
+            <option class="tick"value="20">2</option>
+            <option class="tick"value="30">3</option>
+            <option class="tick"value="40">4</option>
+            <option class="tick"value="50">5</option>
+            <option class="tick"value="60">6</option>
+            <option class="tick"value="70">7</option>
+            <option class="tick"value="80">8</option>
+            <option class="tick"value="90">9</option>
+            <option class="tick"value="100">10</option>
+          </datalist> -->
+        </li>
+        <li class="presentationSkills">
+            <p>Presentation Skills</p>
+            <input class="rangeIndicator slider" id="slider1" type="range" list="tickmarks" min="1" max="100" step="1"  value="0"  (change)="rangeCal($event,this)">
+        </li>
+    </ul>
+    <p class="serviceSession">Service Feedback</p>
+    <ul class="serviceUI">
+        <li class="cabService">
+          <p>CabService</p>
+          <input class="rangeIndicator slider" id="slider2" type="range" list="tickmarks" min="1" max="100" step="1"  value="0"  (change)="rangeCal($event)">
+       
+        </li>
+        <li class="hotelService">
+            <p>Hotel service</p>
+            <input class="rangeIndicator slider" id="slider3" type="range" list="tickmarks" min="1" max="100" step="1"  value="0"  (change)="rangeCal($event)">
+        </li>
+        <li class="foodService">
+            <p>Food and Cafe Service</p>
+            <input class="rangeIndicator slider" id="slider4" type="range" list="tickmarks" min="1" max="100" step="1"  value="0"  (change)="rangeCal($event)">
+        </li>
+    </ul>
+   
+    </div>
+    <div class="commentSession">
+    <ul class="overAllFeedback">
+        <li class="finalFeedback">
+            <p>Overall Rating</p>
+            <input class="rangeIndicator slider" id="slider5" type="range" list="tickmarks" min="1" max="100" step="1"  value="0"  (change)="rangeCal($event)">
+        </li>
+    </ul>
+ 
+        <label class="additionalComment" >Additional Comment <span class="optional">(Optional)</span></label>
+        <textarea class="textareaComment" [(ngModel)]="additionalCommentsText" name="comments" placeholder="Enter your comments here"></textarea>
+        <div class="btn-field-org">
+            <button type="submit" (click)="sessionFeedBackForm()"class="btn btn-default sub">Submit</button>
+            <button type="button" (click)="goBack()" class="btn btn-default can">Cancel</button>
+          </div>
+    </div>
+</form>
+</ion-content>
