@@ -20,7 +20,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarBackgroundColor" value="#fff" />
+    <!-- <preference name="StatusBarBackgroundColor" value="#fff" /> -->
     <preference name="StatusBarStyle" value="lightcontent" />
     <platform name="android">
         <allow-intent href="market:*" />

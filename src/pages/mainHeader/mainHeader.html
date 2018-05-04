@@ -1,25 +1,44 @@
-<ion-header class="header">
-        <ion-navbar>
-          <ion-title id="mainLogo" class="logoTitle" (click)="goBack()">
-            <img class="mainLogo" src="assets/imgs/logo1.png">
-          </ion-title>
-          <div class=profile>
-            <div id="notification-icon" class="notification-icon" (click)="notificationPopover()">
-              <i class="fa fa-bell-o notifiation" aria-hidden="true"></i>
-              <span *ngIf="notificationUnreadCount" class="badge count">{{notificationUnreadCount}}</span>
-            </div>
-            <ion-avatar class="userDetails" (click)="presentPopover($event)" item-start>
-              <img class="avatar" src="assets/imgs/profilepic_male.png">
-            </ion-avatar>
-          </div>
-        </ion-navbar>
- </ion-header> 
- 
-<ion-content>
-        <ion-nav id="nav"  [root]="home"></ion-nav>
-</ion-content>
-<!-- <ion-tabs [selectedIndex]="myIndex">
-  
-  <ion-tab [root]="home"></ion-tab>
+<ion-header class="header" no-padding>
 
-</ion-tabs> -->
+
+  <ion-navbar no-margin no-padding no-border hideBackButton="true">
+      <div class="flex-container">
+    <button class="hamBurgerMenu" ion-button menuToggle left >
+      <ion-icon class="menuButton" name='menu'></ion-icon>
+    </button>
+   
+    <div class="logoTitle" (click)="goBack()">
+      <img class="mainLogo" src="assets/imgs/logo1.png">
+    </div>
+
+    <div id="notification-icon" class="notification-icon" (click)="notificationPopover()">
+      <i class="fa fa-bell-o notifiation" aria-hidden="true"></i>
+      <span *ngIf="notificationUnreadCount" class="badge count">{{notificationUnreadCount}}</span>
+    </div>
+  </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-menu [content]="mycontent" persistent="true">
+        
+           
+                <ion-list>
+                     <button ion-item menuClose (click)="openPage(profilePage)">
+                        Home
+                    </button>
+                    <button ion-item menuClose (click)="openPage(changePAsswordPage)">
+                        Cats
+                    </button>
+                    <button ion-item menuClose>
+                   Logout
+                    </button>
+                </ion-list>
+       
+        
+        </ion-menu>
+        
+        <ion-nav #mycontent [root]="home"></ion-nav>
+
+
+</ion-content>

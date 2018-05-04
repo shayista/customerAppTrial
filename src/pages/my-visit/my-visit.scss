@@ -426,7 +426,7 @@ page-my-visit {
     font-weight: bold;
     color: #000;
     margin: 0 0 10px 0;
-
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .hotelName{
     color: #666;
@@ -454,12 +454,7 @@ page-my-visit {
  //border: 1px solid #000;
  box-shadow: none !important;
 }
-.checkinDetails{
-    color: #000;
-    font-size: 14px;
-    font-weight: normal;
-    
-}
+
 .hotelPic{
     border-radius: 6px 6px 0 0;
    // margin: 0 0 15px 0;
@@ -472,6 +467,16 @@ page-my-visit {
     font-weight: normal;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 15px 0 15px 0;
+    margin: 0 0 15px 0;
+}
+.checkinDetails1{
+    background-color: gainsboro;
+    border-radius:0 0 8px 8px;
+    font-size: 13px;
+    color: #000;
+    font-weight: normal;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 15px 10px;
     margin: 0 0 15px 0;
 }
 .checkinDetails span{
@@ -521,6 +526,15 @@ page-my-visit {
     .airportAsssitance{
         width: 100%;
         background: transparent !important;
+    }
+    .imageHotel{
+        border-radius: 6px 6px 0 0;
+        background-image: url(../assets/imgs/hotel.JPG);
+        width: 100%;
+        min-height: 129px;
+    }
+    .row{
+        width: 100%;
     }
 }
 

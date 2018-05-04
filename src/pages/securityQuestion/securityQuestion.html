@@ -1,3 +1,4 @@
+<ion-content>
 <div class="subHeader">
     <p class="button-clear"  (click)="goBack()">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>Add Security Question
@@ -15,19 +16,19 @@
  
 <form class="formFields"#f="ngForm"  (ngSubmit)="f.valid && saveSecurityQuestion(f)">
     <label>Security Question</label>
-    <select name="securityQuestion" [(ngModel)]="securityQuestion" (change)="securityQuestionSelected($event)" value="1" id="securityDropDown"> 
+    <!-- <select name="securityQuestion" class="securityQuestion" [(ngModel)]="securityQuestion" (change)="securityQuestionSelected($event)" value="1" id="securityDropDown"> 
             <option >Select a question</option>
             <option>What is the name of your first pet?</option>
             <option >What is favourite car to ride? </option>
-           </select>
+           </select> -->
        
       
-    <!-- <ion-select name="securityQuestion" [(ngModel)]="securityQuestion" (change)="securityQuestionSelected($event)" value="1" id="securityDropDown">
-        <ion-option selected hidden disabled>Select a question</ion-option>
+     <ion-select name="securityQuestion" [(ngModel)]="securityQuestion" (change)="securityQuestionSelected($event)"  id="securityDropDown">
+        <ion-option class="dropDownOptions "selected hidden disabled>Select a question</ion-option>
         <ion-option>What is the name of your first pet?</ion-option>
         <ion-option >What is favourite car to ride? </ion-option>
        
-      </ion-select> -->
+      </ion-select> 
 
 
     <label> Your Answer</label>
@@ -39,3 +40,4 @@
 </form>
 </div>   
 </div>
+</ion-content>

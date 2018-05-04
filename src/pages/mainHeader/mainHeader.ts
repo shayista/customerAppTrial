@@ -1,5 +1,5 @@
 import { Component,Input } from '@angular/core';
-import { NavController, ViewController, App, Events, NavParams } from 'ionic-angular';
+import { NavController, ViewController, App, Events, NavParams, MenuController  } from 'ionic-angular';
 import { loginPage } from '../login/login';
 import { MyVisitPage } from '../my-visit/my-visit';
 import { PopoverController } from 'ionic-angular';
@@ -23,12 +23,13 @@ export class mainHeader implements OnInit{
     notificationId = [];
     notificationUnreadCount=0;
     myIndex: number;
-
+ menuPage = rootModulePage;
     //@Input() notificationUnreadCount=0;  
     
   constructor(public navCtrl: NavController ,private _notificationService: NotificationService, public popoverCtrl: PopoverController, public viewCtrl: ViewController,
-    public appCtrl: App, public events: Events,public navParams: NavParams) {
-     
+    public appCtrl: App, public events: Events,public navParams: NavParams,menu: MenuController) {
+      menu.enable(true);
+      
       if (sessionStorage.getItem("attendeeId") == "undefined") {
         this.navCtrl.push(loginPage);
     } else {

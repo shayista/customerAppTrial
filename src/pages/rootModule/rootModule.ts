@@ -10,7 +10,7 @@ import { loginPage } from '../login/login';
 export class rootModulePage {
   
   attendeeName:String;
-  
+ 
   constructor(public viewCtrl: ViewController , public navCtrl: NavController ) {
     if (sessionStorage.getItem("attendeeId") == "undefined") {
       this.navCtrl.setRoot(loginPage);

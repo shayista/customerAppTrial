@@ -71,26 +71,16 @@ input{
     border-radius:5px; 
     border: 1px solid gainsboro;
 }
+
 #securityDropDown{
     margin-bottom: 20px;
+    margin-right: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-width: 325px;
+    max-width: 100%;
     color: #666;
     padding: 4px;
     border-radius:5px; 
     border: 1px solid gainsboro;
-}
-#securityDropDown option{
-
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #666;
-    padding: 4px;
-    border-radius:5px; 
-    border:none;
-    min-width: 325px; 
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
 placeholder{
@@ -99,6 +89,10 @@ placeholder{
     font-weight: normal;
     color: #666;
 }
+.item-cover {
+    width: 0;
+    height: 0;
+    }
 .btn-field-org{
     background-color: #fff;
     margin-top: 109px;
