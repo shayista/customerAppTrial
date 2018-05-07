@@ -150,22 +150,6 @@ $item-border: none;
    min-width: 20px;
 }
 
-
-
-
-   .avatar{
-       max-width: 100% !important;
-       display:inline-block;
-       width:30px;
-   }
-
-   ion-avatar.userDetails:after {
-       content: "\f078";
-       font-family: FontAwesome;
-       color: #888684;
-       font-size: 9px;
-   } 
-
 .back-button.show-back-button {
   display: none;
 }

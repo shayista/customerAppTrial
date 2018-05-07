@@ -3,9 +3,13 @@
 
   <ion-navbar no-margin no-padding no-border hideBackButton="true">
       <div class="flex-container">
-    <button class="hamBurgerMenu" ion-button menuToggle left >
-      <ion-icon class="menuButton" name='menu'></ion-icon>
-    </button>
+        <div>
+            <button class="menuButton" ion-button menuToggle left>
+                <ion-icon  name='menu'></ion-icon>
+              </button>
+
+        </div>
+
    
     <div class="logoTitle" (click)="goBack()">
       <img class="mainLogo" src="assets/imgs/logo1.png">
@@ -19,25 +23,35 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-    <ion-menu [content]="mycontent" persistent="true">
+
+    <ion-menu class="menuContent" [content]="mycontent" persistent="true" type="overlay" >
         
            
-                <ion-list>
-                     <button ion-item menuClose (click)="openPage(profilePage)">
-                        Home
+        <ion-card class="profileMenu">
+            
+              <ion-item no-margin no-padding no-background>
+                
+                <img  class="profilePic" src="../assets/imgs/profile_picture.png">  
+               
+                <p>John Doe</p>
+              
+              </ion-item>
+            </ion-card>
+                     <button class="buttonsProfile"  menuClose (click)="openPage(profilePage)">
+                        <i class="fa fa-user" aria-hidden="true"></i>   Profile
                     </button>
-                    <button ion-item menuClose (click)="openPage(changePAsswordPage)">
-                        Cats
+                    <button  class="buttonsProfile" menuClose (click)="openPage(changePAsswordPage)">
+                        <i class="fa fa-lock" aria-hidden="true"></i> Change Password
                     </button>
-                    <button ion-item menuClose>
-                   Logout
+                    <button  class="buttonsProfile" menuClose>
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
                     </button>
-                </ion-list>
-       
-        
+        <div class="termsConditions">    
+       <p>Version 1.0.0 |  <span>Privacy & Terms</span></p>
+       <p>Visit Organizer</p>
+      </div>
         </ion-menu>
-        
+        <ion-content>
         <ion-nav #mycontent [root]="home"></ion-nav>
 
 
