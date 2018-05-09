@@ -7,6 +7,7 @@ import { rootModulePage } from '../rootModule/rootModule';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DataServiceProvider } from '../../providers/data-service';
 import { sessionFeedbackPage } from '../sessionFeedback/sessionFeedback';
+import { Chat } from '../chat/chat';
 
 
 @Component({
@@ -40,9 +41,11 @@ export class HomePage implements OnInit{
     this.getCustlatestVisit();
     this.getCustPastVisit();
   }
-  // futureVisitData(){
-    
-  // }
+  
+    openChat(){
+      this.navCtrl.push(Chat);
+    }
+
   getCustlatestVisit() {
     this._dataservice.getCustFutureAndPastVisit(sessionStorage.getItem("attendeeId"), 1)
                      .subscribe(res=> 
