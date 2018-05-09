@@ -9,6 +9,7 @@ import { DataServiceProvider } from '../../providers/data-service';
 import { NotificationService } from '../../providers/notification';
 import { notificationModulePage } from '../notification/notification';
 import { HomePage } from '../home/home';
+import { changePasswordProfilePage } from '../changePassword/changePassword'; 
 
 @Component({
   selector: 'page-mainHeader',
@@ -23,7 +24,8 @@ export class mainHeader implements OnInit{
     notificationId = [];
     notificationUnreadCount=0;
     myIndex: number;
- menuPage = rootModulePage;
+    changePassword:boolean=false;
+    menuPage = rootModulePage;
     //@Input() notificationUnreadCount=0;  
     
   constructor(public navCtrl: NavController ,private _notificationService: NotificationService, public popoverCtrl: PopoverController, public viewCtrl: ViewController,
@@ -77,5 +79,9 @@ export class mainHeader implements OnInit{
  
         this.getCustomerNotifications();
       }
+      goToForgotPassword(){
+        this.navCtrl.push(changePasswordProfilePage);
+      }
+    
 }
 

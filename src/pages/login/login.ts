@@ -4,6 +4,8 @@ import { DataServiceProvider } from '../../providers/data-service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { mainHeader } from '../mainHeader/mainHeader';
 import { changePasswordPage } from '../changePasswordFirst/changePassword';
+import { ForgotPasswordPage } from '../forgotPassword/forgotPassword';
+
 
 @Component({
   selector: 'page-login',
@@ -58,6 +60,7 @@ export class loginPage implements OnInit {
       alert("Invalid credentials entered....");
     }
   }
-
-
+forgotPassword(){
+  this.navCtrl.push(ForgotPasswordPage);
+}
 }

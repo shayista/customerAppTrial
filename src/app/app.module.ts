@@ -22,6 +22,8 @@ import { commentPage } from '../pages/comments/comments';
 import { sessionFeedbackPage } from '../pages/sessionFeedback/sessionFeedback';
 import { changePasswordPage } from '../pages/changePasswordFirst/changePassword';
 import { securityQuestionPage } from '../pages/securityQuestion/securityQuestion';
+import { changePasswordProfilePage } from '../pages/changePassword/changePassword';
+import { ForgotPasswordPage } from '../pages/forgotPassword/forgotPassword';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { securityQuestionPage } from '../pages/securityQuestion/securityQuestion
     commentPage,
     sessionFeedbackPage,
     changePasswordPage,
-    securityQuestionPage
+    securityQuestionPage,
+    changePasswordProfilePage,
+    ForgotPasswordPage
   
   ],
   imports: [
@@ -58,7 +62,9 @@ import { securityQuestionPage } from '../pages/securityQuestion/securityQuestion
     commentPage,
     sessionFeedbackPage,
     changePasswordPage,
-    securityQuestionPage
+    securityQuestionPage,
+    changePasswordProfilePage,
+    ForgotPasswordPage
       ],
   providers: [
     StatusBar,

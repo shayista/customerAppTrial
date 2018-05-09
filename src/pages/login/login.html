@@ -34,7 +34,7 @@
   <div  class="passwordRequirement" class="error" *ngIf ="pwd.touched && !pwd.valid">
     Password is required
  </div>
- <p class="forgotPassword">
+ <p (click)="forgotPassword()" class="forgotPassword">
     Forgot Password?
   </p>
  <div class="footer"><p >&copy; 2018 Cognizant, all rights reserved</p></div> 

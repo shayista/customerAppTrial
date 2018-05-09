@@ -21,7 +21,7 @@ export class HomePage implements OnInit{
   visitStatus: boolean;
   pageNavigation: any;
   attendeeId: any;
-   
+  toUser : {toUserId: string, toUserName: string};
   constructor(public navCtrl: NavController , public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider) {
     if (sessionStorage.getItem("attendeeId") == "undefined") {
         this.navCtrl.push(loginPage);
@@ -29,6 +29,10 @@ export class HomePage implements OnInit{
     else {
    
       this.attendeeId   = sessionStorage.getItem("attendeeId");
+    }
+    this.toUser = {
+      toUserId:'210000198410281948',
+      toUserName:sessionStorage.getItem("attendeeName")
     }
   }
 

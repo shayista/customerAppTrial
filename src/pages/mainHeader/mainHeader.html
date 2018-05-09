@@ -40,7 +40,7 @@
                      <button class="buttonsProfile"  menuClose (click)="openPage(profilePage)">
                         <i class="fa fa-user" aria-hidden="true"></i>   Profile
                     </button>
-                    <button  class="buttonsProfile" menuClose (click)="openPage(changePAsswordPage)">
+                    <button  class="buttonsProfile" menuClose  (click)="goToForgotPassword()">
                         <i class="fa fa-lock" aria-hidden="true"></i> Change Password
                     </button>
                     <button  class="buttonsProfile" menuClose>
@@ -51,7 +51,7 @@
        <p>Visit Organizer</p>
       </div>
         </ion-menu>
-        <ion-content>
+<ion-content>
         <ion-nav #mycontent [root]="home"></ion-nav>
 
 

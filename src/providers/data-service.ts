@@ -69,4 +69,11 @@ updateUserQnsAns(qnsAnsObj): Observable<any> {
                    .map((res: Response) => res)
                    .catch((error:any) => Observable.throw(error || 'Server error')); 
 }
+changePassword(passwordObj): Observable<any> {
+  console.log('changePassword',passwordObj);
+   return this._http.post(API_ENDPOINT+"/api/changePassword", passwordObj) 
+                  .map((res: Response) => res)
+                  .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
+ }
+
 }
