@@ -24,6 +24,7 @@ import { changePasswordPage } from '../pages/changePasswordFirst/changePassword'
 import { securityQuestionPage } from '../pages/securityQuestion/securityQuestion';
 import { changePasswordProfilePage } from '../pages/changePassword/changePassword';
 import { ForgotPasswordPage } from '../pages/forgotPassword/forgotPassword';
+import { profileDetailsPage } from '../pages/profile/profileDetials';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ForgotPasswordPage } from '../pages/forgotPassword/forgotPassword';
     changePasswordPage,
     securityQuestionPage,
     changePasswordProfilePage,
-    ForgotPasswordPage
+    ForgotPasswordPage,
+    profileDetailsPage
   
   ],
   imports: [
@@ -64,7 +66,8 @@ import { ForgotPasswordPage } from '../pages/forgotPassword/forgotPassword';
     changePasswordPage,
     securityQuestionPage,
     changePasswordProfilePage,
-    ForgotPasswordPage
+    ForgotPasswordPage,
+    profileDetailsPage
       ],
   providers: [
     StatusBar,

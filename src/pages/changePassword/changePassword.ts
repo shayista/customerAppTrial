@@ -21,7 +21,7 @@ this.attendeeId   = sessionStorage.getItem("attendeeId");
  console.log('uid',this.attendeeId);
   }
   goBack(){
-    this.navCtrl.push(loginPage);
+    this.navCtrl.pop();
   }
  changePassword(){
    console.log(this.password);
@@ -34,7 +34,7 @@ this.attendeeId   = sessionStorage.getItem("attendeeId");
        .subscribe(res => {
          res;
              console.log('result body for updatepassword',res);
-             if(res.data.nModified ==0){
+             if(res.data.nModified == 0){
                alert("Old Password Incorrect");
                this.navCtrl.push(changePasswordProfilePage);
              }

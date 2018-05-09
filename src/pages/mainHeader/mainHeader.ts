@@ -10,6 +10,7 @@ import { NotificationService } from '../../providers/notification';
 import { notificationModulePage } from '../notification/notification';
 import { HomePage } from '../home/home';
 import { changePasswordProfilePage } from '../changePassword/changePassword'; 
+import { profileDetailsPage } from '../profile/profileDetials';
 
 @Component({
   selector: 'page-mainHeader',
@@ -81,6 +82,9 @@ export class mainHeader implements OnInit{
       }
       goToForgotPassword(){
         this.navCtrl.push(changePasswordProfilePage);
+      }
+      goToProfile(){
+        this.navCtrl.push(profileDetailsPage);
       }
     
 }
