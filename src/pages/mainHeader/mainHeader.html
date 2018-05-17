@@ -33,7 +33,7 @@
                 
                 <img  class="profilePic" src="../assets/imgs/profile_picture.png">  
                
-                <p>John Doe</p>
+                <p>{{attendeeId }}</p>
               
               </ion-item>
             </ion-card>
@@ -43,7 +43,7 @@
                     <button  class="buttonsProfile" menuClose  (click)="goToForgotPassword()">
                         <i class="fa fa-lock" aria-hidden="true"></i> Change Password
                     </button>
-                    <button  class="buttonsProfile" menuClose>
+                    <button  class="buttonsProfile" menuClose  (click)="logout()">
                         <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
                     </button>
         <div class="termsConditions">    

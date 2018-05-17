@@ -37,7 +37,7 @@ export class mainHeader implements OnInit{
         this.navCtrl.push(loginPage);
     } else {
       this.home = HomePage;
-      this.attendeeId   = sessionStorage.getItem("attendeeId");
+      this.attendeeId   = sessionStorage.getItem("attendeeName");
       console.log(sessionStorage.getItem("attendeeId"));
     }
   }
@@ -85,6 +85,13 @@ export class mainHeader implements OnInit{
       }
       goToProfile(){
         this.navCtrl.push(profileDetailsPage);
+      }
+      logout(){
+        this.navCtrl.push(loginPage);
+        this.navCtrl.setRoot(loginPage).then(() =>{
+        this.navCtrl.popToRoot();
+        window.location.reload();
+      });
       }
     
 }

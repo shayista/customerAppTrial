@@ -8,6 +8,9 @@ import { HttpModule } from '@angular/http';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { IonicPageModule } from 'ionic-angular';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+const config: SocketIoConfig = { url: 'http://10.242.251.141:3100', options: {} };
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -25,6 +28,8 @@ import { securityQuestionPage } from '../pages/securityQuestion/securityQuestion
 import { changePasswordProfilePage } from '../pages/changePassword/changePassword';
 import { ForgotPasswordPage } from '../pages/forgotPassword/forgotPassword';
 import { profileDetailsPage } from '../pages/profile/profileDetials';
+import { Chat } from '../pages/chat/chat';
+const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
 @NgModule({
   declarations: [
@@ -41,7 +46,9 @@ import { profileDetailsPage } from '../pages/profile/profileDetials';
     securityQuestionPage,
     changePasswordProfilePage,
     ForgotPasswordPage,
-    profileDetailsPage
+    profileDetailsPage,
+    Chat 
+
   
   ],
   imports: [
@@ -49,7 +56,8 @@ import { profileDetailsPage } from '../pages/profile/profileDetials';
     IonicModule.forRoot(MyApp),
     IonicPageModule.forChild(mainHeader),
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    SocketIoModule.forRoot(config)
 
   ],
   bootstrap: [IonicApp],
@@ -67,7 +75,8 @@ import { profileDetailsPage } from '../pages/profile/profileDetials';
     securityQuestionPage,
     changePasswordProfilePage,
     ForgotPasswordPage,
-    profileDetailsPage
+    profileDetailsPage,
+    Chat
       ],
   providers: [
     StatusBar,

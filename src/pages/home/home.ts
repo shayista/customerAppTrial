@@ -22,6 +22,7 @@ export class HomePage implements OnInit{
   visitStatus: boolean;
   pageNavigation: any;
   attendeeId: any;
+  attendees:any=[];
   toUser : {toUserId: string, toUserName: string};
   constructor(public navCtrl: NavController , public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider) {
     if (sessionStorage.getItem("attendeeId") == "undefined") {
@@ -31,10 +32,7 @@ export class HomePage implements OnInit{
    
       this.attendeeId   = sessionStorage.getItem("attendeeId");
     }
-    this.toUser = {
-      toUserId:'210000198410281948',
-      toUserName:sessionStorage.getItem("attendeeName")
-    }
+ 
   }
 
   ngOnInit() {    
@@ -43,7 +41,7 @@ export class HomePage implements OnInit{
   }
   
     openChat(){
-      this.navCtrl.push(Chat);
+      this.navCtrl.push(Chat,{"user": sessionStorage.getItem("attendeeName"),"attendees":this.attendees});
     }
 
   getCustlatestVisit() {
@@ -60,11 +58,14 @@ export class HomePage implements OnInit{
 
   processFutureVisit(futureVisits) {
    
-      console.log(JSON.stringify(futureVisits)+"---futureVisits");
+     
       if(futureVisits.length > 0) {
           this.visitStatus = true;
           this.firstVisit = futureVisits[0];
-          //Superscript CAlculation
+          for(let x of futureVisits[0].visit_attendees){
+            this.attendees.push(x.name);
+         console.log( this.attendees);
+          }
           this.firstVisit.startSuperScript = this.daysSuperScript(futureVisits[0].startDate);
           this.firstVisit.endSuperScript = this.daysSuperScript(futureVisits[0].endDate);
           //No.of Days visit
