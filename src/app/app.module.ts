@@ -29,6 +29,7 @@ import { changePasswordProfilePage } from '../pages/changePassword/changePasswor
 import { ForgotPasswordPage } from '../pages/forgotPassword/forgotPassword';
 import { profileDetailsPage } from '../pages/profile/profileDetials';
 import { Chat } from '../pages/chat/chat';
+import { sessionDetailsPage } from '../pages/sessionDetails/sessionDeatisl';
 const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
 @NgModule({
@@ -47,9 +48,8 @@ const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
     changePasswordProfilePage,
     ForgotPasswordPage,
     profileDetailsPage,
-    Chat 
-
-  
+    Chat,
+    sessionDetailsPage  
   ],
   imports: [
     BrowserModule,
@@ -76,7 +76,8 @@ const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
     changePasswordProfilePage,
     ForgotPasswordPage,
     profileDetailsPage,
-    Chat
+    Chat,
+    sessionDetailsPage
       ],
   providers: [
     StatusBar,

@@ -4,6 +4,7 @@ import { loginPage } from '../login/login';
 import { DataServiceProvider } from '../../providers/data-service';
 import { changePasswordPage } from '../changePasswordFirst/changePassword';
 import { mainHeader } from '../mainHeader/mainHeader';
+import { changePasswordProfilePage } from '../changePassword/changePassword';
 
 
 @Component({
@@ -13,11 +14,18 @@ import { mainHeader } from '../mainHeader/mainHeader';
 export class ForgotPasswordPage {
   attendeeId: any;
   securityQuestion: any;
+  securityQuestionFetched: any;
+  securityAnswerFetched : any;
   securityAnswer :any;
+  email: any;
   constructor(public navParams: NavParams, public viewCtrl: ViewController, public navCtrl: NavController, private _dataservice: DataServiceProvider) {
-    // this.username = this.navParams.get("username");
-    this.attendeeId   = sessionStorage.getItem("attendeeId");
-    console.log('uid', this.attendeeId);
+    this.email = this.navParams.get("email");
+   
+    this._dataservice.forgotPassword(this.email).subscribe(res=>{
+      console.log(res);
+      this.forgotPasswordValidation(res);
+    });
+    console.log('uid',  this.email);
   }
   logout() {
   
@@ -28,26 +36,29 @@ export class ForgotPasswordPage {
 
   }
   goBack(){
-    this.navCtrl.push(changePasswordPage);
+     
+    this.navCtrl.setRoot(loginPage).then(() =>{
+      this.navCtrl.popToRoot();
+      window.location.reload();
+    });
   }
   
-  securityQuestionSelected(question){
-    this.securityQuestion = question.target.value;
-    console.log( this.securityQuestion );
+  forgotPasswordValidation(forgotPasswordDetails){
+    console.log(forgotPasswordDetails.data[0].quesAns);
+    this.securityQuestionFetched = forgotPasswordDetails.data[0].quesAns.Question ;
+    this.securityAnswerFetched = forgotPasswordDetails.data[0].quesAns.answer ;
+  console.log(this.securityAnswerFetched );
+
+
   }
-  saveSecurityQuestion(){
-    console.log('security qn and answer',this.securityQuestion + this.securityAnswer );
-    let qnsAnsObj = { attendeeId : this.attendeeId, quesAns : {"Question":this.securityQuestion,"answer":this.securityAnswer } ,firstTimeLoginIn : 0};
-    this._dataservice.updateUserQnsAns(qnsAnsObj)
-        .subscribe(res => {
-             console.log(res);
-             if(res.status == 200){
-              this.navCtrl.push(mainHeader);
-             }
-        }
-        );
-     
-      
-     }
+  SecurityQuestion(f){
+    console.log(this.securityAnswer );
+    if(this.securityAnswerFetched == this.securityAnswer ){
+      this.navCtrl.push(changePasswordProfilePage);
+    }
+    else{
+      alert("Invalid Answer");
+      }
+  }  
 }
 

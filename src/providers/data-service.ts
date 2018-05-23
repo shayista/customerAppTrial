@@ -75,5 +75,22 @@ changePassword(passwordObj): Observable<any> {
                   .map((res: Response) => res)
                   .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
  }
-
+ visitIternary(visitData): Observable<any> {
+  console.log('visitIternary',visitData);
+   return this._http.post(API_ENDPOINT+"/api/visitIternary", {"visitData": {"visitId" : visitData}}) 
+                  .map((res: Response) => res)
+                  .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
+ }
+ updateProfile(profileEdit):Observable<any>{
+   console.log(profileEdit);
+  return this._http.post(API_ENDPOINT+"/api/updateProfile", profileEdit) 
+  .map((res: Response) => res)
+  .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
+ }
+ forgotPassword(email):Observable<any>{
+   console.log(email);
+  return this._http.post(API_ENDPOINT+"/api/forgotPassword", {"email":email}) 
+  .map((res: Response) => res)
+  .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
+ }
 }

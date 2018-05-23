@@ -43,7 +43,7 @@
       </div>
        
       <div [ngSwitch]="agendaChoice" *ngIf="agendaData">
-        <div *ngFor="let agenda of agendaData; let i = index;">
+        <div *ngFor="let agenda of agendaData; let i = index;" (click)="openSessionDetails()">
             <ion-list *ngSwitchCase="i">
                 <ion-item>
                  
@@ -73,37 +73,46 @@
             </div>
     </div>
  
-<div [class.hide]="checkStatus" class="itinerary-container" > 
-  
- <div class="flightDetails">
- 
-  <p class="flightNumber ">Flight Number : <span>AR8484</span></p>
+<div [class.hide]="checkStatus" class="itinerary-container"  > 
+
+ <div class="flightDetails"  *ngFor="let flight of flightDeatils">
+  <p class="flightNumber">Flight Number : <span>{{flight.flightNumber}}</span></p>
   <div class="detailsContainer">
    <div class="flexConatiner">
-  <p class="source pull-left"> San Fransisco</p>
+  <p class="source pull-left"> {{flight.from}}</p>
   <div class="connectoresFlight">
   <span class="connectors pull-left ">--------</span>
   <i class="fa fa-space-shuttle pull-left flight" aria-hidden="true"></i>
   <span class="connectors pull-left">--------</span>
   </div>
-  <p class="destination pull-right">Hyderabad</p>
+  <p class="destination pull-right">{{flight.to}}</p>
 
   </div>
 
   <div class="clearfix"></div>
   <div class="flightTimings">
-      <p class="startingTime ">2 <sup class="subScript">nd</sup> Oct, 8am (Arrival)</p>
-      <p class="reachingTime">3 <sup class="subScript">rd</sup> Oct, 7am (Departure)</p>
+      <p class="startingTime ">{{flight.arrivalDate | date:"dd"
+        }} <sup class="subScript">nd</sup> {{flight.arrivalDate | date:"MMM"
+      }},
+      <span> {{flight.arrivalTime}} (Arrival)</span>
+      </p>
+
+      <p class="reachingTime">{{flight.depatureDate | date:"dd"
+        }} <sup class="subScript">rd</sup>  {{flight.depatureDate | date:"MMM"
+      }}, 
+   <span> {{flight.depatureTime}}(Departure)</span>  
+    </p>
   </div>
   <div class="clearfix"></div>
+
+</div>
   </div>
-  </div>
-<div class="stay"> 
-    <ion-card  class="stayDeatils" no-border>
+<div class="stay" *ngIf="flightDeatils"> 
+    <ion-card  class="stayDeatils" no-border *ngFor="let flight of flightDeatils; let i = index">
         
           <ion-item class="hotelDetails" no-border>
           
-            <h2>Your Stay at Hyderabad</h2>
+            <h2>Your Stay at {{flight.to}}</h2>
             <p class="hotelName">Hyatt International</p>
             <p class="distance">0.9 miles from Airport</p>
           </ion-item>

@@ -16,7 +16,7 @@ export class loginPage implements OnInit {
   username: string;
   password: string;
 
-  constructor(public navCtrl: NavController, public dataService: DataServiceProvider) {
+  constructor(public navCtrl: NavController, public _dataService: DataServiceProvider) {
 
   }
 
@@ -27,11 +27,11 @@ export class loginPage implements OnInit {
   validUser() {
 
     if (this.username.length > 0 && this.password.length > 0) {
-      this.dataService.validateUser(this.username, this.password)
+      this._dataService.validateUser(this.username, this.password)
         .subscribe(res => {
           console.log(res)
           this.navigateUser(res);
-
+          
         },
         error => console.log(error)
         );
@@ -47,11 +47,10 @@ export class loginPage implements OnInit {
       sessionStorage.setItem("attendeeId", userDetails.data.result._id);
       sessionStorage.setItem("attendeeName", userDetails.data.result.name);
       sessionStorage.setItem("attendeePath", userDetails.data.result.attendee_path);
-
+      sessionStorage.setItem("attendeeDetails", JSON.stringify(userDetails.data.result));
       if (userDetails.data.result.firstTimeLoginIn == 0) {
-        console.log(userDetails);
+        //console.log(userDetails);
         this.navCtrl.push(mainHeader);
-
       } else {
             this.navCtrl.push(changePasswordPage);
       }
@@ -60,7 +59,8 @@ export class loginPage implements OnInit {
       alert("Invalid credentials entered....");
     }
   }
-forgotPassword(){
-  this.navCtrl.push(ForgotPasswordPage);
+  forgotPassword(){
+   
+   this.navCtrl.push(ForgotPasswordPage,{"email": this.username});
 }
 }

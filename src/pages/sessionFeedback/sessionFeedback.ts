@@ -33,10 +33,9 @@ export class sessionFeedbackPage {
   val: number = 0;
   visitId: any;
 
-  constructor(public navParams: NavParams, public viewCtrl: ViewController, public navCtrl: NavController, private dataservice: DataServiceProvider) {
+  constructor(public navParams: NavParams, public viewCtrl: ViewController, public navCtrl: NavController, private _dataservice: DataServiceProvider) {
     this.visitId = navParams.get('visitId');
-    console.log(this.visitId.visit_attendees[0].client_Id);
-    if (sessionStorage.getItem("attendeeId") == "undefined") {
+      if (sessionStorage.getItem("attendeeId") == "undefined") {
       this.navCtrl.setRoot(loginPage);
       this.navCtrl.push(loginPage);
     } else {
@@ -106,7 +105,7 @@ export class sessionFeedbackPage {
   }
   sessionFeedBackForm() {
     this.customerFeedback.feedback.additionalComments = this.additionalCommentsText;
-    this.dataservice.saveCustomerFeedback(this.customerFeedback)
+    this._dataservice.saveCustomerFeedback(this.customerFeedback)
       .subscribe(res => {
         console.log(res);
         // res;
@@ -121,6 +120,10 @@ export class sessionFeedbackPage {
   goBack() {
     this.navCtrl.pop();
   }
+
+
+
+
 
 }
 

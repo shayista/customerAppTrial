@@ -3,33 +3,60 @@ import {  NavController, NavParams ,PopoverController } from 'ionic-angular';
 import { rootModulePage } from '../rootModule/rootModule';
 import { DataServiceProvider } from '../../providers/data-service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { sessionDetailsPage } from '../sessionDetails/sessionDeatisl';
 
 @Component({
   selector: 'page-my-visit',
   templateUrl: 'my-visit.html',
 })
 export class MyVisitPage implements OnInit {
+  cabDeatils: any;
+  hotelDeatils: any;
   visitId: any;
   visitDetails:any;
   agendaStatus: boolean;
   agendaData: any;
   agendaChoice:number = 0;
   checkStatus: boolean = true;
+  flightDeatils: any;
 
     constructor(public navCtrl: NavController, public navParams: NavParams , public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider) {
       this.visitId = navParams.get('visitId');
       this.visitDetails = navParams.get('visitDetails');
+      console.log(this.visitDetails);
  
     }
 
     ngOnInit() { 
       this.getVisitAgendas();
+      this.getItinearyDeatils();
     }
 
+ getItinearyDeatils(){
+  this._dataservice.visitIternary(this.visitDetails._id)
+  .subscribe(res=> {
+    res;
+    console.log(res);
+    this.itinearyDeatials(res);
+  }
+  
+  )
+ }
+ itinearyDeatials(itinearyData){
+   console.log(itinearyData);
+  this.flightDeatils = itinearyData[0].flightDetails;
+  console.log(this.flightDeatils);
+  this.hotelDeatils = itinearyData[2].hotelDetails;
+  console.log(this.hotelDeatils);
+   this.cabDeatils = itinearyData[1].cabDetails;
+  console.log( this.flightDeatils);
+ }
     goBack() {
       this.navCtrl.pop();   
     }
-
+    openSessionDetails(){
+      this.navCtrl.push(sessionDetailsPage)
+    }
     presentPopover(myEvent) {
       let popover = this.popoverCtrl.create(rootModulePage);
       popover.present({
