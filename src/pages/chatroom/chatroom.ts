@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage, NavParams, ToastController } from 'ionic-angular';
-import { Socket } from 'ng-socket-io';
-
+import { ComParentChildService} from './com-parent-child.service';
 import { Observable } from 'rxjs/Observable';
- 
+import { Socket } from 'ng-socket-io';
+import { ChatAdapter } from 'ng-chat';
+import { SocketIOAdapter } from './socketio-adapter';
+import { Http } from '@angular/http';
+
 @IonicPage()
 @Component({
   selector: 'page-chat-room',
@@ -14,11 +17,11 @@ export class ChatroomPage {
   messages = [];
   nickname = '';
   message = '';
-  
+
   constructor(private navCtrl: NavController, private navParams: NavParams, private socket: Socket, private toastCtrl: ToastController) {
     this.nickname = this.navParams.get('nickname');
     this.user = this.navParams.get('userName');
-    
+    // this.InitializeSocketListerners();
     this.getMessages().subscribe(message => {
         this.messages.push(message);
       console.log( this.messages);
@@ -46,12 +49,12 @@ export class ChatroomPage {
 
 
   }
- 
-  // sendMessage() {
-  //   console.log("sendmessage");
-  //   this.socket.emit('add-message', { text: this.message });
-  //   this.message = '';
-  // }
+  
+  sendMessage() {
+    console.log("sendmessage");
+    this.socket.emit('add-message', { text: this.message });
+    this.message = '';
+  }
 
  sendIndependentMsg() {
    console.log( this.message);

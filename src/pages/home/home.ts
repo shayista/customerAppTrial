@@ -15,6 +15,7 @@ import { Chat } from '../chat/chat';
   templateUrl: 'home.html'
 })
 export class HomePage implements OnInit{
+  attendeeDeatils: any;
   
   daysRemaining : any = null;
   firstVisit: any;
@@ -31,11 +32,13 @@ export class HomePage implements OnInit{
     else {
    
       this.attendeeId   = sessionStorage.getItem("attendeeId");
+    
     }
- 
+   
   }
 
   ngOnInit() {    
+    
     this.getCustlatestVisit();
     this.getCustPastVisit();
   }

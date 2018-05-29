@@ -53,7 +53,14 @@
     <ul class="overAllFeedback">
         <li class="finalFeedback">
             <p>Overall Rating</p>
-            <input class="rangeIndicator slider" id="slider5" type="range" list="tickmarks" min="1" max="100" step="1"  value="0"  (change)="rangeCal($event)">
+            <input class="rangeIndicator slider" id="slider5" type="range" list="tickmarks" min="1" max="100" step="1"  list="steplist" value="0"  (change)="rangeCal($event)">
+            <datalist id="steplist">
+                <option>0</option>
+                <option>25</option>
+                <option>50</option>
+                <option>75</option>
+                <option>100</option>
+            </datalist>
         </li>
     </ul>
  

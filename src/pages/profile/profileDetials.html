@@ -11,9 +11,10 @@
         <ion-card class="profileMenu">
         
             <ion-item no-margin no-padding>
-
-                <img class="profilePic" src="assets/imgs/profilepic_female.png">
-                <i class="fa fa-camera cameraIcon" aria-hidden="true"></i>
+                <img class="profilePic" src="{{ imageFileName }}" *ngIf="imageFileName" alt="Ionic File" width="300" />
+                <!-- <img class="profilePic" src="assets/imgs/profilepic_female.png"> -->
+                <i class="fa fa-camera cameraIcon" (click)="getImage()" aria-hidden="true"></i>
+               
             </ion-item>
         </ion-card>
     </div>
@@ -21,21 +22,21 @@
  
         <div class="fromConatiner" *ngIf="attendeeDetails" >
             <label>Name</label>
-            <input type="text" [disabled]="!editOption" placeholder="{{attendeeDetails.name}}" name="attendeeName" [(ngModel)]="attendeeName" #attendeeNameValid=ngModel
+            <input type="text" [disabled]="!editOption" [value]="attendeeDetails.name" name="attendeeName" [(ngModel)]="attendeeName" #attendeeNameValid=ngModel
                 required/>
             <!-- <div class="usernameRequirement" class="error" *ngIf="newPasswordValid.touched && !newPasswordValid.valid">
             Password is required
         </div> -->
 
             <label> Email</label>
-            <input type="email" [disabled]="!editOption" placeholder="{{attendeeDetails.email}}" name="attendeeEmail" [(ngModel)]="email" #attendeeEmailValid=ngModel
+            <input type="email" [disabled]="!editOption" [value]="attendeeDetails.email" name="attendeeEmail" [(ngModel)]="email" #attendeeEmailValid=ngModel
                 required/>
             <!-- <div class="usernameRequirement" class="error" *ngIf="newPasswordValid.touched && !newPasswordValid.valid">
             Password is required
         </div> -->
 
             <label> Contact Number</label>
-            <input type="tel" [disabled]="!editOption" placeholder="{{attendeeDetails.contactNumber}}" name="attendeeTel" [(ngModel)]="attendeeTel" #attendeeTelValid=ngModel
+            <input type="tel" [disabled]="!editOption" [value]="attendeeDetails.contactNumber" name="attendeeTel" [(ngModel)]="attendeeTel" #attendeeTelValid=ngModel
                 required/>
             <!-- <div class="usernameRequirement" class="error" *ngIf="newPasswordValid.touched && !newPasswordValid.valid">
             Password is required
@@ -44,7 +45,7 @@
             <label>Security Question</label>
 
             <ion-select name="securityQuestion" [disabled]="!editOption" [(ngModel)]="securityQuestion" 
-                class="securityDropDown" placeholder="{{attendeeDetails.quesAns.Question}}">
+                class="securityDropDown" [attr.value]="attendeeDetails.quesAns.Question">
                 <ion-option class="dropDownOptions " selected hidden disabled>Select a question</ion-option>
                 <ion-option [disabled]="!editOption">What is the name of your first pet?</ion-option>
                 <ion-option [disabled]="!editOption">What is favourite car to ride? </ion-option>

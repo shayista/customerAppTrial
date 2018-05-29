@@ -1,17 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { NavController, NavParams, ViewController, ToastController, LoadingController } from 'ionic-angular';
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
 
-// const API_ENDPOINT = "http://10.242.251.141:3100"
-const API_ENDPOINT = "http://localhost:8080"
+const API_ENDPOINT = "http://10.242.251.141:3100"
+// const API_ENDPOINT = "http://localhost:3100"
 
 @Injectable()
 export class DataServiceProvider {
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient,private transfer: FileTransfer,
+    private camera: Camera, public toastCtrl: ToastController,   public loadingCtrl: LoadingController) {
 
   }
 
@@ -93,4 +98,11 @@ changePassword(passwordObj): Observable<any> {
   .map((res: Response) => res)
   .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
  }
+
+ userDetails(attendeeId):Observable<any>{
+   return this._http.post(API_ENDPOINT+"/api/userDetails", {"_id":attendeeId})
+   .map((res:Response) => res)
+   .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
+ }
+ 
 }

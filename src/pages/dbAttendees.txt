@@ -9,7 +9,7 @@ db.attendees.insert([
 		"email": "sripriya.kalyanasundaram@barclays.com",
 		"contactNumber": "+91-9840713608",
 		"userUrl": "LinkedIn Profile Url",
-		"attendee_path": "Path to profile",
+		"attendee_path": "Path to profile", 
 	}, {
 		"_id": "A002",
 		"client_Id": "CUST0001",

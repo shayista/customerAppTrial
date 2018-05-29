@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { loginPage } from '../login/login';
 import { DataServiceProvider } from '../../providers/data-service';
-import { changePasswordPage } from '../changePasswordFirst/changePassword';
+import { changePasswordPage } from '../changePasswordFirst/changePasswordFirst';
 import { mainHeader } from '../mainHeader/mainHeader';
 import { changePasswordProfilePage } from '../changePassword/changePassword';
 

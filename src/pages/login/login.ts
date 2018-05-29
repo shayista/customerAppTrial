@@ -3,8 +3,13 @@ import { NavController } from 'ionic-angular';
 import { DataServiceProvider } from '../../providers/data-service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { mainHeader } from '../mainHeader/mainHeader';
-import { changePasswordPage } from '../changePasswordFirst/changePassword';
+import { changePasswordPage } from '../changePasswordFirst/changePasswordFirst';
 import { ForgotPasswordPage } from '../forgotPassword/forgotPassword';
+
+import { ChatAdapter } from 'ng-chat';
+import { SocketIOAdapter } from './socketio-adapter';
+import { Socket } from 'ng-socket-io';
+import { Http } from '@angular/http';
 
 
 @Component({
@@ -15,8 +20,9 @@ export class loginPage implements OnInit {
   result: any;
   username: string;
   password: string;
-
-  constructor(public navCtrl: NavController, public _dataService: DataServiceProvider) {
+ 
+  // public EMAIL_REGEX = `.*^[a-zA-Z0–9_.+-]+@[a-zA-Z0–9-]+.[a-zA-Z0–9-.]+$.*`
+  constructor(public navCtrl: NavController, public _dataService: DataServiceProvider,private socket: Socket, private http: Http) {
 
   }
 
@@ -41,13 +47,16 @@ export class loginPage implements OnInit {
   }
 
   navigateUser(userDetails) {
-
+console.log(userDetails.data.result._id);
     if (userDetails.data.valid) {
 
       sessionStorage.setItem("attendeeId", userDetails.data.result._id);
       sessionStorage.setItem("attendeeName", userDetails.data.result.name);
       sessionStorage.setItem("attendeePath", userDetails.data.result.attendee_path);
       sessionStorage.setItem("attendeeDetails", JSON.stringify(userDetails.data.result));
+
+      this.joinRoom(userDetails.data.result.name,userDetails.data.result._id);
+
       if (userDetails.data.result.firstTimeLoginIn == 0) {
         //console.log(userDetails);
         this.navCtrl.push(mainHeader);
@@ -62,5 +71,21 @@ export class loginPage implements OnInit {
   forgotPassword(){
    
    this.navCtrl.push(ForgotPasswordPage,{"email": this.username});
+}
+public adapter : ChatAdapter;
+public InitializeSocketListerners(userDetails): void
+{
+    console.log('login Component');
+    let userId = userDetails.data.result._id;
+    this.socket.on("generatedUserId", (userId) => {
+        // Initializing the chat with the userId and the adapter with the socket instance
+        this.adapter = new SocketIOAdapter(userId, this.socket, this.http);
+    });
+    this.joinRoom(userDetails.name,userDetails._id);
+}
+
+public joinRoom(username,userId): void 
+{
+    this.socket.emit("join", username , userId);
 }
 }
