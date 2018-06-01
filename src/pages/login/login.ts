@@ -23,7 +23,7 @@ export class loginPage implements OnInit {
  
   // public EMAIL_REGEX = `.*^[a-zA-Z0–9_.+-]+@[a-zA-Z0–9-]+.[a-zA-Z0–9-.]+$.*`
   constructor(public navCtrl: NavController, public _dataService: DataServiceProvider,private socket: Socket, private http: Http) {
-
+    document.getElementById('instantChat').style.display = "none";
   }
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class loginPage implements OnInit {
     if (this.username.length > 0 && this.password.length > 0) {
       this._dataService.validateUser(this.username, this.password)
         .subscribe(res => {
-          console.log(res)
+          console.log(res);
           this.navigateUser(res);
           
         },
@@ -46,8 +46,9 @@ export class loginPage implements OnInit {
     }
   }
 
-  navigateUser(userDetails) {
-console.log(userDetails.data.result._id);
+navigateUser(userDetails) {
+  console.log("userdeytails");
+
     if (userDetails.data.valid) {
 
       sessionStorage.setItem("attendeeId", userDetails.data.result._id);
@@ -58,13 +59,14 @@ console.log(userDetails.data.result._id);
       this.joinRoom(userDetails.data.result.name,userDetails.data.result._id);
 
       if (userDetails.data.result.firstTimeLoginIn == 0) {
-        //console.log(userDetails);
+        console.log("kjfbnlif;gbk'hpn");
         this.navCtrl.push(mainHeader);
       } else {
             this.navCtrl.push(changePasswordPage);
       }
     }
     else {
+      console.log("kjfbnlif;gbk'hpn");
       alert("Invalid credentials entered....");
     }
   }

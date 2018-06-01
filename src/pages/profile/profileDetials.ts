@@ -8,6 +8,8 @@ import { Input } from '@angular/core/src/metadata/directives';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Base64 } from '@ionic-native/base64';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 @Component({
   selector: 'page-profileDetails',
@@ -22,8 +24,8 @@ export class profileDetailsPage {
   attendeeTel: any;
   securityAnswer: any;
   securityQuestion: any;
-  imageURI:string;
-  imageFileName:any;
+  imgPreview = 'assets/imgs/profilepic_female.png';
+  regData = { avatar:'', email: '', password: '', fullname: '' };
   profileEdit={
     'attendeeId'  :"",
     'client_Id'     : "",
@@ -37,7 +39,7 @@ export class profileDetailsPage {
     'userUrl'       : "",
   }
   constructor( public navParams: NavParams,public viewCtrl: ViewController , public navCtrl: NavController, private _dataservice :DataServiceProvider, private transfer: FileTransfer,
-    private camera: Camera, public toastCtrl: ToastController,   public loadingCtrl: LoadingController) {
+    private camera: Camera, public toastCtrl: ToastController,   public loadingCtrl: LoadingController, private imagePicker: ImagePicker,private base64: Base64) {
 //  this.username=this.navParams.get("username");
 this.attendeeId      = sessionStorage.getItem("attendeeId");
 
@@ -116,65 +118,23 @@ this.attendeeId      = sessionStorage.getItem("attendeeId");
     }
   
   }
-  getImage(){
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
-    }
-  
-    this.camera.getPicture(options).then((imageData) => {
-      alert(typeof imageData);
-  
-      this.imageURI = imageData;
-      alert(typeof this.imageURI);
-    }, (err) => {
-      console.log(err);
-      this.presentToast(err);
+ 
+  getPhoto() {
+    let options = {
+      maximumImagesCount: 1
+    };
+    this.imagePicker.getPictures(options).then((results) => {
+      for (var i = 0; i < results.length; i++) {
+          this.imgPreview = results[i];
+          this.base64.encodeFile(results[i]).then((base64File: string) => {
+            this.regData.avatar = base64File;
+          }, (err) => {
+            console.log(err);
+          });
+      }
+    }, (err) => { 
+      alert(err);
     });
-    this.uploadFile(this.imageURI);
-  }
-
-  uploadFile(imageURI) {
-   console.log(imageURI);
-    let loader = this.loadingCtrl.create({
-      content: "Uploading..."
-    });
-    loader.present();
-    const fileTransfer: FileTransferObject = this.transfer.create();
-  
-    let options: FileUploadOptions = {
-      fileKey: "ionicfile",
-      fileName: this.attendeeId+"#",
-      chunkedMode: false,
-      mimeType: "image/jpeg",
-      headers: {}
-    }
-  
-    fileTransfer.upload(imageURI, "http://10.242.251.141:3100/api/uploadImage", options)
-      .then((data) => {
-      console.log(data+" Uploaded Successfully");
-      this.imageFileName = this.attendeeId+".jpeg";
-      loader.dismiss();
-      this.presentToast("Image uploaded successfully");
-    }, (err) => {
-      console.log(err);
-      loader.dismiss();
-      this.presentToast(err);
-    });
-  }
-  presentToast(msg) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 3000,
-      position: 'bottom'
-    });
-  
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-  
-    toast.present();
   }
 }
 

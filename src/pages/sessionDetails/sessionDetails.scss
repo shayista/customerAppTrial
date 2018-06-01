@@ -42,7 +42,6 @@ padding: 15px 0;
 background-color:#64A70B;
 border-radius: 8px;
 color: #fff;
-
 box-shadow: 1px 1px 12px gray;
 
 }
@@ -93,21 +92,24 @@ color: #666;
     width: 100%;
     box-shadow: none;
     padding: 0;
-    background-color: #f5f5f5;
+ 
 }
 .presenterHeader{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: #666;
+    background-color: #f5f5f5;
     padding: 10px 15px;
 }
 .preseneterColumn{
     float: left; 
-    background-color: transparent;
-    width: 50%;
+    background-color: #fff;
+    width: 100%;
     margin: 0;
-    padding: 0 15px 15px 15px;
+    max-height: 77px;
+    border-bottom:1px solid #f5f5f5;
+    padding: 26px 15px 2px 15px;
 }
 .preseneterColumn .avatarPresenter{
     padding: 0;
@@ -116,8 +118,9 @@ color: #666;
 .preseneterColumn p{
     box-shadow: none;
     font-size: 14px;
+    text-align: left;
     color: #666;
-    padding: 5px 0 10px 5px;
+    padding: 0px 0 15px 5px;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
@@ -126,9 +129,10 @@ color: #666;
     box-shadow: none;
     font-size: 16px;
     color: #333;
+    text-align: left;
     padding: 0;
     font-weight: normal;
-    margin: 0;
+    margin: 0 0 0 5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .btn-field-org{
@@ -153,9 +157,9 @@ color: #666;
     margin-right: 1%;
 }
 .presentationDocument{
-    background-color: #f5f5f5;
-    margin: 15px 0 0 0;
-    padding-top:15px; 
+    margin: 0;
+    padding-top:15px;
+    border-top:  0.55px solid gainsboro;
    
 }
 .presentationDocument p{
@@ -163,12 +167,16 @@ color: #666;
     font-size: 16px;
     color: #00667f;
     width: 100%;
-    margin: 15px 0 0 0;
+    margin: 0;
+    padding: 5px 0 15px 15px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
     border-bottom:  0.55px solid gainsboro;
-    border-top:  0.55px solid gainsboro;
+  
 }
+// .fade{
+//     opacity: 1 !important;
+// }
 .presentationDocument span{
     margin: 0 0px 10px 15px;
     color: #666;
@@ -176,5 +184,11 @@ color: #666;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
     font-weight: normal;
+}
+.item-md ion-avatar ion-img, .item-md ion-avatar img, .item-ios ion-avatar img {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #999;
+    margin: 0 0 24px 0px;
 }
 }

@@ -8,12 +8,13 @@
         <p class="editOption" id="editOption"  (click)="enableEdit()">Edit</p>
 
 
-        <ion-card class="profileMenu">
+        <ion-card class="profileMenu" >
         
-            <ion-item no-margin no-padding>
-                <img class="profilePic" src="{{ imageFileName }}" *ngIf="imageFileName" alt="Ionic File" width="300" />
+            <ion-item no-margin no-padding (click)="getPhoto()">
+                <!-- <input class="profilePic"  type="file" name="userFile" /> -->
+                <img src="{{imgPreview}}" >
                 <!-- <img class="profilePic" src="assets/imgs/profilepic_female.png"> -->
-                <i class="fa fa-camera cameraIcon" (click)="getImage()" aria-hidden="true"></i>
+                <i class="fa fa-camera cameraIcon" aria-hidden="true"></i>
                
             </ion-item>
         </ion-card>

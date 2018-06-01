@@ -11,40 +11,41 @@
     <ul class="feedbackUl">
         <li class="contentQuality">
           <p>Content Quality</p>
+          <div class="feedBackContainer">
           <input class="rangeIndicator slider" id="slider0" type="range" list="tickmarks" min="1" max="100" step="1"  value="0"  (change)="rangeCal($event)">
-          <!-- <datalist id="tickmarks">
-            <option class="tick" value="0">0 </option>
-            <option class="tick"value="10">1</option>
-            <option class="tick"value="20">2</option>
-            <option class="tick"value="30">3</option>
-            <option class="tick"value="40">4</option>
-            <option class="tick"value="50">5</option>
-            <option class="tick"value="60">6</option>
-            <option class="tick"value="70">7</option>
-            <option class="tick"value="80">8</option>
-            <option class="tick"value="90">9</option>
-            <option class="tick"value="100">10</option>
-          </datalist> -->
+        <img src="assets/imgs/feebacknumber.png" >
+        </div>
         </li>
         <li class="presentationSkills">
             <p>Presentation Skills</p>
+            <div class="feedBackContainer">
             <input class="rangeIndicator slider" id="slider1" type="range" list="tickmarks" min="1" max="100" step="1"  value="0"  (change)="rangeCal($event,this)">
+            <img src="assets/imgs/feebacknumber.png" >
+        </div>
         </li>
     </ul>
     <p class="serviceSession">Service Feedback</p>
     <ul class="serviceUI">
         <li class="cabService">
           <p>CabService</p>
+          <div class="feedBackContainer">
           <input class="rangeIndicator slider" id="slider2" type="range" list="tickmarks" min="1" max="100" step="1"  value="0"  (change)="rangeCal($event)">
-       
+          <img src="assets/imgs/feebacknumber.png" >
+        </div>
         </li>
         <li class="hotelService">
             <p>Hotel service</p>
+            <div class="feedBackContainer">
             <input class="rangeIndicator slider" id="slider3" type="range" list="tickmarks" min="1" max="100" step="1"  value="0"  (change)="rangeCal($event)">
+            <img src="assets/imgs/feebacknumber.png" >
+        </div>
         </li>
         <li class="foodService">
             <p>Food and Cafe Service</p>
+            <div class="feedBackContainer">
             <input class="rangeIndicator slider" id="slider4" type="range" list="tickmarks" min="1" max="100" step="1"  value="0"  (change)="rangeCal($event)">
+            <img src="assets/imgs/feebacknumber.png" >
+            </div>
         </li>
     </ul>
    
@@ -53,14 +54,10 @@
     <ul class="overAllFeedback">
         <li class="finalFeedback">
             <p>Overall Rating</p>
+            <div class="feedBackContainer">
             <input class="rangeIndicator slider" id="slider5" type="range" list="tickmarks" min="1" max="100" step="1"  list="steplist" value="0"  (change)="rangeCal($event)">
-            <datalist id="steplist">
-                <option>0</option>
-                <option>25</option>
-                <option>50</option>
-                <option>75</option>
-                <option>100</option>
-            </datalist>
+            <img src="assets/imgs/feebacknumber.png" >
+        </div>
         </li>
     </ul>
  

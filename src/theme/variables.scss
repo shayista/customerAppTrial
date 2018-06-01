@@ -165,6 +165,9 @@ ion-content{
   padding: 0px !important;
 
 }
+.fade{
+  opacity: 1 ;
+}
 .toolbar-md {
   max-height: 44px;
   padding: 0px !important;
@@ -206,4 +209,12 @@ max-height: 44px;
 }
 .alert-button{
   color: #00677f !important;
+}
+.modal-content{
+  top:250px;
+  left: 6px;
+  width: 381px;
+}
+.show{
+  background-color: rgba(0, 0, 0, 0.7);
 }

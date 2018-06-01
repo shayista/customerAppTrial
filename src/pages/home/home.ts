@@ -26,6 +26,7 @@ export class HomePage implements OnInit{
   attendees:any=[];
   toUser : {toUserId: string, toUserName: string};
   constructor(public navCtrl: NavController , public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider) {
+    document.getElementById('instantChat').style.display = "block";
     if (sessionStorage.getItem("attendeeId") == "undefined") {
         this.navCtrl.push(loginPage);
     }
@@ -44,7 +45,8 @@ export class HomePage implements OnInit{
   }
   
     openChat(){
-      this.navCtrl.push(Chat,{"user": sessionStorage.getItem("attendeeName"),"attendees":this.attendees});
+      document.getElementById('instantChat').style.display = "block";
+      //this.navCtrl.push(Chat,{"user": sessionStorage.getItem("attendeeName"),"attendees":this.attendees});
     }
 
   getCustlatestVisit() {

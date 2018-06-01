@@ -9,6 +9,9 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { IonicPageModule } from 'ionic-angular';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Base64 } from '@ionic-native/base64'
+
 // const config: SocketIoConfig = { url: 'http://10.242.251.141:3100', options: {} };
 const config: SocketIoConfig = { url: 'http://localhost:3100', options: {} };
 import { SocketIOAdapter } from './socketio-adapter';
@@ -36,8 +39,9 @@ import { ComParentChildService } from './com-parent-child.service';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
-
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { prsenterRating } from '../pages/sessionDetails/addattendeemodalcontent/prsenterRating';
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 @NgModule({
   declarations: [
@@ -56,7 +60,8 @@ import { Camera } from '@ionic-native/camera';
     ForgotPasswordPage,
     profileDetailsPage,
     Chat,
-    sessionDetailsPage  
+    sessionDetailsPage,
+    prsenterRating  
   ],
   imports: [
     BrowserModule,
@@ -66,9 +71,10 @@ import { Camera } from '@ionic-native/camera';
     HttpModule,
     NgChatModule,
     SocketIoModule.forRoot(config),
-    PasswordStrengthBarModule
-
-  ],
+    PasswordStrengthBarModule,
+    NgbModule.forRoot(),
+    Ionic2RatingModule 
+    ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -86,7 +92,8 @@ import { Camera } from '@ionic-native/camera';
     ForgotPasswordPage,
     profileDetailsPage,
     Chat,
-    sessionDetailsPage
+    sessionDetailsPage,
+    prsenterRating
       ],
   providers: [
     StatusBar,
@@ -99,6 +106,8 @@ import { Camera } from '@ionic-native/camera';
     FileTransferObject,
     File,
     Camera,
+    ImagePicker,
+    Base64,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

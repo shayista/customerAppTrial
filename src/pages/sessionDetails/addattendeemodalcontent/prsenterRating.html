@@ -1,0 +1,54 @@
+<div class="popup-container">
+     
+        <form (ngSubmit)="addAttendees(f)" #f="ngForm">
+     
+            <ion-card no-border class="prsenterCard" *ngIf="presenters">
+                <ion-card-header class="presenterHeader">
+                  {{ visitPurpose }} <span> - Completed</span>
+                </ion-card-header>
+                <p class="ratingPresenter">Rate the presenter for this session </p>
+                  <ion-item no-border class="preseneterColumn" *ngFor="let presenter of presenters;let i = index;" >
+                    <ion-avatar class="avatarPresenter" item-start>
+                      <img src="assets/imgs/profilepic_male.png">
+                    </ion-avatar>
+                    <h2>{{ presenter.name }}</h2>
+                    <p no-box-shadow>{{ presenter.designation }}</p>
+                    <rating [(ngModel)]="rate[i]" 
+                    readOnly="false" 
+                    max="5" 
+                    emptyStarIconName="star-outline" 
+                    halfStarIconName="star-half" 
+                    starIconName="star" 
+                    nullable="false" 
+                    (ngModelChange)="onModelChange($event,i)"
+                    name="ratingStar"
+                    id="star{{i}}"
+                    ></rating>
+                  </ion-item>
+                  <!-- <ion-item no-border class="preseneterColumn">
+                    <ion-avatar class="avatarPresenter" item-start>
+                      <img src="assets/imgs/profilepic_male.png">
+                    </ion-avatar>
+                    <h2>Alice Cullen</h2>
+                    <p>UX Consultant</p>
+                    <rating [(ngModel)]="rate" 
+                    readOnly="false" 
+                    max="5" 
+                    emptyStarIconName="star-outline" 
+                    halfStarIconName="star-half" 
+                    starIconName="star" 
+                    nullable="false" 
+                    (ngModelChange)="onModelChange($event)"
+                    name="ratingStar"></rating>
+                  </ion-item> -->
+              </ion-card>
+          
+            <div class="btn-field-org">
+                <button type="submit" class="btn btn-default sub" [disabled]=f.invalid >Submit</button>
+                <button type="button" (click)="skip()" class="btn btn-default can">Cancel</button>
+        </div>
+        </form>
+    
+    
+    
+    </div>

@@ -1,78 +1,49 @@
-<!-- <ion-content>
-    <div class="subHeader">
-        <p class="button-clear" ng-disabled="clicked" (click)="goBack()">
-          <i class="fa fa-chevron-left" aria-hidden="true"></i>Purpose
-        </p>
-    
-      </div>
-     <div class="container">
-       <p class="commentHeader">Comment</p>
-       <p class="">Share your feedback after selecting a category</p>
-       <form>
-
-    
-    <label>Category</label>
-    <input type="text" placeholder="Select a category name"/>
-    <input type="range" />
-    <label>Message</label>
-    <textarea></textarea>
-    <input type="submit" value="Submit" />
-    
-    <input type="button" value="Cancel"/>
-</form>
-     </div>
-</ion-content> -->
-<ion-content padding class="mainContainer">
+<ion-content padding class="mainContainer" *ngIf="visitDetails">
   <div class="sessionDetailsPurpose">
    
-   <p pull-left ><i pull-left class="fa fa-angle-left" aria-hidden="true"(click)="goBack()"></i>Cognizants Digital Capabalities</p>
+   <p pull-left ><i pull-left class="fa fa-angle-left" aria-hidden="true"(click)="goBack()"></i>{{visitDetails.purpose}}</p>
   </div>
   <div class="sessionDeatils">
     <p>Session Details</p>
  <div class="visitingLocations">
-   <p>Visiting Location: <span>DLF,Hyderabad</span></p>
-   <p>Meeting Rooom: <span>Yale Conference Room</span></p>
+   <p>Visiting Location: <span>{{agendaData.visitLocation[0]}},{{agendaData.visitCity[0]}}</span></p>
+   <p>Meeting Rooom: <span>{{agendaData.agenda_meetingRoom}}</span></p>
  
  </div>
   <div class="details">
-    <p class="timings">10:00AM - 11:00AM</p>
-    <p>Digital UX Capabilities</p>
+    <p class="timings">{{agendaData.from}} - {{agendaData.to}}</p>
+    <p>{{agendaData.topic}}</p>
   </div>
  <div class="presenterDeatils">
    <ion-card no-border class="prsenterCard">
      <ion-card-header class="presenterHeader">
        Presenters
      </ion-card-header>
-       <ion-item no-border class="preseneterColumn">
+       <ion-item no-border class="preseneterColumn" *ngFor="let presenters of agendaData.agenda_POC; let i =index;">
          <ion-avatar class="avatarPresenter" item-start>
-           <img src="assets/imgs/profilepic_male.png">
+           <img src="{{presenters.pic}}">
          </ion-avatar>
-         <h2>Marty McFly</h2>
-         <p no-box-shadow>UX Consultant</p>
+         <h2>{{presenters.name}}</h2>
+         <p no-box-shadow>{{presenters.designation}}</p>
        </ion-item>
-       <ion-item no-border class="preseneterColumn">
-         <ion-avatar class="avatarPresenter" item-start>
-           <img src="assets/imgs/profilepic_male.png">
-         </ion-avatar>
-         <h2>Alice Cullen</h2>
-         <p>UX Consultant</p>
-       </ion-item>
+      
    </ion-card>
  </div>
  <div class="presentationDocument">
-   
+<!--    
     <span>Presentation</span> 
    <p>
 
       <i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>
       Digital UX Presentation
-   </p>
+   </p> -->
    <div class="btn-field-org">
-      <button type="button" class="btn btn-default sub" >Provide Presenter Rating</button>
+      <button type="button" class="btn btn-default sub" (click)="openModal(visitDetails.purpose,agendaData)">Provide Presenter Rating</button>
      
 </div>
  </div>
  
  
   </div>
+
  </ion-content>

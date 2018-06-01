@@ -4,8 +4,14 @@
       <p class="button-clear" ng-disabled="clicked" (click)="goBack()">
         <i class="fa fa-angle-left" aria-hidden="true"></i>{{visitDetails.purpose}}
       </p>
-      <div class="locationDetails">
-        <p>Cognizant {{visitDetails.visit_locations[0].country}}, {{visitDetails.visit_locations[0].city}} - {{visitDetails.visit_locations[0].visitingLocation}}</p>
+      <div class="locationDetails" >
+      <div class="companyConatiner">
+        <span class="company">Cognizant</span>
+          <div class="visitDetaikls" *ngFor="let visitDetails of visitDetails.visit_locations; let i =index">
+             {{visitDetails.country}}, {{visitDetails.city}} - {{visitDetails.visitingLocation}}
+          </div>
+        </div>
+    
         <p class="daysCount">
           <i class="fa fa-calendar fa-lg"></i>
           <span>{{visitDetails.startDate | date: "d"}}<sup class="subScript">{{visitDetails.startSuperScript}}</sup> {{visitDetails.startDate | date: "MMM"}} - {{visitDetails.endDate | date: "d"}}<sup class="subScript">{{visitDetails.endSuperScript}}</sup> {{visitDetails.endDate | date: "MMM"}}  </span> | {{visitDetails.noOfDays}} Day(s)
@@ -26,10 +32,7 @@
           <ion-segment-button class="detailsHeader"  *ngFor="let x of agendaData.dayCount; let i = index" value="Day{{x}}" id="agendaDataIndex{{i}}" [ngClass]="{'active' : i === 0}" (click)="renderAgenda(i)" >
            Day {{x}}
           </ion-segment-button>
-          <!-- <ion-segment-button class="detailsHeader" (click)="toggleColor()" id="itineary" value="Day2">
-            Day 2
-          </ion-segment-button> -->
-          
+                   
         </ion-segment>
    
       </div>
@@ -43,12 +46,12 @@
       </div>
        
       <div [ngSwitch]="agendaChoice" *ngIf="agendaData">
-        <div *ngFor="let agenda of agendaData; let i = index;" (click)="openSessionDetails()">
+        <div *ngFor="let agenda of agendaData; let i = index;" >
             <ion-list *ngSwitchCase="i">
                 <ion-item>
                  
                       <ion-list  class="dynamic" >
-                          <ion-list item-start class="agendaList" *ngFor="let agendaDetails of agenda.records">
+                          <ion-list item-start class="agendaList" *ngFor="let agendaDetails of agenda.records" (click)="openSessionDetails(agendaDetails)">
                           
                               <ion-item class="ionItem start">
                                 <div class="profilesPresenters">

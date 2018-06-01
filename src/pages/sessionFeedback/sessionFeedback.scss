@@ -49,7 +49,7 @@ page-sessionFeedback{
    }
 
 .rangeIndicator
-{   margin:0 10px  30px 10px;
+{   margin:10px 10px 0 0px;
     -webkit-appearance: none;
     width: 97%;
     height: 5px;
@@ -77,7 +77,7 @@ page-sessionFeedback{
 .rangeIndicator::-webkit-slider-thumb {
     -webkit-appearance: none;
    
-   width: 35px;
+    width: 35px;
     height: 35px;
     border: 0;
    // border-radius: 50%;
@@ -238,5 +238,19 @@ page-sessionFeedback{
     border: 1px solid #00677f;
     color: #00677f;
     background-color: #fff;
+}
+#steplist{
+    color: #000;
+}
+.feedBackContainer{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.feedBackContainer img{
+    padding-bottom: 20px;
+    max-width: 95%;
+    margin-left: 5px;
+    
 }
 }

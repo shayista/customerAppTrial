@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {  NavController, NavParams ,PopoverController } from 'ionic-angular';
 import { rootModulePage } from '../rootModule/rootModule';
 import { DataServiceProvider } from '../../providers/data-service';
@@ -54,9 +54,7 @@ export class MyVisitPage implements OnInit {
     goBack() {
       this.navCtrl.pop();   
     }
-    openSessionDetails(){
-      this.navCtrl.push(sessionDetailsPage)
-    }
+ 
     presentPopover(myEvent) {
       let popover = this.popoverCtrl.create(rootModulePage);
       popover.present({
@@ -74,7 +72,7 @@ export class MyVisitPage implements OnInit {
                                         if (res.data.length > 0) {
                                             this.agendaData = res.data;  
                                             this.agendaData.dayCount = this.displayAgenda(res.data);  
-                                            console.log(this.agendaData);
+                                            console.log(this.agendaData,"===agendaData");
                                         } else {
                                             alert("no agendas");
                                         }
@@ -123,5 +121,8 @@ export class MyVisitPage implements OnInit {
       document.getElementById('itenaryLink').classList.add("active");
     }
   }
-
+  openSessionDetails(agendaData){
+    console.log(agendaData);
+    this.navCtrl.push(sessionDetailsPage,{"agendaData":agendaData,"visitDetails":this.visitDetails})
+  }
 }

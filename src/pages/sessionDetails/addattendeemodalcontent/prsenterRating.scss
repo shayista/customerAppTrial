@@ -1,0 +1,130 @@
+ngbd-modal-content{
+    .popup-container{
+        display: block;
+        margin: auto auto;
+        padding: 0;
+        border-radius: 5px;
+        background-color: #fff;
+        padding-bottom: 20px;
+    }
+    .fade{
+        opacity: 1;
+    }
+    .modal-content{
+        top:250px !important;
+        left: 30px;
+    }
+    .btn-field-org{
+        background-color: #fff;
+        margin-bottom: 20px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        //padding: 0 0 10px 0 ;
+        text-align: center;
+    
+    }
+    .btn-field-org .sub, .btn-field-org .can{
+        border-radius: 25px;
+        font-size: 1em;
+        width: 90%;
+        height: 40px;
+        padding-top: 5px;
+        margin: 10px 0 0 10px;
+    }
+    .btn-field-org .sub{
+        background-color: #00677f;
+        color: #fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin-right: 1%;
+    }
+    .btn-field-org .can{
+        border: 1px solid #00677f;
+        color: #00677f;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #fff;
+    }
+    .presenterDeatils{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .prsenterCard{
+        margin: 0;
+        width: 100%;
+        box-shadow: none;
+        padding: 0;
+     
+    }
+    .presenterHeader{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #666;
+        box-shadow: 1px 1px 12px gray;
+        padding: 10px 15px;
+    }
+    .preseneterColumn{
+        float: left; 
+        background-color: #fff;
+        width: 100%;
+        margin: 0;
+        border-bottom:1px solid #f5f5f5;
+        padding: 0 15px;
+    }
+    .preseneterColumn .avatarPresenter{
+        padding: 0;
+        margin: 0;
+    }
+    .preseneterColumn p{
+        box-shadow: none;
+        font-size: 14px;
+        text-align: left;
+        color: #666;
+        padding: 0px 0 5px 5px;
+        margin: 0;
+        font-weight: normal;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    }
+    .preseneterColumn h2{
+        box-shadow: none;
+        font-size: 16px;
+        color: #333;
+        text-align: left;
+        padding: 0;
+        font-weight: bold;
+        margin: 0 0 5px 5px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .item-md ion-avatar ion-img, .item-md ion-avatar img, .item-ios ion-avatar img {
+        width: 60px;
+        height: 60px;
+        border: 1px solid #999;
+        margin: 0 0 24px 0px;
+    }
+    ul {
+        padding: 0px;
+        margin: 0;
+        width: 20%;
+        &.rating li {
+          display: inline;
+          padding: 0 2px !important;
+          background: none;
+          color: #999;
+       
+          ion-icon {
+            font-size: 30px;
+          }
+        }
+        
+      }
+  .ratingPresenter{
+      margin: 10px 15px;
+      text-align: left;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 20px;
+      color: #333;
+      font-weight: normal;
+  }
+ 
+}
