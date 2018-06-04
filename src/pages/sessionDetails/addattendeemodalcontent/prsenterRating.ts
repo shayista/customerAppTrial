@@ -16,11 +16,12 @@ export class prsenterRating {
 presenters = [];
 @Output() attendeeEmit = new EventEmitter<any>();
 rate:any[] = [];
+ratingData: any[] = [];
 ratingDetails = {
-    'agendaId':'',
-    'ratingData':[]
+    agendaId:''
+  
          };
-xyz=[];
+
 ratingObj ={
             'id':'',
             'name':''
@@ -50,24 +51,28 @@ onModelChange(x,i){
             star[i].style.color ="#fda214";
         
     }
-    console.log(this.rate);
-for(let poc of this.resData.agenda_POC){
+    console.log(typeof this.rate);
+    console.log(typeof this.ratingData);
+for(let poc=0;  poc<this.resData.agenda_POC.length;poc++){
         console.log(poc);
         this.ratingObj.id="";
         this.ratingObj.name="";
-        this.ratingObj.id = poc._id;
-        this.ratingObj.name = poc.name; 
-        // console.log(typeof this.ratingDetails.ratingData);
-        this.xyz.push(this.ratingObj);
-        this.ratingDetails.ratingData = this.xyz;
+        this.ratingObj.id = this.resData.agenda_POC[poc]._id;
+        this.ratingObj.name = this.resData.agenda_POC[poc].name; 
+        console.log(typeof this.ratingData);
+        this.ratingData[poc]=this.ratingObj;
       
-        console.log(this.xyz);
+       
+        console.log(this.ratingData);
+        
 }
    
 }
 
 
-
+skip(){
+    this.activeModal.close('Close click')
+}
 
 
 }

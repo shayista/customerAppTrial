@@ -45,8 +45,9 @@ export class HomePage implements OnInit{
   }
   
     openChat(){
-      document.getElementById('instantChat').style.display = "block";
-      //this.navCtrl.push(Chat,{"user": sessionStorage.getItem("attendeeName"),"attendees":this.attendees});
+      // document.getElementById('instantChat').style.display = "block";
+      this.navCtrl.push(Chat,{"user": sessionStorage.getItem("attendeeName"),"attendees":this.attendees});
+      
     }
 
   getCustlatestVisit() {

@@ -39,9 +39,10 @@ export class notificationModulePage {
     this._notificationService.getCustomerNotifications(this.attendeeId)
                       .subscribe(res=>
                                 {
-                                  this.notifications= res.data.notifications; 
-                               
-                                  console.log(JSON.stringify(this.notifications[0]._id) + "notification"); 
+                                  console.log(res);
+                                  this.notifications = res.data; 
+                                  console.log(JSON.stringify(this.notifications));
+                                  console.log(JSON.stringify(this.notifications._id) + "notification"); 
                                   for (let notification of this.notifications) {
                                     console.log('notification---', this.daysLeft(notification.lastUpdatedDate));
                                     this.notificationId.push(notification._id);
@@ -62,9 +63,10 @@ export class notificationModulePage {
     this._notificationService.updateNotificationStatus(this.notificationId)
                              .subscribe(res=>
                                 {
-                                    res; console.log(res);
-                                   this.markRead(res.data.nModified);
-                                   document.getElementById('notification-icon').click();
+                                    res;
+                                    console.log(res);
+                                    this.markRead(res.data.nModified);
+                                    document.getElementById('notification-icon').click();
                                          
                                 },
                                 error => console.log("Error :: " + error)  
@@ -87,13 +89,17 @@ daysLeft(notifyDate){
     return resultString;
  }
 
- gotoAgenda(visitId){
-  this._notificationService.getCustFutureAndPastVisit(visitId, -1)
+ gotoAgenda(notification){
+//   this._notificationService.getCustFutureAndPastVisit(visitId, -1)
+//   .subscribe(res=>
+//             {
+//    console.log(JSON.stringify(res.data));
+//  });
+   this._notificationService.markAsRead(notification)
   .subscribe(res=>
             {
    console.log(JSON.stringify(res.data));
  });
- 
 }
 markRead(x){
   console.log(x);

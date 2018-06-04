@@ -11,7 +11,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64'
-
+import { Component } from '@angular/core';
 // const config: SocketIoConfig = { url: 'http://10.242.251.141:3100', options: {} };
 const config: SocketIoConfig = { url: 'http://localhost:3100', options: {} };
 import { SocketIOAdapter } from './socketio-adapter';
@@ -42,6 +42,9 @@ import { Camera } from '@ionic-native/camera';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { prsenterRating } from '../pages/sessionDetails/addattendeemodalcontent/prsenterRating';
 import { Ionic2RatingModule } from 'ionic2-rating';
+import { MessageAgentProvider } from '../providers/chatbot-agent';
+import { FormatDatePipe } from "../pipes/format-date/format-date";
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     profileDetailsPage,
     Chat,
     sessionDetailsPage,
-    prsenterRating  
+    FormatDatePipe,
+    prsenterRating
   ],
   imports: [
     BrowserModule,
@@ -108,6 +112,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     Camera,
     ImagePicker,
     Base64,
+    MessageAgentProvider,
+    NativeGeocoder,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

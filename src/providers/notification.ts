@@ -44,4 +44,9 @@ export class NotificationService {
                    .map((res: Response) => res)
                    .catch((error:any) => Observable.throw(error || 'Server error'));
 }
+markAsRead(notification):Observable<any>{
+  return this._http.post(API_ENDPOINT+'/api/markAsRead', {"notificationData": notification})
+  .map((res: Response) => res)
+  .catch((error:any) => Observable.throw(error || 'Server error'));
+}
 }
