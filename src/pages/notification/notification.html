@@ -1,21 +1,19 @@
 
 
-<div class="notificationHeader clearfix">
+<div class="notificationHeader clearfix" *ngIf="allNotification" >
     <i class="fa fa-chevron-left backArrow" aria-hidden="true" (click)="goBack()"></i>
-    <p class="heading pull-left">Notifications</p>
-    <p class="notificationRead pull-right" >Mark all as Read</p>
+    <p class="heading pull-left">Notifications ({{ notificationsUnread.length }})</p>
+    <!-- <p class="notificationRead pull-right" >Mark all as Read</p> -->
 </div>
-<div class="notificationContainer" *ngIf="notifications" >
+<div class="notificationContainer" >
     <ul id="notification-list">
         <li class="{{notification.read_flag==1?'read':'unread'}}" *ngFor="let notification of notifications; let i =index;" (click)="gotoAgenda(notification)">
             <p class="notificationName pull-left">{{notification.title}}</p>
             <p class="notificationTime pull-right" *ngIf=" notification.periodAgo">{{notification.periodAgo}}</p>
             <p class="notificationContent">{{notification.description}}</p>
         </li>
-        <!-- <li>
-            <p class="notificationName">Cognizant's Digital Capabilities</p>
-            <p class="notificationContent">Account Manager created a new visit</p>
-            <p class="notificationTime">7 hours ago</p>
-        </li> -->
-    </ul>
+     </ul>
+     <div *ngIf="!allNotification" > 
+            <p>No Notification</p>
+     </div>
 </div>

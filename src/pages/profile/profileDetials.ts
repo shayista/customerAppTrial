@@ -24,7 +24,7 @@ export class profileDetailsPage {
   attendeeTel: any;
   securityAnswer: any;
   securityQuestion: any;
-  imgPreview = 'assets/imgs/profilepic_female.png';
+  imgPreview = '';
   regData = { avatar:'', email: '', password: '', fullname: '' };
   profileEdit={
     'attendeeId'  :"",
@@ -59,7 +59,11 @@ this.attendeeId      = sessionStorage.getItem("attendeeId");
       this.securityQuestion= this.attendeeDetails.quesAns.Question;
       this.securityAnswer = "";
       //this.profileEdit.userUrl = this.email;
-       console.log(this.attendeeDetails);
+       console.log(this.attendeeDetails.attendee_path);
+        sessionStorage.setItem("imageAttendee", this.attendeeDetails.attendee_path);
+       this.imgPreview = this.attendeeDetails.attendee_path;
+      
+       
       }
       else{
         console.log("no question found");
@@ -77,13 +81,15 @@ this.attendeeId      = sessionStorage.getItem("attendeeId");
     
     var saveEdit =  document.getElementById("editOption").innerHTML="Save";
     var inputTangs = document.getElementsByTagName("input");
-    var ionSelect = document.getElementsByName("ion-select");
+    var ionSelect = document.getElementById("securityDropDown");
+    ionSelect.style.backgroundColor ="#fff";
+    ionSelect.style.color ="#000";
     var i;
     for (i = 0; i < inputTangs.length; i++) {
       inputTangs[i].style.color ="#000";
       inputTangs[i].style.backgroundColor = "#fff";
       
-      // ionSelect[i].style.backgroundColor = "#fff";
+    
     }
     this.editOption = true;
     }

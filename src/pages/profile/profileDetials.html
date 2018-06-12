@@ -11,10 +11,11 @@
         <ion-card class="profileMenu" >
         
             <ion-item no-margin no-padding (click)="getPhoto()">
+              
                 <!-- <input class="profilePic"  type="file" name="userFile" /> -->
-                <img src="{{imgPreview}}" >
+                <img class="attendeePhoto" src="http://10.242.251.141:8080/{{ imgPreview }}" >
                 <!-- <img class="profilePic" src="assets/imgs/profilepic_female.png"> -->
-                <i class="fa fa-camera cameraIcon" aria-hidden="true"></i>
+                <!-- <i class="fa fa-camera cameraIcon" aria-hidden="true"></i> -->
                
             </ion-item>
         </ion-card>
@@ -45,7 +46,7 @@
             <p>Change Security Question</p>
             <label>Security Question</label>
 
-            <ion-select name="securityQuestion" [disabled]="!editOption" [(ngModel)]="securityQuestion" 
+            <ion-select name="securityQuestion" [disabled]="!editOption" id="securityDropDown" [(ngModel)]="securityQuestion" 
                 class="securityDropDown" [attr.value]="attendeeDetails.quesAns.Question">
                 <ion-option class="dropDownOptions " selected hidden disabled>Select a question</ion-option>
                 <ion-option [disabled]="!editOption">What is the name of your first pet?</ion-option>

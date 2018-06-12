@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController, Events } from 'ionic-angular';
+import { NavController, ViewController, Events, LoadingController } from 'ionic-angular';
 import { loginPage } from '../login/login';
 import { PopoverController } from 'ionic-angular';
 import { NotificationService } from '../../providers/notification';
 import { HomePage } from '../home/home';
 import { rootModulePage } from '../rootModule/rootModule';
+import { sessionDetailsPage } from '../sessionDetails/sessionDeatisl';
 
 @Component({
   selector: 'page-notificationModule',
@@ -12,11 +13,13 @@ import { rootModulePage } from '../rootModule/rootModule';
 })
 export class notificationModulePage {
   attendeeId:string;
-  notifications: any;
+  notifications: any[]=[];
   notificationId = [];
   notificationUnreadCount = 0;
-  
-  constructor(public viewCtrl: ViewController , public navCtrl: NavController, private _notificationService: NotificationService,public popoverCtrl: PopoverController, public events: Events ) {
+  notificationsUnread : any[] =[];
+  notificationsRead : any[] =[];
+  allNotification : any[];
+  constructor(public viewCtrl: ViewController , public navCtrl: NavController, private _notificationService: NotificationService,public popoverCtrl: PopoverController, public events: Events, public loadingCtrl: LoadingController ) {
     if (sessionStorage.getItem("attendeeId") == "undefined") {
         this.navCtrl.push(loginPage);
     } else {
@@ -25,11 +28,27 @@ export class notificationModulePage {
   }
   
   ngOnInit() {
-    this.getCustomerNotifications();
-    //this.notificationRead();//don't use this
-    this.events.publish("notificationUnreadCount", 0);
+   this.ionViewLoaded();
   }
+  ionViewLoaded() {
+    var loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      // content: `
+      // <ion-spinner icon="bubbles"></ion-spinner>`,
+      duration: 5000
+    });
+
   
+    loading.present().then(() => {
+      console.log("data")
+      this.getCustomerNotifications();
+      //this.notificationRead();//don't use this
+      this.events.publish("notificationUnreadCount", 0);
+      loading.dismiss();
+    });
+  
+
+  }
   goBack() {
     this.navCtrl.pop();
    
@@ -40,38 +59,27 @@ export class notificationModulePage {
                       .subscribe(res=>
                                 {
                                   console.log(res);
-                                  this.notifications = res.data; 
-                                  console.log(JSON.stringify(this.notifications));
-                                  console.log(JSON.stringify(this.notifications._id) + "notification"); 
-                                  for (let notification of this.notifications) {
-                                    console.log('notification---', this.daysLeft(notification.lastUpdatedDate));
-                                    this.notificationId.push(notification._id);
-                                    notification.periodAgo = this.daysLeft(notification.lastUpdatedDate);
-                                    if(notification.read_flag == 0){
-                                      this.notificationUnreadCount++;
-                                    }
-                                  }
-                                  // console.log(this.notificationId); 
+                                  this.notificationsUnread = res.data[0].unread; 
+                                  this.notificationsRead = res.data[1].read; 
+                                   this.allNotification = this.notificationsUnread.concat( this.notificationsRead);
+                                   console.log(this.allNotification);
+                                  this.notifications = this.allNotification;
+                                  this.notifications = this.notifications.sort();
+                                    for (let notification of this.notifications) {
+                                    console.log(notification);
+                                  
+                                   this.notificationId.push(notification._id);
+                                   notification.periodAgo = this.daysLeft(notification.lastUpdatedDate);
+                                  
+                                 }
+                                 console.log(this.notificationUnreadCount); 
                                   
                                 },
                                 error => console.log("Error :: " + error)  
                             );
   }
 
-  notificationRead() { //console.log(this.notificationId);
-  
-    this._notificationService.updateNotificationStatus(this.notificationId)
-                             .subscribe(res=>
-                                {
-                                    res;
-                                    console.log(res);
-                                    this.markRead(res.data.nModified);
-                                    document.getElementById('notification-icon').click();
-                                         
-                                },
-                                error => console.log("Error :: " + error)  
-                            );
-  }
+
 daysLeft(notifyDate){
     let today  = Date.now();
     let resultString = '';
@@ -85,32 +93,19 @@ daysLeft(notifyDate){
       //no.of daysdiff in days
        resultString = Math.floor((hoursDiff / 1000 / 60 / 60 /24) + 1) + ' days ago';
     }
-    //console.log(resultString+"---resultString");
     return resultString;
  }
 
  gotoAgenda(notification){
-//   this._notificationService.getCustFutureAndPastVisit(visitId, -1)
+  this.getCustomerNotifications() //console.log(this.attendeeId+"---this.attendeeId");
+
+   this.navCtrl.push(sessionDetailsPage,{"notification":notification});
+   console.log(notification);
+//    this._notificationService.markAsRead(notification)
 //   .subscribe(res=>
 //             {
 //    console.log(JSON.stringify(res.data));
 //  });
-   this._notificationService.markAsRead(notification)
-  .subscribe(res=>
-            {
-   console.log(JSON.stringify(res.data));
- });
 }
-markRead(x){
-  console.log(x);
-  if(x > 0) {
-    document.getElementById('notification-list').classList.add("all-notificaitons-read");
-    this.notificationUnreadCount = 0;
-    this.events.publish("notificationUnreadCount", this.notificationUnreadCount);
-  }
-  
-
-}
-
 
 }

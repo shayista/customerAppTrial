@@ -103,6 +103,9 @@ ion-card img{
     width: auto;
     display: inline;
 }
+.attendeePhoto{
+    border-radius: 50%;
+}
 input{
     width: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -134,13 +137,16 @@ label{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0 0 21px 0;
     font-size: 15px;
-    color: #000;
+    color: #999;
     font-weight: normal;
     border: 1px solid #d3d3d3;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #f1f0f0;
     padding: 5px;
 
+}
+.select-disabled, .item-select-disabled ion-label{
+    opacity:1;
 }
 .profileMenu .cameraIcon{
     position: absolute;

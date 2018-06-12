@@ -1,4 +1,4 @@
-<ion-content>
+<!-- <ion-content>
     <div class="subHeader">
         <p class="button-clear" ng-disabled="clicked" (click)="goBack()">
           <i class="fa fa-chevron-left back-arrow" aria-hidden="true"></i>Purpose
@@ -44,4 +44,60 @@
     <input type="submit" value="Submit" class="submitButton pull-right"/>
 </form>
      </div>
+</ion-content> -->
+<ion-content>
+    <!-- <div class="subHeader">
+            <p class="button-clear" ng-disabled="clicked" (click)="goBack()">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>{{visitDetails.purpose}}
+            </p>
+            <div class="locationDetails" >
+            <div class="companyConatiner">
+                <span class="company">Cognizant</span>
+                <div class="visitDetaikls" *ngFor="let visitDetails of visitDetails.visit_locations; let i =index">
+                    {{visitDetails.country}}, {{visitDetails.city}} - {{visitDetails.visitingLocation}}
+                </div>
+                </div>
+            
+                <p class="daysCount">
+                <i class="fa fa-calendar fa-lg"></i>
+                <span>{{visitDetails.startDate | date: "d"}}<sup class="subScript">{{visitDetails.startSuperScript}}</sup> {{visitDetails.startDate | date: "MMM"}} - {{visitDetails.endDate | date: "d"}}<sup class="subScript">{{visitDetails.endSuperScript}}</sup> {{visitDetails.endDate | date: "MMM"}}  </span> | {{visitDetails.noOfDays}} Day(s)
+                </p>
+        
+            </div>
+            </div> -->
+    <ul class="parameter-container">
+        <li class= "parameters">
+            <span><i class="fas fa-file-alt"></i></span>
+            <p>Content Quality</p>
+            <div><i class="fas fa-star"></i> <span>8</span>8/10</div>
+        </li>
+        <li class= "parameters">
+            <span><i class="fas fa-file-alt"></i></span>
+            <p>Presentation Skills</p>
+            <div><i class="fas fa-star"></i> <span>8</span>/10</div>
+        </li>
+        <li class= "parameters">
+            SERVICES
+        </li>
+        <li class= "parameters">
+            <span><i class="fas fa-file-alt"></i></span>
+            <p>Cab Services</p>
+            <div><i class="fas fa-star"></i> <span>8</span>/10</div>
+        </li>
+        <li class= "parameters">
+            <span><i class="fas fa-file-alt"></i></span>
+            <p>Hotel Services</p>
+            <div><i class="fas fa-star"></i> <span>8</span>/10</div>
+        </li>
+        <li class= "parameters">
+            <span><i class="fas fa-file-alt"></i></span>
+            <p>Food & Cafe Services</p>
+            <div><i class="fas fa-star"></i> <span>8</span>/10</div>
+        </li>
+        <li class= "parameters">
+            <span><i class="fas fa-file-alt"></i></span>
+            <p>Overall Rating</p>
+            <div><i class="fas fa-star"></i> <span>8</span>/10</div>
+        </li>
+    </ul>
 </ion-content>

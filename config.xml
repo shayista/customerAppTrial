@@ -92,7 +92,7 @@
     <plugin name="cordova-plugin-telerik-imagepicker" spec="^2.2.0">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="allow photos" />
     </plugin>
-    <engine name="ios" spec="4.5.4" />
-    <engine name="android" spec="7.0.0" />
     <plugin name="cordova-plugin-nativegeocoder" spec="^3.1.1" />
+    <engine name="ios" spec="4.5.4" />
+    <engine name="android" spec="6.3.0" />
 </widget>

@@ -12,8 +12,8 @@ import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64'
 import { Component } from '@angular/core';
-// const config: SocketIoConfig = { url: 'http://10.242.251.141:3100', options: {} };
-const config: SocketIoConfig = { url: 'http://localhost:3100', options: {} };
+const config: SocketIoConfig = { url: 'http://10.242.251.141:3100', options: {} };
+// const config: SocketIoConfig = { url: 'http://localhost:3100', options: {} };
 import { SocketIOAdapter } from './socketio-adapter';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -65,7 +65,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
     Chat,
     sessionDetailsPage,
     FormatDatePipe,
-    prsenterRating
+    prsenterRating,
+    commentPage
   ],
   imports: [
     BrowserModule,
@@ -97,7 +98,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
     profileDetailsPage,
     Chat,
     sessionDetailsPage,
-    prsenterRating
+    prsenterRating,
+    commentPage
       ],
   providers: [
     StatusBar,

@@ -20,14 +20,17 @@ export class loginPage implements OnInit {
   result: any;
   username: string;
   password: string;
- 
+  //sessionStorage.setItem('host',window.location.href);
+  
+  // hostaname: any ="10.242.251.141:3100"
   // public EMAIL_REGEX = `.*^[a-zA-Z0–9_.+-]+@[a-zA-Z0–9-]+.[a-zA-Z0–9-.]+$.*`
   constructor(public navCtrl: NavController, public _dataService: DataServiceProvider,private socket: Socket, private http: Http) {
     document.getElementById('instantChat').style.display = "none";
   }
 
   ngOnInit() {
-
+    sessionStorage.setItem("host", window.location.href);
+    console.log(sessionStorage.getItem("host"));
   }
 
   validUser() {

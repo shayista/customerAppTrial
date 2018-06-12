@@ -118,6 +118,12 @@ page-my-visit {
         margin-top: 4.79%;
         float: right;
    }
+   .presenterOne{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    
+   }
     .daysCount{
         padding-bottom: 10px !important;
         font-size: 13px !important;
@@ -337,7 +343,7 @@ page-my-visit {
         border-bottom: 2px solid #00677f;
    }
     .itinerary-container {
-        padding: 15px;
+        padding: 15px 0;
    }
    //Itineary 
    .flightDetails{
@@ -407,7 +413,7 @@ page-my-visit {
  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .reachingTime{
-    width: 26%;
+    width: 37%;
     font-size: 13px;
     color: #e6efde;
     font-weight: normal;
@@ -555,5 +561,33 @@ page-my-visit {
     .row{
         width: 100%;
     }
-}
+    .card-header {
+        min-height: 49px;
+        background-color: #00667f;
+        color: #fff;
+        margin:0 0 10px 0;
+        padding: 11px 0 0 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        
+    }
+    a:focus, a:hover{
+        color: #fff;
+        text-decoration: none;
+    }
+    .accordianPlace{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #fff;
+        font-size: 17px;
+        font-weight: 500;
+        vertical-align: middle;
+    }
 
+    .accordianDate{
+        margin-left: 10px;
+        font-size: 14px;
+    }
+    .show{
+        background-color: #fff;
+        padding: 0 15px;
+    }
+}

@@ -15,7 +15,7 @@
       </ion-item>
   
       <ion-item class="loginInput">
-        <ion-input type="password" placeholder="Password " minlength="5" maxlength="10"  name="password" [(ngModel)]="password" #pwd="ngModel" required  >
+        <ion-input type="password" placeholder="Password " minlength="5"   name="password" [(ngModel)]="password" #pwd="ngModel" required  >
         </ion-input>
       </ion-item>
   
@@ -37,6 +37,11 @@
  <p (click)="forgotPassword()" class="forgotPassword">
     Forgot Password?
   </p>
- <div class="footer"><p >&copy; 2018 Cognizant, all rights reserved</p></div> 
-</div>
+  
+
+</div> 
+
 </ion-content>
+<ion-footer>
+<div class="footer"><p >&copy; 2018 Cognizant, all rights reserved</p> </div>
+</ion-footer>

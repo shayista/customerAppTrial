@@ -213,8 +213,26 @@ max-height: 44px;
 .modal-content{
   top:250px;
   left: 6px;
-  width: 381px;
+ //   width: 381px;
+  //float: left;
 }
+// .modal-dialog{
+//   float: left;
+// }
 .show{
   background-color: rgba(0, 0, 0, 0.7);
 }
+.ngAccordianTitle{
+  max-height: 49px !important; 
+}
+
+ion-spinner  {
+  width: 30px;
+  height: 30px;
+  stroke: #00667f;
+  fill: transparent;
+ 
+
+}
+$spinner-ios-bubbles-color : #00667f;
+$spinner-md-bubbles-color : #00667f;

@@ -11,7 +11,7 @@ import { Camera } from '@ionic-native/camera';
 
 const API_ENDPOINT = "http://10.242.251.141:3100"
 // const API_ENDPOINT = "http://localhost:3100"
-
+// 
 @Injectable()
 export class DataServiceProvider {
 
@@ -104,5 +104,10 @@ changePassword(passwordObj): Observable<any> {
    .map((res:Response) => res)
    .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
  }
- 
+ presentorRating(ratingDetails): Observable<any>{
+   console.log(ratingDetails);
+  return this._http.post(API_ENDPOINT+"/api/presentorRating", {"ratingDetails":ratingDetails})
+  .map((res:Response) => res)
+  .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
+ }
 }

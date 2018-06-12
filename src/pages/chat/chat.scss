@@ -133,7 +133,11 @@ page-chat {
 //     }
 
 //   }
+.header header-md{
+  display: none !important;
+}
 page-home {
+
   .item-md div {
     color: rgb(19, 17, 17);
   }

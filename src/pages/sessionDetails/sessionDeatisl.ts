@@ -15,17 +15,20 @@ export class sessionDetailsPage {
   attendeeId:any;
   password: any;
   reenterPassword: any;
-  visitDetails; any;
+  visitDetails: any;
+  notification : any;
   resData: any;
   @Input() id;
    modalRef: any;
   constructor( public navParams: NavParams,public viewCtrl: ViewController , public navCtrl: NavController, private _dataservice :DataServiceProvider,private  modalService:  NgbModal) {
 //  this.username=this.navParams.get("username");
-this.attendeeId   = sessionStorage.getItem("attendeeId");
-this.agendaData   = navParams.get('agendaData');
-this.visitDetails   = navParams.get('visitDetails');
+ this.attendeeId   = sessionStorage.getItem("attendeeId");
+ this.agendaData   = navParams.get('agendaData');
+ this.visitDetails   = navParams.get('visitDetails');
  console.log('agenda',this.agendaData );
  console.log('visit',this.visitDetails);
+ this.notification   = navParams.get('notification');
+ console.log(this.notification,"location");
   }
   goBack(){
       this.navCtrl.pop();

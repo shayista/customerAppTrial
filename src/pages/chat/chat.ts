@@ -18,13 +18,14 @@ let options = {
   templateUrl: 'chat.html',
 })
 export class Chat {
+ 
   messages: any = [];
   chatBox: string = "";
   from: {
-    user: "Usuario";
-    bot: "Agente";
+    user:"blah";
+    bot: "bot";
   };
-
+  attendees: any[];
   @ViewChild(Content) content: Content;
   @ViewChild('map') mapElement: ElementRef;
   currentDate = Date.now();
@@ -34,13 +35,19 @@ export class Chat {
     public platform: Platform,
     public MessageAgentProvider: MessageAgentProvider,
     public modalCtrl: ModalController,
-    private nativeGeocoder: NativeGeocoder
+    private nativeGeocoder: NativeGeocoder,
+    public navParams: NavParams    
   ) {
+    console.log(navParams.get('user'));
+    // this.from.user = navParams.get('user');
+    // this.attendees = navParams.get('attendees');
+    // console.log(  this.from.user,"user");
+    // console.log(  this.attendees,"attendees");
     this.MessageAgentProvider.conversation.subscribe(res => {
       this.messages = [...this.messages, ...res];
       this.scrollToBottom();
     });
-    // this. geoLocator();
+
   }
 
   send(chatBox) {

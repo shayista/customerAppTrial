@@ -1,5 +1,6 @@
 ngbd-modal-content{
     .popup-container{
+        max-width:100%;
         display: block;
         margin: auto auto;
         padding: 0;
@@ -55,16 +56,17 @@ ngbd-modal-content{
         padding: 0;
      
     }
+   
     .presenterHeader{
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 14px;
-        font-weight: 400;
+        font-size: 18px;
+        font-weight: 600;
         color: #666;
         box-shadow: 1px 1px 12px gray;
         padding: 10px 15px;
     }
     .preseneterColumn{
-        float: left; 
+      
         background-color: #fff;
         width: 100%;
         margin: 0;

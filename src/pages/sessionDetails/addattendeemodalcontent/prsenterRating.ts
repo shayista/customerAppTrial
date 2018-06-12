@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation, Input, ElementRef, Output, E
 import { NgbModal , NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Http, Response,Headers } from '@angular/http';
 import { Ionic2RatingModule } from 'ionic2-rating';
+import { DataServiceProvider } from '../../../providers/data-service';
 
 @Component({
 selector: 'ngbd-modal-content',
@@ -16,26 +17,26 @@ export class prsenterRating {
 presenters = [];
 @Output() attendeeEmit = new EventEmitter<any>();
 rate:any[] = [];
-ratingData: any[] = [];
+ratingData = [];
 ratingDetails = {
-    agendaId:''
-  
+    agendaId:'',
+    ratingData:[]
          };
 
 ratingObj ={
             'id':'',
-            'name':''
-            ,'rating':null
+            'name':'',
+            'rating':null
             };
-constructor( private eleRef: ElementRef, public activeModal: NgbActiveModal,private _http: Http) { 
+constructor( private eleRef: ElementRef, public activeModal: NgbActiveModal,private _http: Http,private _dataservice :DataServiceProvider) { 
  
 }
 
 ngOnInit() {
-    this.ratingDetails.agendaId= this.resData._id;
+    this.ratingDetails.agendaId = this.resData._id;
     for(let poc of this.resData.agenda_POC){
         this.presenters.push(JSON.parse(JSON.stringify(poc))); 
-        console.log(this.resData);
+        console.log(this.presenters);
     }
    
 
@@ -44,31 +45,49 @@ ngOnInit() {
 
 
 onModelChange(x,i){
- 
-    console.log(x);
-    var star=document.getElementsByTagName("li");
+  
+      var star=document.getElementsByTagName("li");
     for(let i=0;i<star.length;i++){
-            star[i].style.color ="#fda214";
-        
+            star[i].style.color ="#fda214";    
+           
     }
-    console.log(typeof this.rate);
-    console.log(typeof this.ratingData);
-for(let poc=0;  poc<this.resData.agenda_POC.length;poc++){
-        console.log(poc);
-        this.ratingObj.id="";
-        this.ratingObj.name="";
-        this.ratingObj.id = this.resData.agenda_POC[poc]._id;
-        this.ratingObj.name = this.resData.agenda_POC[poc].name; 
-        console.log(typeof this.ratingData);
-        this.ratingData[poc]=this.ratingObj;
-      
-       
-        console.log(this.ratingData);
+    for(let poc=0;poc < this.presenters.length;poc++){
+        // this.ratingObj.id="";
+        // this.ratingObj.name="";
+        // this.ratingObj.rating="";
         
-}
-   
+        this.ratingObj.id = this.presenters[poc]._id;
+        this.ratingObj.name = this.presenters[poc].name; 
+        this.ratingObj.rating = this.rate[poc]; 
+        console.log(this.ratingObj);  
+        this.ratingData.push(this.ratingObj);  
+       
+        this.ratingObj ={
+            'id':'',
+            'name':'',
+            'rating':''
+            };     
+            
+    }
+    console.log(this.ratingData,"data");  
+    this.ratingDetails.ratingData = this.ratingData;
+    console.log(this.ratingDetails,"final"); 
+    this.ratingData=[]; 
+  
 }
 
+addAttendees(f){
+   
+ 
+   
+    this._dataservice.presentorRating(this.ratingDetails).subscribe(res =>
+        {
+            console.log(res);
+            if(res.status == 200){
+                this.activeModal.close('Close click');
+            }
+        }) 
+}
 
 skip(){
     this.activeModal.close('Close click')

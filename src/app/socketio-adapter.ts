@@ -21,7 +21,7 @@ export class SocketIOAdapter extends ChatAdapter
     listFriends(): Observable<User[]> {
         // List connected users to show in the friends list
         // Sending the userId from the request body as this is just a demo 
-        return this.http.post("http://localhost:3100/api/listFriends", { userId: this.userId })
+        return this.http.post("http://10.242.251.141:3100/api/listFriends", { userId: this.userId })
         .map((res:Response) => res.json())
         //...errors if any
         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));

@@ -7,7 +7,7 @@
       <div class="locationDetails" >
       <div class="companyConatiner">
         <span class="company">Cognizant</span>
-          <div class="visitDetaikls" *ngFor="let visitDetails of visitDetails.visit_locations; let i =index">
+          <div class="visitDetaikls" *ngFor="let visitDetails of visitDetails.visit_locations; let i =index" >
              {{visitDetails.country}}, {{visitDetails.city}} - {{visitDetails.visitingLocation}}
           </div>
         </div>
@@ -36,27 +36,36 @@
         </ion-segment>
    
       </div>
-      <div class="sezLocation"> 
+      <!-- <div class="sezLocation"> 
           <p class="visitingLocationDetails"> 
            Visiting Location : <span>{{ agendaData[0].records[0].visitCity[0]  | uppercase |slice: 0:3 }} - {{ agendaData[0].records[0].visitLocation[0] }}</span>
           </p>
           <p class="meetingRoomDetails">
            Meeting Room: <span>{{ agendaData[0].records[0].agenda_meetingRoom[0] }}</span>
           </p>
-      </div>
+      </div> -->
        
       <div [ngSwitch]="agendaChoice" *ngIf="agendaData">
         <div *ngFor="let agenda of agendaData; let i = index;" >
             <ion-list *ngSwitchCase="i">
+              <!-- {{ agenda | json}} -->
+                <div class="sezLocation"> 
+                    <p class="visitingLocationDetails"> 
+                     Visiting Location : <span>{{ agenda.records[0].visitCity[0]  | uppercase |slice: 0:3 }} - {{ agenda.records[0].visitLocation[0] }}</span>
+                    </p>
+                    <p class="meetingRoomDetails">
+                     Meeting Room: <span>{{ agenda.records[0].agenda_meetingRoom[0] }}</span>
+                    </p>
+                </div>
                 <ion-item>
-                 
+                
                       <ion-list  class="dynamic" >
                           <ion-list item-start class="agendaList" *ngFor="let agendaDetails of agenda.records" (click)="openSessionDetails(agendaDetails)">
-                          
+                             
                               <ion-item class="ionItem start">
                                 <div class="profilesPresenters">
-                                    <img class="presenterOne" src="assets/imgs/profilepic_male.png">
-                                    <img class="presenterTwo" src="assets/imgs/profilepic_male.png">
+                                    <img class="presenterOne" src="http://10.242.251.141:8080/{{ agendaDetails.agenda_POC[0].imgUrl }}">
+                               
                                 </div>
                                 <p class="timing"> {{ agendaDetails.from}} - {{ agendaDetails.to}}</p>
                                 <p class="titleTopic">{{ agendaDetails.topic}} </p>
@@ -78,80 +87,102 @@
  
 <div [class.hide]="checkStatus" class="itinerary-container"  > 
 
- <div class="flightDetails"  *ngFor="let flight of flightDeatils">
-  <p class="flightNumber">Flight Number : <span>{{flight.flightNumber}}</span></p>
-  <div class="detailsContainer">
-   <div class="flexConatiner">
-  <p class="source pull-left"> {{flight.from}}</p>
-  <div class="connectoresFlight">
-  <span class="connectors pull-left ">--------</span>
-  <i class="fa fa-space-shuttle pull-left flight" aria-hidden="true"></i>
-  <span class="connectors pull-left">--------</span>
-  </div>
-  <p class="destination pull-right">{{flight.to}}</p>
-
-  </div>
-
-  <div class="clearfix"></div>
-  <div class="flightTimings">
-      <p class="startingTime ">{{flight.arrivalDate | date:"dd"
-        }} <sup class="subScript">nd</sup> {{flight.arrivalDate | date:"MMM"
-      }},
-      <span> {{flight.arrivalTime}} (Arrival)</span>
-      </p>
-
-      <p class="reachingTime">{{flight.depatureDate | date:"dd"
-        }} <sup class="subScript">rd</sup>  {{flight.depatureDate | date:"MMM"
-      }}, 
-   <span> {{flight.depatureTime}}(Departure)</span>  
-    </p>
-  </div>
-  <div class="clearfix"></div>
-
-</div>
-  </div>
-<div class="stay" *ngIf="flightDeatils"> 
-    <ion-card  class="stayDeatils" no-border *ngFor="let flight of flightDeatils; let i = index">
-        
-          <ion-item class="hotelDetails" no-border>
-          
-            <h2>Your Stay at {{flight.to}}</h2>
-            <p class="hotelName">Hyatt International</p>
-            <p class="distance">0.9 miles from Airport</p>
-          </ion-item>
-        
-          
-        
-          <ion-card-content class="imageHotel" no-border no-box-shadow no-padding>
-              <!-- <img class="hotelPic" src="assets/imgs/hotel.JPG"> -->
-          </ion-card-content>
-        
-          <ion-row no-border no-margin no-padding class="row">
+  <ngb-accordion [closeOthers]="true"  #acc="ngbAccordion" activeIds="flightDetails-0"  >
+    <ngb-panel   *ngFor="let flight of flightDetails; let i= index" title="{{ flight.from }} 
+    ({{ flight.departureDate | date: MMM }})" id="flightDetails-{{i}}">
+            <ng-template ngbPanelContent class="panelContent" >
+              <div class="flightDetails" *ngIf="flightDetails">
+              <p class="flightNumber">Flight Number : <span>{{flight.flightNumber}}</span></p>
+              <div class="detailsContainer">
+               <div class="flexConatiner">
+              <p class="source pull-left"> {{flight.from}}</p>
+              <div class="connectoresFlight">
+              <span class="connectors pull-left ">--------</span>
+              <i class="fa fa-space-shuttle pull-left flight" aria-hidden="true"></i>
+              <span class="connectors pull-left">--------</span>
+              </div>
+              <p class="destination pull-right">{{flight.to}}</p>
             
-         
-            <ion-col center text-center class="checkinDetails1">
-              <ion-note class="checkinDetails">
-               Check In & Check Out Dates:<span> 2<sup class="subScript">nd</sup> Oct - 3<sup class="subScript">rd</sup>Oct</span>
-              </ion-note>
-            </ion-col>
-          </ion-row>
-        
-        </ion-card>
-        <div class="airportTransfer">
-          <h6>Airport Transfer</h6>
-          <p>Pickup Info: RGIA, <span>2<sup class="subScript">nd</sup> Oct 2017 | 5:30 AM</span></p>
-            <ion-card no-border no-padding class="airportMediator">
-                
-                  <ion-item class="airportAsssitance" no-border no-margin no-padding >
-                    <ion-avatar class="avtar" item-start>
-                      <img class="airportAssistancePic" src="assets/imgs/profile_picture.png">
-                    </ion-avatar>
-                    <h2>Marty McFly</h2>
-                    <p>9962416185</p>
-                    </ion-item>
+              </div>
+            
+              <div class="clearfix"></div>
+              <div class="flightTimings">
+                  <p class="startingTime ">{{flight.arrivalDate | date:"dd"
+                    }}<sup class="subScript">{{ flight.startSuperScript }}</sup> {{flight.arrivalDate | date:"MMM"
+                  }},
+                  <span> {{flight.arrivalTime}}</span> 
+                  <span>(Arrival)</span>
+                  </p>
+            
+                  <p class="reachingTime">{{flight.departureDate | date:"dd"
+                    }}<sup class="subScript">{{ flight.endSuperScript }}</sup>  {{flight.departureDate | date:"MMM"
+                  }}, 
+               <span> {{flight.departureTime}}</span>  
+               <span>(Departure)</span>
+                </p>
+              </div>
+              <div class="clearfix"></div>
+            
+            </div>
+              </div>
+              <div *ngIf="!flightDetails">
+                <p> No flight services available</p>
+              </div>
+            <div class="stay" > 
+                <ion-card  class="stayDeatils" no-border *ngIf="hotelDetailsFlag">
+                    
+                      <ion-item class="hotelDetails" no-border>
+                      
+                        <h2>Your Stay at {{flight.to}}</h2>
+                        <p class="hotelName">{{ flight.hotel.visit_HotelBooked[0].name }}</p>
+                      <!-- //  <p class="distance">0.9 miles from Airport</p> -->
+                      </ion-item>
+                    
+                      
+                    
+                      <ion-card-content class="imageHotel" no-border no-box-shadow no-padding> 
+                       <img class="hotelPic" src="assets/imgs/hotel.JPG"> 
+                    </ion-card-content>
+                    
+                      <ion-row no-border no-margin no-padding class="row">
+                        
+                     
+                        <ion-col center text-center class="checkinDetails1">
+                          <ion-note class="checkinDetails">
+                           Check In & Check Out Dates:<span> {{flight.hotel.checkInDate | date: "dd"}}<sup class="subScript">{{flight.hotel.startSuperScript}}</sup>  {{flight.hotel.checkInDate | date: "MMM"}} - {{flight.hotel.checkOutDate | date: "dd"}}<sup class="subScript">{{flight.hotel.endSuperScript}}</sup> {{flight.hotel.checkOutDate | date: "MMM"}}</span>
+                          </ion-note>
+                        </ion-col>
+                      </ion-row>
+                    
                     </ion-card>
-        </div>
-</div>
+                    <div *ngIf="!hotelDetailsFlag">
+                      <p>No hotel request raised</p>
+                    </div>
+                    <div class="airportTransfer" *ngIf="cabDetailsFlag">
+                      <h6>Airport Transfer</h6>
+                      <p>Pickup Info: {{ flight.cab.pickUpFrom}}, <span>{{ flight.cab.startDate | date: "d" }}<sup class="subScript">{{ flight.cab.startSuperScript }}</sup> {{ flight.cab.startDate | date: "MMM" }} | {{ flight.cab.arrivalTime }} </span></p>
+                        <ion-card no-border no-padding class="airportMediator">
+                            
+                              <ion-item class="airportAsssitance" no-border no-margin no-padding >
+                                <ion-avatar class="avtar" item-start>
+                                  <img class="airportAssistancePic" src="assets/imgs/profile_picture.png">
+                                  <!-- <img class="airportAssistancePic" src="http://10.242.251.141:8080/{{ agendaDetails.agenda_POC[0].imgUrl }}"> -->
+                                </ion-avatar>
+                                <h2>{{ flight.cab.POCName }}</h2>
+                                <p>{{ flight.cab.POCContact }}</p>
+                                </ion-item>
+                                </ion-card>
+                    </div>
+                    <div *ngIf= "!cabDetailsFlag">
+                      <p>No cab request raised</p>
+
+                    </div>
+            </div>
+      </ng-template>
+    </ngb-panel>
+     
+  </ngb-accordion>
+
   </div>
 
 </div>

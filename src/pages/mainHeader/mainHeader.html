@@ -15,8 +15,9 @@
       <img class="mainLogo" src="assets/imgs/logo1.png">
     </div>
 
-    <div id="notification-icon" class="notification-icon" (click)="notificationPopover()">
-      <i class="fa fa-bell-o notifiation" aria-hidden="true"></i>
+    <div id="notification-icon" class="notification-icon" >
+      <i class="fa fa-bell-o notifiation" (click)="notificationPopover()" aria-hidden="true"></i>
+      <i class="fa fa-comments-o notifiation" (click)="openChatInstant()" aria-hidden="true"></i>
       <span *ngIf="notificationUnreadCount" class="badge count">{{notificationUnreadCount}}</span>
     </div>
   </div>
@@ -31,7 +32,7 @@
             
               <ion-item no-margin no-padding no-background>
                 
-                <img  class="profilePic" src="assets/imgs/profilepic_male.png">  
+                <img  class="profilePic"  src="http://10.242.251.141:8080/{{ imageAttendee }}">  
                
                 <p>{{attendeeId }}</p>
               
@@ -46,11 +47,14 @@
                     <button  class="buttonsProfile" menuClose  (click)="logout()">
                         <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
                     </button>
-        <div class="termsConditions">    
-       <p>Version 1.0.0 |  <span>Privacy & Terms</span></p>
-       <p>Visit Organizer</p>
-      </div>
+                    <ion-footer>
+                      <div class="termsConditions">    
+                        <p>Version 1.0.0 |  <span>Privacy & Terms</span></p>
+                        <p>Visit Organizer</p>
+                       </div>
+                    </ion-footer>
         </ion-menu>
+     
 <ion-content>
         <ion-nav #mycontent [root]="home"></ion-nav>
 

@@ -21,7 +21,7 @@
      </ion-card-header>
        <ion-item no-border class="preseneterColumn" *ngFor="let presenters of agendaData.agenda_POC; let i =index;">
          <ion-avatar class="avatarPresenter" item-start>
-           <img src="assets/imgs/{{presenters.pic}}">
+           <img src="http://10.242.251.141:8080/{{presenters.pic}}">
          </ion-avatar>
          <h2>{{presenters.name}}</h2>
          <p no-box-shadow>{{presenters.designation}}</p>

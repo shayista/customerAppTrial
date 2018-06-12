@@ -8,171 +8,199 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DataServiceProvider } from '../../providers/data-service';
 import { sessionFeedbackPage } from '../sessionFeedback/sessionFeedback';
 import { Chat } from '../chat/chat';
-
+import { commentPage } from '../comments/comments';
+import { LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit{
+export class HomePage implements OnInit {
   attendeeDeatils: any;
-  
-  daysRemaining : any = null;
+
+  daysRemaining: any = null;
   firstVisit: any;
-  pastVisits: Array<Object>=[];
+  pastVisits: Array<Object> = [];
   visitStatus: boolean;
   pageNavigation: any;
+  flagData: any;
   attendeeId: any;
-  attendees:any=[];
-  toUser : {toUserId: string, toUserName: string};
-  constructor(public navCtrl: NavController , public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider) {
-    document.getElementById('instantChat').style.display = "block";
+  attendees: any = [];
+  toUser: { toUserId: string, toUserName: string };
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider, public loadingCtrl: LoadingController) {
+    //document.getElementById('instantChat').style.display = "block";
     if (sessionStorage.getItem("attendeeId") == "undefined") {
-        this.navCtrl.push(loginPage);
+      this.navCtrl.push(loginPage);
     }
     else {
-   
-      this.attendeeId   = sessionStorage.getItem("attendeeId");
-    
+
+      this.attendeeId = sessionStorage.getItem("attendeeId");
+
     }
-   
+
+  }
+ionViewLoaded() {
+    var loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      // content: `
+      // <ion-spinner icon="crescent" ></ion-spinner>`,
+      duration: 5000
+    });
+
+  
+    loading.present().then(() => {
+      console.log("data")
+      this.getCustlatestVisit();
+      this.getCustPastVisit();
+      loading.dismiss();
+    });
+  
+
+  }
+  ngOnInit() {
+      // this.getCustlatestVisit();
+      // this.getCustPastVisit();
+      this.ionViewLoaded();
   }
 
-  ngOnInit() {    
-    
-    this.getCustlatestVisit();
-    this.getCustPastVisit();
-  }
   
-    openChat(){
-      // document.getElementById('instantChat').style.display = "block";
-      this.navCtrl.push(Chat,{"user": sessionStorage.getItem("attendeeName"),"attendees":this.attendees});
-      
-    }
+  openChat() {
+
+    this.navCtrl.push(Chat, { "user": sessionStorage.getItem("attendeeName") });
+
+  }
 
   getCustlatestVisit() {
+
     this._dataservice.getCustFutureAndPastVisit(sessionStorage.getItem("attendeeId"), 1)
-                     .subscribe(res=> 
-                                    {
-                                      console.log(res);
-                                       this.processFutureVisit(res.data);
-                                       
-                                    },
-                                error => console.log("Error :: " + error)  
-                                );
+      .subscribe(res => {
+       
+        console.log(res);
+
+      },
+      error => console.log("Error :: " + error)
+      );
   }
 
   processFutureVisit(futureVisits) {
-   
-     
-      if(futureVisits.length > 0) {
-          this.visitStatus = true;
-          this.firstVisit = futureVisits[0];
-          for(let x of futureVisits[0].visit_attendees){
-            this.attendees.push(x.name);
-         console.log( this.attendees);
-          }
-          this.firstVisit.startSuperScript = this.daysSuperScript(futureVisits[0].startDate);
-          this.firstVisit.endSuperScript = this.daysSuperScript(futureVisits[0].endDate);
-          //No.of Days visit
-          let noOfDays = this.dateDifference(futureVisits[0].startDate, futureVisits[0].endDate);          
-         
-          this.firstVisit.noOfDays = noOfDays;
 
-          //days remaining
-        let  daysRemained = Math.floor(this.dateDifference(new Date().toUTCString(), futureVisits[0].startDate));
-          
-          switch (true) {
-             case daysRemained <= 0  : this.daysRemaining = "Ongoing"; break;
-             //case daysRemained == 0 : this.daysRemaining = "Today"; break;
-             case daysRemained == 1 : this.daysRemaining = "Tomorrow"; break;
-             default                : this.daysRemaining = daysRemained + " Days Left"; break;
-          }
-          //console.log(JSON.stringify(this.firstVisit) + "--futurevisits");
-      } else {
-       
-      
-          this.visitStatus = false;
-          
+
+    if (futureVisits.length > 0) {
+      this.visitStatus = true;
+      this.firstVisit = futureVisits[0];
+      for (let x of futureVisits[0].visit_attendees) {
+        this.attendees.push(x.name);
+        console.log(this.attendees);
       }
+      this.firstVisit.startSuperScript = this.daysSuperScript(futureVisits[0].startDate);
+      this.firstVisit.endSuperScript = this.daysSuperScript(futureVisits[0].endDate);
+      //No.of Days visit
+      let noOfDays = this.dateDifference(futureVisits[0].startDate, futureVisits[0].endDate);
+
+      this.firstVisit.noOfDays = noOfDays;
+
+      //days remaining
+      let daysRemained = Math.floor(this.dateDifference(new Date().toUTCString(), futureVisits[0].startDate));
+
+      switch (true) {
+        case daysRemained <= 0: this.daysRemaining = "Ongoing"; break;
+        //case daysRemained == 0 : this.daysRemaining = "Today"; break;
+        case daysRemained == 1: this.daysRemaining = "Tomorrow"; break;
+        default: this.daysRemaining = daysRemained + " Days Left"; break;
+      }
+      //console.log(JSON.stringify(this.firstVisit) + "--futurevisits");
+    } else {
+
+
+      this.visitStatus = false;
+
+    }
   }
 
-  daysSuperScript(sDate){
-    var dateSuperScript= "th";
-    var last =  (new Date (sDate).getDate() )  / 10;
-   
-    var end =  (new Date (sDate).getDate() ) % 10;
-    if(Math.floor(last) == 1){
-     end = 4;
-        }
-  
-   
-    switch(end){
+  daysSuperScript(sDate) {
+    var dateSuperScript = "th";
+    var last = (new Date(sDate).getDate()) / 10;
+
+    var end = (new Date(sDate).getDate()) % 10;
+    if (Math.floor(last) == 1) {
+      end = 4;
+    }
+
+
+    switch (end) {
       case 1: dateSuperScript = "st"; break;
       case 2: dateSuperScript = "nd"; break;
       case 3: dateSuperScript = "rd"; break;
-      default: dateSuperScript ="th"; break;
-      }
+      default: dateSuperScript = "th"; break;
+    }
     return dateSuperScript;
   }
 
-  getCustPastVisit() { 
+  getCustPastVisit() {
+    // setInterval(
+    //   () => {
     this._dataservice.getCustFutureAndPastVisit(sessionStorage.getItem("attendeeId"), 0)
-                     .subscribe(res=> 
-                                    { 
-                              
-                                      this.pastVisits = this.processPastVisits(res.data);
-                                      // console.log(JSON.stringify(this.pastVisits)+ "blah");
-                                    },
-                                error => console.log("Error :: " + error)  
-                               );
-  }
+      .subscribe(res => {
 
-  processPastVisits(pastVisits){
+        this.pastVisits = this.processPastVisits(res.data);
+        // console.log(JSON.stringify(this.pastVisits)+ "blah");
+
+      },
+      error => console.log("Error :: " + error)
+      );
+
+
+  }
+  //     , 1000);
+  //  }
+
+  processPastVisits(pastVisits) {
     let visitsLists: Array<Object> = [];
-     console.log(JSON.stringify(pastVisits) + "--pastVisits");
-    if(pastVisits.length > 0) {
-      for(let visit of pastVisits ){
-          //console.log(visit + "---visit");
-          //Superscript CAlculation
-          visit.startSuperScript = this.daysSuperScript(visit.startDate);
-          visit.endSuperScript = this.daysSuperScript(visit.endDate);
-          // //No.of Days visit
-          visit.noOfDays = this.dateDifference(visit.startDate, visit.endDate); 
-          
-          visitsLists.push(visit);
+    console.log(JSON.stringify(pastVisits) + "--pastVisits");
+    if (pastVisits.length > 0) {
+      for (let visit of pastVisits) {
+        //console.log(visit + "---visit");
+        //Superscript CAlculation
+        visit.startSuperScript = this.daysSuperScript(visit.startDate);
+        visit.endSuperScript = this.daysSuperScript(visit.endDate);
+        // //No.of Days visit
+        visit.noOfDays = this.dateDifference(visit.startDate, visit.endDate);
+
+        visitsLists.push(visit);
       }
       //console.log(JSON.stringify(visitsLists)+"---visitsLists");
     } else {
-           
-        this.visitStatus = false;
+
+      this.visitStatus = false;
     }
     return visitsLists;
 
   }
 
-    dateDifference(startDate, endDate){
-      
-       let sDate:any = new Date(startDate);
-       let eDate:any = new Date(endDate);
-        //no.of daysdiff in hours
-       let daysDiff = Date.parse(eDate)  - Date.parse(sDate);
-       //no.of daysdiff in days
-       let inDays = (daysDiff / 1000 / 60 / 60 /24) + 1;
-      
-       return inDays;
-     
-    }
-    
-    goToAgenda(visitId, visitDetails) { 
-      //this.pageNavigation = MyVisitPage;
-      this.navCtrl.push(MyVisitPage, {"visitId":visitId, "visitDetails": visitDetails });
-    }
-  
-    goToSessionFeedback(visitId){
-      console.log(visitId);
-      this.navCtrl.push(sessionFeedbackPage, {"visitId":visitId});
-    }  
-     
+  dateDifference(startDate, endDate) {
+
+    let sDate: any = new Date(startDate);
+    let eDate: any = new Date(endDate);
+    //no.of daysdiff in hours
+    let daysDiff = Date.parse(eDate) - Date.parse(sDate);
+    //no.of daysdiff in days
+    let inDays = (daysDiff / 1000 / 60 / 60 / 24) + 1;
+
+    return inDays;
+
+  }
+
+  goToAgenda(visitId, visitDetails) {
+    //this.pageNavigation = MyVisitPage;
+    this.navCtrl.push(MyVisitPage, { "visitId": visitId, "visitDetails": visitDetails });
+  }
+
+  goToSessionFeedback(visitId) {
+    console.log(visitId);
+    this.navCtrl.push(sessionFeedbackPage, { "visitId": visitId });
+    // this.navCtrl.push(commentPage, {"visitId":visitId});
+    // commentPage
+  }
+
 }
 
