@@ -60,7 +60,7 @@ export class mainHeader implements OnInit{
   
     loading.present().then(() => {
       this.getCustomerNotifications();
-      this.imageAttendee = sessionStorage.getItem("imageAttendee");
+      this.imageAttendee = sessionStorage.getItem("attendeePath");
       loading.dismiss();
     });
   

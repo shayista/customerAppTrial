@@ -100,11 +100,13 @@ placeholder{
     margin:60px 25.5px 0 25.5px;
 }
 ion-card img{
-    width: auto;
+ 
     display: inline;
 }
 .attendeePhoto{
     border-radius: 50%;
+    width: 100px;
+    height: 100px;
 }
 input{
     width: 100%;

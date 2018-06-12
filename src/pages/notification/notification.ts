@@ -65,7 +65,9 @@ export class notificationModulePage {
                                    console.log(this.allNotification);
                                   this.notifications = this.allNotification;
                                   this.notifications = this.notifications.sort();
+                                
                                     for (let notification of this.notifications) {
+                                      
                                     console.log(notification);
                                   
                                    this.notificationId.push(notification._id);

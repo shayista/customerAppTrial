@@ -25,8 +25,6 @@ export class sessionDetailsPage {
  this.attendeeId   = sessionStorage.getItem("attendeeId");
  this.agendaData   = navParams.get('agendaData');
  this.visitDetails   = navParams.get('visitDetails');
- console.log('agenda',this.agendaData );
- console.log('visit',this.visitDetails);
  this.notification   = navParams.get('notification');
  console.log(this.notification,"location");
   }

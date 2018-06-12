@@ -87,11 +87,11 @@
  
 <div [class.hide]="checkStatus" class="itinerary-container"  > 
 
-  <ngb-accordion [closeOthers]="true"  #acc="ngbAccordion" activeIds="flightDetails-0"  >
+  <ngb-accordion  *ngIf="flightDetailsFlag" [closeOthers]="true"  #acc="ngbAccordion" activeIds="flightDetails-0"  >
     <ngb-panel   *ngFor="let flight of flightDetails; let i= index" title="{{ flight.from }} 
     ({{ flight.departureDate | date: MMM }})" id="flightDetails-{{i}}">
-            <ng-template ngbPanelContent class="panelContent" >
-              <div class="flightDetails" *ngIf="flightDetails">
+            <ng-template ngbPanelContent class="panelContent" *ngIf="flightDetailsFlag">
+              <div class="flightDetails" >
               <p class="flightNumber">Flight Number : <span>{{flight.flightNumber}}</span></p>
               <div class="detailsContainer">
                <div class="flexConatiner">
@@ -125,9 +125,7 @@
             
             </div>
               </div>
-              <div *ngIf="!flightDetails">
-                <p> No flight services available</p>
-              </div>
+          
             <div class="stay" > 
                 <ion-card  class="stayDeatils" no-border *ngIf="hotelDetailsFlag">
                     
@@ -182,7 +180,9 @@
     </ngb-panel>
      
   </ngb-accordion>
-
+  <div *ngIf="!flightDetailsFlag">
+    <p> No flight services available</p>
+  </div>
   </div>
 
 </div>

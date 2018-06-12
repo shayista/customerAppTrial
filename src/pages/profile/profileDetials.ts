@@ -47,29 +47,43 @@ this.attendeeId      = sessionStorage.getItem("attendeeId");
 
   }
   ngOnInit() {    
-    this._dataservice.userDetails(this.attendeeId).subscribe(res => 
-      {
-       console.log(res.data[0]);
-       this.attendeeDetails=res.data[0];
-       if(this.attendeeDetails){
-        
-      this.attendeeName = this.attendeeDetails.name;
-      this.email = this.attendeeDetails.email;
-      this.attendeeTel = this.attendeeDetails.contactNumber;
-      this.securityQuestion= this.attendeeDetails.quesAns.Question;
-      this.securityAnswer = "";
-      //this.profileEdit.userUrl = this.email;
-       console.log(this.attendeeDetails.attendee_path);
-        sessionStorage.setItem("imageAttendee", this.attendeeDetails.attendee_path);
-       this.imgPreview = this.attendeeDetails.attendee_path;
-      
-       
-      }
-      else{
-        console.log("no question found");
-      }
-     });
+    this.ionViewLoaded();
  
+  }
+  ionViewLoaded() {
+    var loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      duration: 5000
+    });
+
+  
+    loading.present().then(() => {
+      this._dataservice.userDetails(this.attendeeId).subscribe(res => 
+        {
+         console.log(res.data[0]);
+         this.attendeeDetails=res.data[0];
+         if(this.attendeeDetails){
+          
+        this.attendeeName = this.attendeeDetails.name;
+        this.email = this.attendeeDetails.email;
+        this.attendeeTel = this.attendeeDetails.contactNumber;
+        this.securityQuestion= this.attendeeDetails.quesAns.Question;
+        this.securityAnswer = "";
+        //this.profileEdit.userUrl = this.email;
+         console.log(this.attendeeDetails.attendee_path);
+          sessionStorage.setItem("imageAttendee", this.attendeeDetails.attendee_path);
+         this.imgPreview = this.attendeeDetails.attendee_path;
+        
+         
+        }
+        else{
+          console.log("no question found");
+        }
+       });
+      loading.dismiss();
+    });
+  
+
   }
   goBack(){
     this.navCtrl.pop();

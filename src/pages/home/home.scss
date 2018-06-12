@@ -380,5 +380,7 @@ page-home {
       font-weight: bold; 
       border: 1px solid black;
    }
-
+.fixed-content, .scroll-content{
+top: 35px;
+}
 }

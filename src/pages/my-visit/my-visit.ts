@@ -25,9 +25,9 @@ export class MyVisitPage implements OnInit {
   cabDetails: any[] = [];
   activeIds: string[] = [];
   loactionArray: any[]=[];
-  flightDetailsFlag: boolean = false;
-  hotelDetailsFlag: boolean = false;
-  cabDetailsFlag: boolean = false;
+  flightDetailsFlag: boolean = true;
+  hotelDetailsFlag: boolean = true;
+  cabDetailsFlag: boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider,public loadingCtrl: LoadingController) {
     this.visitId = navParams.get('visitId');
     this.visitDetails = navParams.get('visitDetails');
@@ -50,23 +50,7 @@ export class MyVisitPage implements OnInit {
     loading.present().then(() => {
       this.getVisitAgendas();
       this.getItinearyDeatils();
-      for(let location of this.visitDetails.visit_locations ){
-        if(this.loactionArray.length){
-          for(let oldLocation of this.loactionArray){
-            console.log(oldLocation);
-            if (oldLocation != location){
-              this.loactionArray.push(location);
-            } else{
-               break;
-            }
-          }
-        }
-        else{
-          this.loactionArray.push(location);
-        }
-      } 
-      console.log( this.loactionArray);
-    
+  
       loading.dismiss();
     });
   
@@ -91,21 +75,31 @@ export class MyVisitPage implements OnInit {
   itinearyDeatials(itinearyData) {
 
     for (let itenary in itinearyData) {
-      console.log(itinearyData[itenary]);
-
       if (itinearyData[itenary]['flightDetails']) {
-        this.flightDetailsFlag = true;
-        this.flightDetails = itinearyData[itenary]['flightDetails'];
-        this.datesProcessing(this.flightDetails);
-        console.log(this.flightDetails, "flight");
-      }
-      else {
-        this.flightDetailsFlag = false;
-      }
+           this.flightDetails = itinearyData[itenary]['flightDetails'];
+       
+        if(typeof this.flightDetails == "string" ){
+          this.flightDetailsFlag = false;
+        }
+        else {
+          this.flightDetailsFlag = true;
+          this.datesProcessing(this.flightDetails);
+        }
+        
+        }
+    
+
       if (itinearyData[itenary]['hotelDetails']) {
-        //this.hotelDetailsFlag = true;
+        this.hotelDetailsFlag = true;
         this.hotelDetails = itinearyData[itenary]['hotelDetails'];
-        this.datesProcessing(this.hotelDetails);
+        if(typeof this.hotelDetails == "string" ){
+          this.hotelDetailsFlag = false;
+        }
+        else {
+          this.hotelDetailsFlag = true;
+          this.datesProcessing(this.hotelDetails);
+        }
+   
         console.log(this.hotelDetails, "hotel");
 
       }
@@ -115,32 +109,41 @@ export class MyVisitPage implements OnInit {
       if (itinearyData[itenary]['cabDetails']) {
        // this.cabDetailsFlag = true;
         this.cabDetails = itinearyData[itenary]['cabDetails'];
-        this.datesProcessing(this.cabDetails);
+        if(typeof this.cabDetails == "string" ){
+          this.cabDetailsFlag = false;
+        }
+        else {
+          this.cabDetailsFlag = true;
+          this.datesProcessing(this.cabDetails);
+        }
+      
         console.log(this.cabDetails, "cab");
       }
       else {
-        //this.cabDetailsFlag = false;
+        this.cabDetailsFlag = false;
       }
 
     }
-    console.log(this.flightDetails);
-    this.hotelCabSorting();
+     this.hotelCabSorting();
   }
   datesProcessing(datesDetails) {
     console.log(datesDetails);
     for (let details of datesDetails) {
       console.log(details);
-      if(details.arrivalDate){
-        details.startSuperScript = this.daysSuperScript(details.arrivalDate);
-        details.endSuperScript = this.daysSuperScript(details.departureDate);
-      } else if(details.checkInDate) {
-        details.startSuperScript = this.daysSuperScript(details.checkInDate);
-        details.endSuperScript = this.daysSuperScript(details.checkOutDate);
-      }  
-       
-      // this.flightDetails.endSuperScript = this.daysSuperScript(futureVisits[0].endDate);
+    
+          if(details.arrivalDate){
+          details.startSuperScript = this.daysSuperScript(details.arrivalDate);
+          details.endSuperScript = this.daysSuperScript(details.departureDate);
+        } else if(details.checkInDate) {
+          details.startSuperScript = this.daysSuperScript(details.checkInDate);
+          details.endSuperScript = this.daysSuperScript(details.checkOutDate);
+        } else{
+          details.startSuperScript = this.daysSuperScript(details.startDate);
+          
+        }
+      
+   
     }
-
   }
   daysSuperScript(sDate) {
     var dateSuperScript = "th";
@@ -164,7 +167,7 @@ export class MyVisitPage implements OnInit {
 
   hotelCabSorting() {
     //  console.log(this.hotelDetails.length);
-    if (this.hotelDetails.length == 31) {
+    if (typeof this.hotelDetails == "string") {
       this.hotelDetailsFlag = false;
     } else {
       this.hotelDetailsFlag = true;
@@ -177,7 +180,7 @@ export class MyVisitPage implements OnInit {
         }
       }
     }
-    if (this.cabDetails.length == 29) {
+    if (typeof this.cabDetails == "string") {
       this.cabDetailsFlag = false;
     } else {
       this.cabDetailsFlag = true;
