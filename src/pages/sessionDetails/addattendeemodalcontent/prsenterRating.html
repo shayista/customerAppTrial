@@ -9,8 +9,8 @@
                 <p class="ratingPresenter">Rate the presenter for this session </p>
                   <ion-item no-border class="preseneterColumn" *ngFor="let presenter of presenters;let i = index;" >
                     <ion-avatar class="avatarPresenter" item-start>
-                      <img src="http://10.242.251.141:8080/{{presenter.pic}}">
-                    
+                      <img *ngIf="presenters.pic" src="http://10.242.251.141:8080/{{presenter.pic}}">
+                      <img  *ngIf="!presenters.pic" src="assets/imgs/profilepic_male.png">
                     </ion-avatar>
                     <h2>{{ presenter.name }}</h2>
                     <p no-box-shadow>{{ presenter.designation }}</p>

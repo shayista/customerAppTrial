@@ -20,10 +20,7 @@ export class loginPage implements OnInit {
   result: any;
   username: string;
   password: string;
-  //sessionStorage.setItem('host',window.location.href);
-  
-  // hostaname: any ="10.242.251.141:3100"
-  // public EMAIL_REGEX = `.*^[a-zA-Z0–9_.+-]+@[a-zA-Z0–9-]+.[a-zA-Z0–9-.]+$.*`
+
   constructor(public navCtrl: NavController, public _dataService: DataServiceProvider,private socket: Socket, private http: Http) {
     document.getElementById('instantChat').style.display = "none";
   }
@@ -62,14 +59,14 @@ navigateUser(userDetails) {
       this.joinRoom(userDetails.data.result.name,userDetails.data.result._id);
 
       if (userDetails.data.result.firstTimeLoginIn == 0) {
-        console.log("kjfbnlif;gbk'hpn");
+    
         this.navCtrl.push(mainHeader);
       } else {
             this.navCtrl.push(changePasswordPage);
       }
     }
     else {
-      console.log("kjfbnlif;gbk'hpn");
+    
       alert("Invalid credentials entered....");
     }
   }

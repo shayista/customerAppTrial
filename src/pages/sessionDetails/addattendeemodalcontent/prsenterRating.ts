@@ -84,6 +84,7 @@ addAttendees(f){
         {
             console.log(res);
             if(res.status == 200){
+              
                 this.activeModal.close('Close click');
             }
         }) 

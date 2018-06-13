@@ -9,6 +9,7 @@ import { ChatAdapter } from 'ng-chat';
 import { SocketIOAdapter } from './socketio-adapter';
 import { Http } from '@angular/http';
 import { ComParentChildService} from './com-parent-child.service';
+import { commentPage } from '../pages/comments/comments';
 
 
 @Component({

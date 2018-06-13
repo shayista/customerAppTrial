@@ -1,7 +1,8 @@
-<ion-content padding class="mainContainer" *ngIf="visitDetails">
+<ion-content padding class="mainContainer" *ngIf="visitDetails ">
   <div class="sessionDetailsPurpose">
    
-   <p pull-left ><i pull-left class="fa fa-angle-left" aria-hidden="true"(click)="goBack()"></i>{{visitDetails.purpose}}</p>
+   <p pull-left ><i pull-left class="fa fa-angle-left" aria-hidden="true"(click)="goBack()"></i>
+    {{visitDetails.purpose}}</p>
   </div>
   <div class="sessionDeatils">
     <p>Session Details</p>
@@ -21,7 +22,9 @@
      </ion-card-header>
        <ion-item no-border class="preseneterColumn" *ngFor="let presenters of agendaData.agenda_POC; let i =index;">
          <ion-avatar class="avatarPresenter" item-start>
-           <img src="http://10.242.251.141:8080/{{presenters.pic}}">
+           <img  *ngIf="presenters.pic" src="http://10.242.251.141:8080/{{presenters.pic}}" >
+           <img  *ngIf="!presenters.pic" src="assets/imgs/profilepic_male.png">
+           <!-- <img src="{{userPic}}" alt="user-dp" onerror="this.src='../assets/profilepics/dummy_user.gif'">  -->
          </ion-avatar>
          <h2>{{presenters.name}}</h2>
          <p no-box-shadow>{{presenters.designation}}</p>

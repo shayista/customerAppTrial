@@ -60,7 +60,7 @@ ionViewLoaded() {
   ngOnInit() {
       // this.getCustlatestVisit();
       // this.getCustPastVisit();
-      this.ionViewLoaded();
+       this.ionViewLoaded();
   }
 
   
@@ -74,9 +74,9 @@ ionViewLoaded() {
 
     this._dataservice.getCustFutureAndPastVisit(sessionStorage.getItem("attendeeId"), 1)
       .subscribe(res => {
-       
+       this.processFutureVisit(res.data);
         console.log(res);
-
+          
       },
       error => console.log("Error :: " + error)
       );

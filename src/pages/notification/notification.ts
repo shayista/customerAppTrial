@@ -60,54 +60,77 @@ export class notificationModulePage {
                                 {
                                   console.log(res);
                                   this.notificationsUnread = res.data[0].unread; 
-                                  this.notificationsRead = res.data[1].read; 
-                                   this.allNotification = this.notificationsUnread.concat( this.notificationsRead);
-                                   console.log(this.allNotification);
+                                  this.notificationsRead   = res.data[1].read; 
+                                  this.allNotification     = this.notificationsUnread.concat( this.notificationsRead);
+                                  console.log(this.allNotification);
                                   this.notifications = this.allNotification;
                                   this.notifications = this.notifications.sort();
                                 
-                                    for (let notification of this.notifications) {
-                                      
-                                    console.log(notification);
-                                  
-                                   this.notificationId.push(notification._id);
-                                   notification.periodAgo = this.daysLeft(notification.lastUpdatedDate);
-                                  
-                                 }
-                                 console.log(this.notificationUnreadCount); 
-                                  
+                                  for (let notification of this.notifications) {
+                                    //console.log(notification);
+                                    this.notificationId.push(notification._id);
+                                    notification.periodAgo = this.daysLeft(notification.lastUpdatedDate);
+                                  }
+                                  console.log(this.notificationUnreadCount);                                   
                                 },
                                 error => console.log("Error :: " + error)  
                             );
   }
 
 
-daysLeft(notifyDate){
-    let today  = Date.now();
-    let resultString = '';
+  daysLeft(notifyDate){
+     let currentDate = new Date();
+        let insertedDate = new Date(notifyDate);
+
+        let dateDiff = this.diff_hours(currentDate, insertedDate);
+        let result; 
+
+        if (dateDiff.hrDiff < 1) {
+            result = dateDiff.hrDiff + " minutes ago";
+        } else if (dateDiff.hrDiff < 24) {
+            result = dateDiff.hrDiff + " hours ago";
+        } else if (dateDiff.hrDiff > 24 && dateDiff.hrDiff < 48 ) {
+            result = "Yesterday at " + this.formatAMPM(insertedDate);
+        } else if (dateDiff.dayDiff > 1) {
+            result = dateDiff.dayDiff + " days ago";
+        }
+        
+        return result;
+  }
+
+  public diff_hours(dt2, dt1) {
+        var hrDiff = (dt2.getTime() - dt1.getTime()) / 1000;
+            hrDiff /= (60 * 60);
+        
+    return {"hrDiff" : Math.abs(Math.round(hrDiff)), "dayDiff" : Math.abs(Math.round(hrDiff/24))}; 
+  }
+
+    public formatAMPM(date) {
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var ampm = hours >= 12 ? 'pm' : 'am';
+
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = hours + ':' + minutes + ' ' + ampm;
+        return strTime;
+    } 
+
+ gotoAgenda(notification) {
+  //console.log(notification);
+  this.navCtrl.push(sessionDetailsPage,{"notification":notification});
+  if (notification.read_flag == 0) {
+   this._notificationService.markAsRead(notification)
+       .subscribe(res=>
+            {
+             
+              console.log(JSON.stringify(res.data));
+              this.getCustomerNotifications();
+            });
+  }
     
-    let sDate:any = new Date(notifyDate);
-     //no.of daysdiff in hours
-    let hoursDiff = today - Date.parse(sDate) ; 
-    if (hoursDiff < 24) {
-        resultString = hoursDiff + " hours ago";
-    } else {
-      //no.of daysdiff in days
-       resultString = Math.floor((hoursDiff / 1000 / 60 / 60 /24) + 1) + ' days ago';
-    }
-    return resultString;
- }
-
- gotoAgenda(notification){
-  this.getCustomerNotifications() //console.log(this.attendeeId+"---this.attendeeId");
-
-   this.navCtrl.push(sessionDetailsPage,{"notification":notification});
-   console.log(notification);
-//    this._notificationService.markAsRead(notification)
-//   .subscribe(res=>
-//             {
-//    console.log(JSON.stringify(res.data));
-//  });
-}
+   
+  }
 
 }

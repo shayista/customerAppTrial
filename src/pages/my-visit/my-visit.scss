@@ -55,14 +55,18 @@ page-my-visit {
         color:#fff;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
+   .companyConatiner{
+       padding-top: 10px;
+   }
    .companyConatiner .company{
        margin: 10px 10px;
+       display: inline;
    
    }
    .visitDetaikls{
      text-overflow:ellipsis;
      overflow: hidden; 
-     display: inline-block;
+     display: inline;
      margin: 10px 0 0 0;
    }
   
