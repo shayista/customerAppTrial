@@ -77,9 +77,10 @@ page-login {
     .text-input{
         margin: 0 !important;
    }
-    #loginForm input[disabled]{
-        background: green;
-   }
+//     #loginForm input[disabled]{
+//         background: gainsboro !important;
+//         color: #000;
+//    }
     .scroll-content {
         overflow-y: auto;
    }

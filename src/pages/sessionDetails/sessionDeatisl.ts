@@ -69,7 +69,7 @@ export class sessionDetailsPage {
               console.log(this.agendaData,"===this.agendaData");
             } else {
               this.agendaData = '';
-         
+          
             }
           },
           error => console.log("Error :: " + error)

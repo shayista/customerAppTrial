@@ -6,9 +6,11 @@
       <ion-content id="instantChat">
         <div class="chat-header clearfix">
             <h4 class="pull-left">Instant Chat</h4>
-            <button class="close pull-right" (click)="closeChat()">close</button>
+            <button class="close pull-right" (click)="closeChat()">
+                <img class="closeImg" src="assets/imgs/if_Close.png">
+            </button>
         </div>
-        <ng-chat *ngIf= "this.userCheck" [adapter]="adapter" [userId]="userId" [historyEnabled]="false"></ng-chat>
+        <ng-chat *ngIf= "this.userCheck" [adapter]="adapter" [userId]="userId" [historyEnabled]="false" id="ngChatContainer"></ng-chat>
     </ion-content>
         
     

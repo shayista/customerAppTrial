@@ -12,9 +12,12 @@
 </ion-item> -->
   <!-- <button ion-button full (click)="joinChat()" [disabled]="nickname === ''">Join Chat as {{ nickname }}</button> -->
   <ion-header>
+    
     <ion-navbar color="primary">
+      
       <ion-title>
-       Moneta - (Digital Assistance)
+  
+      <p (click)="goBack()"> <i class="fa fa-angle-left" aria-hidden="true"></i>Moneta - (Digital Assistance)</p> 
       </ion-title>
     </ion-navbar>
   </ion-header>
@@ -36,12 +39,12 @@
         <ion-note item-end>{{currentDate | date:"fullDate" }}</ion-note>
       </ion-item>
     </ion-list>
-    <div #map id="map"></div>
+    
   </ion-content>
   
   <ion-footer>
     <ion-toolbar color="primary">
-      <ion-input type="text" [(ngModel)]="chatBox" placeholder="Message..." (keypress)="keyPressHandler($event.keyCode, chatBox)"></ion-input>
+      <ion-input type="text" [(ngModel)]="chatBox" placeholder="Type your message here..." (keypress)="keyPressHandler($event.keyCode, chatBox)"></ion-input>
       <ion-buttons end>
         <button ion-button (click)="send(chatBox)">
           <ion-icon name="send"></ion-icon>

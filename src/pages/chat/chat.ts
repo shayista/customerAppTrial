@@ -137,4 +137,7 @@ export class Chat {
       infowindow.open(map, this);
     });
   }
+  goBack(){
+    this.navCtrl.pop();
+  }
 }

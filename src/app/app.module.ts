@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HTTP } from '@ionic-native/http';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { IonicPageModule } from 'ionic-angular';
@@ -75,6 +76,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
     HttpClientModule,
     HttpModule,
     NgChatModule,
+    FormsModule,
     SocketIoModule.forRoot(config),
     PasswordStrengthBarModule,
     NgbModule.forRoot(),

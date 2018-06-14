@@ -29,6 +29,7 @@ export class HomePage implements OnInit {
   toUser: { toUserId: string, toUserName: string };
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider, public loadingCtrl: LoadingController) {
     //document.getElementById('instantChat').style.display = "block";
+    document.getElementById('chatBot').setAttribute("style", "display:block");
     if (sessionStorage.getItem("attendeeId") == "undefined") {
       this.navCtrl.push(loginPage);
     }
@@ -60,15 +61,11 @@ ionViewLoaded() {
   ngOnInit() {
       // this.getCustlatestVisit();
       // this.getCustPastVisit();
-       this.ionViewLoaded();
+      this.ionViewLoaded();
   }
 
   
-  openChat() {
-
-    this.navCtrl.push(Chat, { "user": sessionStorage.getItem("attendeeName") });
-
-  }
+  
 
   getCustlatestVisit() {
 
@@ -76,7 +73,7 @@ ionViewLoaded() {
       .subscribe(res => {
        this.processFutureVisit(res.data);
         console.log(res);
-          
+
       },
       error => console.log("Error :: " + error)
       );

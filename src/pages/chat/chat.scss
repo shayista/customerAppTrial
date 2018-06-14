@@ -177,7 +177,44 @@ page-home {
   color: #000;
 
 }
-#map {
-  height: 100%;
+.item-inner {
+  display: block;
+}
+.item-block {
+  padding: 0 !important;
+}
+.item-block.to .item-inner .input-wrapper  ion-label{
+  text-align: right;
+  margin-right: 0;
+  padding-right: 0;
+}
+.item-block.from .item-inner .input-wrapper ion-label {
+  text-align: left;
+}
+.item-inner ion-note {
+  display: none;
+}
+ion-title p{
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ color: #000;
+ padding: 0px 0 0 10px;
+ margin: 0px;
+ vertical-align: middle;
+}
+ion-title{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+ion-title p i{
+  color: #00667f;
+  padding: 0px 15px 0px 10px;
+  margin: 0px;
+  font-size: 25px !important;
+}
+.text-input-ios{
+  padding-left: 10px; 
+}
+.text-input-md{
+  padding-left: 10px; 
 }
 }

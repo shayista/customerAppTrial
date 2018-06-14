@@ -64,13 +64,15 @@ export class notificationModulePage {
                                   this.allNotification     = this.notificationsUnread.concat( this.notificationsRead);
                                   console.log(this.allNotification);
                                   this.notifications = this.allNotification;
-                                  this.notifications = this.notifications.sort();
+                                  // this.notifications = this.notifications;
                                 
                                   for (let notification of this.notifications) {
                                     //console.log(notification);
                                     this.notificationId.push(notification._id);
                                     notification.periodAgo = this.daysLeft(notification.lastUpdatedDate);
+                                    
                                   }
+                                  this.notificationId=[];
                                   console.log(this.notificationUnreadCount);                                   
                                 },
                                 error => console.log("Error :: " + error)  
@@ -119,17 +121,18 @@ export class notificationModulePage {
 
  gotoAgenda(notification) {
   //console.log(notification);
+  
   this.navCtrl.push(sessionDetailsPage,{"notification":notification});
   if (notification.read_flag == 0) {
    this._notificationService.markAsRead(notification)
        .subscribe(res=>
             {
-             
-              console.log(JSON.stringify(res.data));
               this.getCustomerNotifications();
+              console.log(JSON.stringify(res.data));
+            
             });
   }
-    
+  this.getCustomerNotifications();
    
   }
 

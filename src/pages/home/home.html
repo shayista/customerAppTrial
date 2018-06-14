@@ -9,7 +9,7 @@
          &nbsp;{{ daysRemaining }}
       </span>
     </div>
-    <ion-list class="list listMyVisit"  style="  background: url(assets/imgs/Panel_BG.png);background-size: cover;">
+    <ion-list class="list listMyVisit"  style="background: url(assets/imgs/Panel_BG.png);background-size: cover;">
    <div class="clearLeft"></div>
         <p *ngIf="!firstVisit"  class="noUpcomingVisitsfuture">No Upcoming Visits.</p>
       
@@ -51,8 +51,8 @@
   <div class="visitsPast"  >
     <div class="pastVisitHeader">
       <h4>Past Visits</h4>
-      <div class="closed">
-        <i class="fa fa-circle circle" aria-hidden="true"></i>Closed</div>
+      <div *ngIf="pastVisits.length" class="closed">
+        <i  class="fa fa-circle circle" aria-hidden="true"></i>Closed</div>
     </div>
     <div class="clearLeft"></div>
     <p *ngIf="!pastVisits.length" class="noUpcomingVisits" >No Past Visits.</p>
@@ -93,9 +93,6 @@
       
   </div>
 
-    <ion-fab middle right (click)="openChat()"
-     >
-      <button ion-fab>Chat</button>
-    </ion-fab>
+   
 
 </ion-content>

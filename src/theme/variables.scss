@@ -213,12 +213,9 @@ max-height: 44px;
 .modal-content{
   top:250px;
   left: 6px;
- //   width: 381px;
-  //float: left;
+
 }
-// .modal-dialog{
-//   float: left;
-// }
+
 .show{
   background-color: rgba(0, 0, 0, 0.7);
 }
@@ -236,3 +233,6 @@ ion-spinner  {
 }
 $spinner-ios-bubbles-color : #00667f;
 $spinner-md-bubbles-color : #00667f;
+.back-button.show-back-button{
+  display: none !important;
+}

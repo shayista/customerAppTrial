@@ -1,12 +1,12 @@
 <ion-content padding class="mainContainer" *ngIf="visitDetails" no-border>
-  <div ng-disabled="clicked">
+  <div ng-disabled="clicked" class="detailsContiner">
     <div class="subHeader">
       <p class="button-clear" ng-disabled="clicked" (click)="goBack()">
         <i class="fa fa-angle-left" aria-hidden="true"></i>{{visitDetails.purpose}}
       </p>
       <div class="locationDetails" >
       <div class="companyConatiner">
-        <div class="company">Cognizant</div>
+        <span class="company">Cognizant</span>
           <div class="visitDetaikls" *ngFor="let visitDetails of visitDetails.visit_locations; let i =index" >
              {{visitDetails.country}}, {{visitDetails.city}} - {{visitDetails.visitingLocation}}
           </div>
@@ -63,13 +63,11 @@
                           <ion-list item-start class="agendaList" *ngFor="let agendaDetails of agenda.records" (click)="openSessionDetails(agendaDetails)">
                              
                               <ion-item class="ionItem start">
-                                <div class="profilesPresenters" *ngFor="let img of agendaDetails.agenda_POC">
-                               
-                                    <img class="presenterOne" *ngIf="img.imgUrl" src="http://10.242.251.141:8080/{{ img.imgUrl }}"
-                                    >
-                                    <img class="presenterOne" *ngIf="!img.imgUrl" src="assets/imgs/profilepic_male.png">
+                                <div class="profilesPresenters" *ngFor="let presenters of agendaDetails.agenda_POC; let i =index;">
+                                    <img class="presenterOne" *ngIf="presenters.pic" src="http://10.242.251.141:8080/{{ presenters.pic }}">
+                                    <img class="presenterOne" *ngIf="!presenters.pic" src="assets/imgs/profilepic_male.png">
                                 </div>
-                                <p class="timing"> {{ agendaDetails.from}} - {{ agendaDetails.to}}</p>
+                                <p class="timing"> {{ agendaDetails.from }} - {{ agendaDetails.to}}</p>
                                 <p class="titleTopic">{{ agendaDetails.topic}} </p>
                               </ion-item>
 
@@ -84,7 +82,11 @@
               </ion-list>
         </div>
          
-            </div>
+      </div>
+      
+    </div>
+    <div [class.hide]="!checkStatus" class="noAgendas noServices" *ngIf="!agendaData">
+      <p> No agendas available</p>
     </div>
  
 <div [class.hide]="checkStatus" class="itinerary-container"  > 
@@ -119,7 +121,7 @@
                   <p class="reachingTime">{{flight.departureDate | date:"dd"
                     }}<sup class="subScript">{{ flight.endSuperScript }}</sup>  {{flight.departureDate | date:"MMM"
                   }}, 
-               <span> {{flight.departureTime}}</span>  
+               <span> {{flight.departureTime }}</span>  
                <span>(Departure)</span>
                 </p>
               </div>
@@ -165,7 +167,7 @@
                             
                               <ion-item class="airportAsssitance" no-border no-margin no-padding >
                                 <ion-avatar class="avtar" item-start>
-                                  <img class="airportAssistancePic" src="assets/imgs/profilepic_male.png">
+                                  <img class="airportAssistancePic" src="assets/imgs/profile_picture.png">
                                   <!-- <img class="airportAssistancePic" src="http://10.242.251.141:8080/{{ agendaDetails.agenda_POC[0].imgUrl }}"> -->
                                 </ion-avatar>
                                 <h2>{{ flight.cab.POCName }}</h2>
@@ -182,8 +184,8 @@
     </ngb-panel>
      
   </ngb-accordion>
-  <div *ngIf="!flightDetailsFlag">
-    <p> No flight services available</p>
+  <div class="noServices" *ngIf="!flightDetailsFlag">
+    <p> No Itinerary available</p>
   </div>
   </div>
 

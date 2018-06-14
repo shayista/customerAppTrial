@@ -4,6 +4,7 @@ import { loginPage } from '../login/login';
 import { DataServiceProvider } from '../../providers/data-service';
 import { mainHeader } from '../mainHeader/mainHeader';
 import { Input } from '@angular/core/src/metadata/directives';
+import { FormControl, FormGroup, Validators,ValidatorFn,AbstractControl } from '@angular/forms';
 
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
@@ -38,6 +39,7 @@ export class profileDetailsPage {
     'contactNumber' : "",
     'userUrl'       : "",
   }
+  user: FormGroup;
   constructor( public navParams: NavParams,public viewCtrl: ViewController , public navCtrl: NavController, private _dataservice :DataServiceProvider, private transfer: FileTransfer,
     private camera: Camera, public toastCtrl: ToastController,   public loadingCtrl: LoadingController, private imagePicker: ImagePicker,private base64: Base64) {
 //  this.username=this.navParams.get("username");
@@ -48,8 +50,7 @@ this.attendeeId      = sessionStorage.getItem("attendeeId");
   }
   ngOnInit() {    
     this.ionViewLoaded();
- 
-  }
+    }
   ionViewLoaded() {
     var loading = this.loadingCtrl.create({
       spinner: 'bubbles',
@@ -91,9 +92,9 @@ this.attendeeId      = sessionStorage.getItem("attendeeId");
   }
   enableEdit(){
     
-    if( !this.editOption){
+    if(!this.editOption){
     
-    var saveEdit =  document.getElementById("editOption").innerHTML="Save";
+   // var saveEdit =  document.getElementById("editOption").innerHTML="Save";
     var inputTangs = document.getElementsByTagName("input");
     var ionSelect = document.getElementById("securityDropDown");
     ionSelect.style.backgroundColor ="#fff";
@@ -127,7 +128,7 @@ this.attendeeId      = sessionStorage.getItem("attendeeId");
             
 
       this.editOption = false;
-      saveEdit =  document.getElementById("editOption").innerHTML="Edit";
+     // saveEdit =  document.getElementById("editOption").innerHTML="Edit";
       var inputTangs = document.getElementsByTagName("input");
       var i;
       for (i = 0; i < inputTangs.length; i++) {

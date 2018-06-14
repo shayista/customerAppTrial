@@ -1,7 +1,7 @@
 import { Component,Input } from '@angular/core';
 import { NavController, ViewController, App, Events, NavParams, MenuController  } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-
+import { Chat } from '../chat/chat';
 import { loginPage } from '../login/login';
 import { MyVisitPage } from '../my-visit/my-visit';
 import { PopoverController } from 'ionic-angular';
@@ -115,6 +115,14 @@ export class mainHeader implements OnInit{
       }
       openChatInstant(){
          document.getElementById('instantChat').style.display = "block";
+      }
+
+      
+
+      openChat() {
+
+        this.navCtrl.push(Chat, { "user": sessionStorage.getItem("attendeeName") });
+
       }
 }
 

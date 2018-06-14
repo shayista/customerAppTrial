@@ -1,21 +1,21 @@
 <ion-content>
-        <form class="formFields"  >
+        <form #f="ngForm" class="formFields"  (ngSubmit)="f.valid && enableEdit()">
     <div class="subHeaderProfile">
         <p class="button-clear" (click)="goBack()">
-            <i class="fa fa-chevron-left" aria-hidden="true"></i>Profile
+            <i class="fa fa-angle-left" aria-hidden="true"></i>Profile
         </p>
       
-        <p class="editOption" id="editOption"  (click)="enableEdit()">Edit</p>
-
-
+        <p class="editOption" id="editOption" *ngIf="!editOption" (click)="enableEdit()">Edit</p>
+        <button class="editOption" *ngIf="editOption" [disabled]="f.invalid" type="submit">Save</button>
+         
         <ion-card class="profileMenu" >
         
             <ion-item no-margin no-padding (click)="getPhoto()">
               
-                <!-- <input class="profilePic"  type="file" name="userFile" /> -->
-                <img class="attendeePhoto" src="http://10.242.251.141:8080/{{ imgPreview }}" >
-                <!-- <img class="profilePic" src="assets/imgs/profilepic_female.png"> -->
-                <!-- <i class="fa fa-camera cameraIcon" aria-hidden="true"></i> -->
+         
+                <img class="attendeePhoto" *ngIf="imgPreview" src="http://10.242.251.141:8080/{{ imgPreview }}" >
+                <img class="attendeePhoto"  *ngIf="!imgPreview" src="assets/imgs/profilepic_male.png" >
+          
                
             </ion-item>
         </ion-card>
@@ -36,13 +36,16 @@
             <!-- <div class="usernameRequirement" class="error" *ngIf="newPasswordValid.touched && !newPasswordValid.valid">
             Password is required
         </div> -->
-
+          <div>            
             <label> Contact Number</label>
-            <input type="tel" [disabled]="!editOption" [value]="attendeeDetails.contactNumber" name="attendeeTel" [(ngModel)]="attendeeTel" #attendeeTelValid=ngModel
+            <input type="tel" [disabled]="!editOption" [value]="attendeeDetails.contactNumber" name="attendeeTel" [(ngModel)]="attendeeTel" #attendeeTelValid=ngModel   maxlength="14"
                 required/>
-            <!-- <div class="usernameRequirement" class="error" *ngIf="newPasswordValid.touched && !newPasswordValid.valid">
-            Password is required
-        </div> -->
+         <div class="usernameRequirement" class="error" *ngIf="attendeeTelValid.touched && !attendeeTelValid.valid">
+        Enter a valid phone number
+            </div>
+        </div>
+        
+
             <p>Change Security Question</p>
             <label>Security Question</label>
 
@@ -54,7 +57,7 @@
             </ion-select>
 
             <label> Your Answer</label>
-            <input type="password" [disabled]="!editOption" placeholder="Enter the security answer" name="reenterNewPassword" [(ngModel)]="securityAnswer" />
+            <input type="text" [disabled]="!editOption" [value]="attendeeDetails.quesAns.answer" name="reenterNewPassword" [(ngModel)]="securityAnswer"  />
             <!-- <div class="btn-field-org" [hidden] = "!editOption">
                 <button type="submit" class="btn btn-default sub" [disabled]=f.invalid>Save</button>
                 <button type="button" (click)="skip()" class="btn btn-default can">Cancel</button>

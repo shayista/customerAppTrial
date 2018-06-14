@@ -217,9 +217,10 @@ export class MyVisitPage implements OnInit {
           if (res.data.length > 0) {
             this.agendaData = res.data;
             this.agendaData.dayCount = this.displayAgenda(res.data);
-            console.log(this.agendaData, "===agendaData");
+            console.log(this.agendaData[0].records[0].from, "===agendaData");
           } else {
-            alert("no agendas");
+            // alert("no agendas");
+            this.agendaData = false;
           }
         },
         error => console.log("Error :: " + error)
@@ -274,4 +275,17 @@ export class MyVisitPage implements OnInit {
     console.log(agendaData);
     this.navCtrl.push(sessionDetailsPage, { "agendaData": agendaData, "visitDetails": this.visitDetails })
   }
+ tConvert (time) {
+    // Check correct time format and split into components
+    time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+  
+    if (time.length > 1) { // If time format correct
+      time = time.slice (1);  // Remove full string match value
+      time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+      time[0] = +time[0] % 12 || 12; // Adjust hours
+    }
+    return time.join (''); // return adjusted time or original string
+  }
+  
+ 
 }
