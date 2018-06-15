@@ -19,15 +19,16 @@
   
       <p (click)="goBack()"> <i class="fa fa-angle-left" aria-hidden="true"></i>Moneta - (Digital Assistance)</p> 
       </ion-title>
+ 
     </ion-navbar>
   </ion-header>
   
   <ion-content padding>
    
     <ion-list no-lines>
-      <ion-item text-wrap *ngFor="let m of messages" [ngClass]="{ 'from': m.from === 'bot','to':   m.from === 'user' }">
+      <ion-item text-wrap *ngFor="let m of messages" [ngClass]="{ 'from': m.from === 'Bot','to':   m.from === user }">
         <ion-avatar item-start>
-          <img [src]="m.from === 'bot' ? 'https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Robot-512.png' : 'https://image.flaticon.com/icons/png/128/149/149071.png'">
+                <img [src]="m.from === 'Bot' ? 'https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Robot-512.png' : 'https://image.flaticon.com/icons/png/128/149/149071.png'">
         </ion-avatar>
         <h2>
           <strong>{{m.from}}</strong>

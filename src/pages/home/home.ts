@@ -134,8 +134,7 @@ ionViewLoaded() {
   }
 
   getCustPastVisit() {
-    // setInterval(
-    //   () => {
+  
     this._dataservice.getCustFutureAndPastVisit(sessionStorage.getItem("attendeeId"), 0)
       .subscribe(res => {
 
@@ -148,9 +147,7 @@ ionViewLoaded() {
 
 
   }
-  //     , 1000);
-  //  }
-
+    
   processPastVisits(pastVisits) {
     let visitsLists: Array<Object> = [];
     console.log(JSON.stringify(pastVisits) + "--pastVisits");

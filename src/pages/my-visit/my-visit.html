@@ -8,7 +8,7 @@
       <div class="companyConatiner">
         <span class="company">Cognizant</span>
           <div class="visitDetaikls" *ngFor="let visitDetails of visitDetails.visit_locations; let i =index" >
-             {{visitDetails.country}}, {{visitDetails.city}} - {{visitDetails.visitingLocation}}
+             {{visitDetails.city | uppercase | slice: 0:3 }} - ({{visitDetails.visitingLocation}})
           </div>
         </div>
     
@@ -54,7 +54,7 @@
                      Visiting Location : <span>{{ agenda.records[0].visitCity[0]  | uppercase |slice: 0:3 }} - {{ agenda.records[0].visitLocation[0] }}</span>
                     </p>
                     <p class="meetingRoomDetails">
-                     Meeting Room: <span>{{ agenda.records[0].agenda_meetingRoom[0] }}</span>
+                     Meeting Room : <span>{{ agenda.records[0].agenda_meetingRoom[0] }}</span>
                     </p>
                 </div>
                 <ion-item>
@@ -91,9 +91,15 @@
  
 <div [class.hide]="checkStatus" class="itinerary-container"  > 
 
-  <ngb-accordion  *ngIf="flightDetailsFlag" [closeOthers]="true"  #acc="ngbAccordion" activeIds="flightDetails-0"  >
-    <ngb-panel   *ngFor="let flight of flightDetails; let i= index" title="{{ flight.from }} 
-    ({{ flight.departureDate | date: MMM }})" id="flightDetails-{{i}}">
+  <ngb-accordion  (click)="arrowFlag()" *ngIf="flightDetailsFlag" [closeOthers]="true"  #acc="ngbAccordion" activeIds="flightDetails-0"  >
+    <ngb-panel  *ngFor="let flight of flightDetails; let i= index" title="{{ flight.to }} 
+    ({{ flight.departureDate | date: MMM }}) " id="flightDetails-{{i}}">
+    <ng-template ngbPanelTitle  > 
+      <span class="leftArrowAccordion">
+        <i class="fa fa-angle-right pull-right" *ngIf="!arrowUp" aria-hidden="true"></i>
+        <i class="fa fa-angle-up pull-right" *ngIf="arrowUp" aria-hidden="true"></i>
+      </span>
+    </ng-template>
             <ng-template ngbPanelContent class="panelContent" *ngIf="flightDetailsFlag">
               <div class="flightDetails" >
               <p class="flightNumber">Flight Number : <span>{{flight.flightNumber}}</span></p>
@@ -101,8 +107,9 @@
                <div class="flexConatiner">
               <p class="source pull-left"> {{flight.from}}</p>
               <div class="connectoresFlight">
-              <span class="connectors pull-left ">--------</span>
-              <i class="fa fa-space-shuttle pull-left flight" aria-hidden="true"></i>
+              <span class="connectors pull-left">--------</span>
+              <img class="connectorsImg pull-left" src="assets/imgs/flight@3x.png">
+              <!-- <i class="fa fa-space-shuttle pull-left flight" aria-hidden="true"></i> -->
               <span class="connectors pull-left">--------</span>
               </div>
               <p class="destination pull-right">{{flight.to}}</p>
@@ -110,22 +117,22 @@
               </div>
             
               <div class="clearfix"></div>
-              <div class="flightTimings">
+              <!-- <div class="flightTimings">
                   <p class="startingTime ">{{flight.arrivalDate | date:"dd"
                     }}<sup class="subScript">{{ flight.startSuperScript }}</sup> {{flight.arrivalDate | date:"MMM"
                   }},
                   <span> {{flight.arrivalTime}}</span> 
-                  <span>(Arrival)</span>
+                  <span>(Arrival to {{ flight.to }})</span>
                   </p>
             
                   <p class="reachingTime">{{flight.departureDate | date:"dd"
                     }}<sup class="subScript">{{ flight.endSuperScript }}</sup>  {{flight.departureDate | date:"MMM"
                   }}, 
                <span> {{flight.departureTime }}</span>  
-               <span>(Departure)</span>
+               <span>(Departure from {{ flight.to }})</span>
                 </p>
-              </div>
-              <div class="clearfix"></div>
+              </div> -->
+              <!-- <div class="clearfix"></div> -->
             
             </div>
               </div>
@@ -135,7 +142,7 @@
                     
                       <ion-item class="hotelDetails" no-border>
                       
-                        <h2>Your Stay at {{flight.to}}</h2>
+                        <h2>Your stay at {{flight.to}}</h2>
                         <p class="hotelName">{{ flight.hotel.visit_HotelBooked[0].name }}</p>
                       <!-- //  <p class="distance">0.9 miles from Airport</p> -->
                       </ion-item>
@@ -161,7 +168,7 @@
                       <p>No hotel request raised</p>
                     </div>
                     <div class="airportTransfer" *ngIf="cabDetailsFlag">
-                      <h6>Airport Transfer</h6>
+                      <h2>Airport Transfer</h2>
                       <p>Pickup Info: {{ flight.cab.pickUpFrom}}, <span>{{ flight.cab.startDate | date: "d" }}<sup class="subScript">{{ flight.cab.startSuperScript }}</sup> {{ flight.cab.startDate | date: "MMM" }} | {{ flight.cab.arrivalTime }} </span></p>
                         <ion-card no-border no-padding class="airportMediator">
                             

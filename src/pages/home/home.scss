@@ -3,6 +3,7 @@ page-home {
         padding: 0;
         margin: 0;
         font-family: 'Segoe UI';
+        text-transform: capitalize;
    }
     // HEADER SECTION // // VISITS SECTION // 
    /* COMMON FOR PAST AND MY VISITS */
@@ -36,6 +37,7 @@ page-home {
     .myVisitHeader h4 {
         margin: 7px 15px;
         float: left;
+        text-transform: capitalize;
         font-size: 19px;
         color: #000;
         font-weight: 500 !important;
@@ -104,6 +106,7 @@ page-home {
         color: #fff !important;
         font-weight: normal;
         font-size: 15px;
+        text-transform: capitalize;
         padding:15px 0 15px 65px;
         width:100%;
         border-bottom: 1px solid gainsboro ;
@@ -162,6 +165,7 @@ page-home {
     .pastVisitHeader{
         float: left;
         width: 100%;
+        text-transform: capitalize;
         min-height: 43px;
         // border: 1px solid #888;
         border-bottom: 1px solid gainsboro;
@@ -171,6 +175,7 @@ page-home {
         margin: 11px 15px;
         float: left;
         font-size: 19px;
+        text-transform: capitalize;
         color: #000;
         font-weight: 500 !important;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -240,6 +245,7 @@ page-home {
         width:100%;
         background: transparent !important;
         box-shadow: none;
+        text-transform: capitalize;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .pastVisitHeading{
@@ -250,6 +256,7 @@ page-home {
         border:none;
         margin: 0 !important;
         font-weight: 500;
+        text-transform: capitalize;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .presentVisitHeading{
@@ -259,6 +266,7 @@ page-home {
         padding: 3.2% 4% 4%;
         border:none;
         font-weight: normal;
+        text-transform: capitalize;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .pastView{
@@ -270,6 +278,7 @@ page-home {
         font-weight:500;
         padding: 0;
         margin: 1% 4.41% 0 0;
+        text-transform: capitalize;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .arrowRight{
@@ -318,9 +327,11 @@ page-home {
         text-align: -webkit-left;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         display: none;
+        text-transform: capitalize;
    }
     .back-button.show-back-button{
         display: none;
+    
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     // .card{
@@ -343,6 +354,7 @@ page-home {
         width: 23px;
    }
     .item-inner{
+        text-transform: capitalize;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         border: none !important;
    }
@@ -360,6 +372,7 @@ page-home {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         color: #fff !important;
         font-weight: lighter;
+        text-transform: capitalize;
         font-size: 15px;
         padding:0px 0 7px 40px;
         width:100%;
@@ -376,7 +389,8 @@ page-home {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        color: #ccc !important;
+        text-transform: capitalize;
+        color : #ccc !important;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
    .fab-ios{
@@ -384,7 +398,5 @@ page-home {
       font-weight: bold; 
       border: 1px solid black;
    }
-// .fixed-content, .scroll-content{
-// top: 35px;
-// }
+
 }

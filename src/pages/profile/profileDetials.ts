@@ -69,7 +69,7 @@ this.attendeeId      = sessionStorage.getItem("attendeeId");
         this.email = this.attendeeDetails.email;
         this.attendeeTel = this.attendeeDetails.contactNumber;
         this.securityQuestion= this.attendeeDetails.quesAns.Question;
-        this.securityAnswer = "";
+        this.securityAnswer = this.attendeeDetails.quesAns.answer;
         //this.profileEdit.userUrl = this.email;
          console.log(this.attendeeDetails.attendee_path);
           sessionStorage.setItem("imageAttendee", this.attendeeDetails.attendee_path);

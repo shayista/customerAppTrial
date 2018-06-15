@@ -24,6 +24,7 @@ export class notificationModulePage {
         this.navCtrl.push(loginPage);
     } else {
       this.attendeeId   = sessionStorage.getItem("attendeeId");
+      
     }
   }
   

@@ -24,21 +24,21 @@
  
         <div class="fromConatiner" *ngIf="attendeeDetails" >
             <label>Name</label>
-            <input type="text" [disabled]="!editOption" [value]="attendeeDetails.name" name="attendeeName" [(ngModel)]="attendeeName" #attendeeNameValid=ngModel
+            <input type="text" [disabled]="!editOption" [value]="attendeeDetails.name" name="attendeeName" [(ngModel)]="attendeeName" #attendeeNameValid=ngModel minlength="4"
                 required/>
-            <!-- <div class="usernameRequirement" class="error" *ngIf="newPasswordValid.touched && !newPasswordValid.valid">
-            Password is required
-        </div> -->
+            <div class="usernameRequirement" class="error" *ngIf="attendeeNameValid.touched && !attendeeNameValid.valid">
+            Enter a valid name
+        </div>
 
             <label> Email</label>
             <input type="email" [disabled]="!editOption" [value]="attendeeDetails.email" name="attendeeEmail" [(ngModel)]="email" #attendeeEmailValid=ngModel
                 required/>
-            <!-- <div class="usernameRequirement" class="error" *ngIf="newPasswordValid.touched && !newPasswordValid.valid">
-            Password is required
-        </div> -->
+            <div  class="error" *ngIf="attendeeEmailValid.touched && !attendeeEmailValid.valid">
+            Email is required
+        </div>
           <div>            
             <label> Contact Number</label>
-            <input type="tel" [disabled]="!editOption" [value]="attendeeDetails.contactNumber" name="attendeeTel" [(ngModel)]="attendeeTel" #attendeeTelValid=ngModel   maxlength="14"
+            <input type="tel" [disabled]="!editOption" [value]="attendeeDetails.contactNumber" name="attendeeTel" [(ngModel)]="attendeeTel" #attendeeTelValid=ngModel  
                 required/>
          <div class="usernameRequirement" class="error" *ngIf="attendeeTelValid.touched && !attendeeTelValid.valid">
         Enter a valid phone number
@@ -57,7 +57,7 @@
             </ion-select>
 
             <label> Your Answer</label>
-            <input type="text" [disabled]="!editOption" [value]="attendeeDetails.quesAns.answer" name="reenterNewPassword" [(ngModel)]="securityAnswer"  />
+            <input type="text" [disabled]="!editOption" [value]="attendeeDetails.quesAns.answer" name="securityAnswer" [(ngModel)]="securityAnswer"  />
             <!-- <div class="btn-field-org" [hidden] = "!editOption">
                 <button type="submit" class="btn btn-default sub" [disabled]=f.invalid>Save</button>
                 <button type="button" (click)="skip()" class="btn btn-default can">Cancel</button>

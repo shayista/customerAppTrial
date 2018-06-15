@@ -54,7 +54,8 @@ box-shadow: 1px 1px 12px gray;
     margin: 0;
     color: #fff;
     overflow: hidden;
-    white-space: nowrap;
+    //white-space: nowrap;
+    word-wrap: break-word;
     box-shadow: none;
     text-overflow: ellipsis;
     }

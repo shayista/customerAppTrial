@@ -2,7 +2,8 @@ page-my-visit {
     
         padding: 0;
         margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;       
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;     
+        text-transform: capitalize;  
     // HEADER SECTION // // AGENDA VIEW SECTION // 
     .mainContainer{
         float: left !important;
@@ -45,7 +46,7 @@ page-my-visit {
    }
     .button-clear i{
         font-size: 25px;
-        margin:0 10px 0 15px;
+        margin:0 20px 0 10px;
         color: #00677f;
         font-weight: lighter;
    }
@@ -59,8 +60,9 @@ page-my-visit {
    }
    .companyConatiner .company{
        padding: 10px 10px 0;
-       font-weight: bold;
+       font-weight: 550;
        display: block;
+       font-size: 19px;
    
    }
    .visitDetaikls{
@@ -83,25 +85,31 @@ page-my-visit {
    }
     .visitingLocationDetails{
         margin-bottom: 1.199%;
-        font-size: 14px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        font-size: 15px;
+        word-wrap: break-word;
+        width: 300px;
         overflow: hidden;
+        font-weight: normal;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .visitingLocationDetails span{
         font-size: 16px;
+        font-weight: 500;
+        margin-left: 5px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .meetingRoomDetails span{
         font-size: 16px;
+        margin-left: 15px;
+        font-weight: 500;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .meetingRoomDetails{
         padding: 0 !important;
         margin: 0 !important;
-        font-size: 14px;
-        white-space: nowrap;
+        font-size: 15px;
+        font-weight: normal;
+        //white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -115,6 +123,10 @@ page-my-visit {
         overflow: hidden;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
+   .connectorsImg{
+       width:30px;
+       height: 26.2px;
+   }
     .profilesPresenters{
         margin-top: 4.79%;
         float: right;
@@ -127,15 +139,18 @@ page-my-visit {
    }
     .daysCount{
         padding-bottom: 10px !important;
-        font-size: 13px !important;
+        font-size: 15px !important;
         color: #999;
         clear: both;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
     .daysCount span{
         color: #fff;
-        font-size: 13px !important;
+        font-size: 15px !important;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   }
+   .daysCount i{
+       font-size: 25px;
    }
     .routingContainer{
         border-radius:2px;
@@ -287,7 +302,7 @@ page-my-visit {
     .label{
         color: #000;
         text-align: left;
-        padding: 0 0 0 5px;
+        padding: 0;
         margin: 0;
         max-height: 100%;
 
@@ -359,6 +374,7 @@ page-my-visit {
        background-color: #64A70B;
        color: #fff;
        width: 100%;
+       padding: 0 0 8px 0;
    }
    .flight{
        padding-top: 3px;
@@ -451,19 +467,20 @@ page-my-visit {
     background: transparent;
     margin: 0 0 15px 0;
     padding: 0; 
+    text-transform: capitalize;
 }
 .hotelDetails h2{
-    font-size: 17px;
-    font-weight: bold;
+    font-size: 19px;
+    font-weight: 500;
     color: #000;
-    margin: 0 0 10px 0;
+    margin: 0 0 2px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .hotelName{
     color: #666;
     font-weight: 400;
-    font-size: 15px;
-    margin: 0 0 10px 0;
+    font-size: 19px;
+    margin: 0 0 2px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .distance{
@@ -488,7 +505,7 @@ page-my-visit {
 
 .hotelPic{
     border-radius: 6px 6px 0 0;
-   // margin: 0 0 15px 0;
+   margin: 0 0 0 4px;
 }
 .checkinDetails{
     background-color: gainsboro;
@@ -517,17 +534,17 @@ page-my-visit {
     font-weight: bold;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.airportTransfer h6{
+.airportTransfer h2{
     color: #000;
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 15px;
+    font-size: 19px;
+    font-weight: 500;
+    margin: 0 0 3px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     .airportTransfer p{
         color: #666;
-        font-size: 14px;
-        font-weight: normal;
+        font-weight: 400;
+        font-size: 17px;
         margin-bottom: 15px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -540,15 +557,15 @@ page-my-visit {
        
     }
     .airportAsssitance h2{
-        font-size: 16px;
+        font-size: 19px;
         color: #333;
-        font-weight: bold;
+        font-weight: 600;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     .airportAsssitance p{
-        font-size: 13px;
+        font-size: 16px;
         color: #666;
-        font-weight: bold;
+        font-weight: 500;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     .airportTransfer{
@@ -561,7 +578,7 @@ page-my-visit {
     .imageHotel{
         border-radius: 6px 6px 0 0;
         background-image: url(../assets/imgs/hotel.JPG);
-        width: 100%;
+        width: 99%;
         min-height: 129px;
     }
     .row{
@@ -571,14 +588,23 @@ page-my-visit {
         min-height: 49px;
         background-color: #00667f;
         color: #fff;
-        margin:0 0 10px 0;
-        padding: 11px 0 0 15px;
+        margin:0;
+        display: block;
+        width: 100%;
+        font-size: 17px;
+        padding: 12px 20px 0 20px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         
     }
     a:focus, a:hover{
         color: #fff;
-        text-decoration: none;
+        text-decoration: none !important;
+    }
+    a{
+        display: block;
+    }
+    .leftArrowAccordion i{
+        font-size: 25px;
     }
     .accordianPlace{
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

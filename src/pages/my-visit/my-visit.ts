@@ -5,6 +5,7 @@ import { DataServiceProvider } from '../../providers/data-service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { sessionDetailsPage } from '../sessionDetails/sessionDeatisl';
 import { LoadingController } from 'ionic-angular';
+import { concat } from 'rxjs/operators/concat';
 
 @Component({
   selector: 'page-my-visit',
@@ -28,6 +29,7 @@ export class MyVisitPage implements OnInit {
   flightDetailsFlag: boolean = true;
   hotelDetailsFlag: boolean = true;
   cabDetailsFlag: boolean = true;
+  arrowUp : boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider,public loadingCtrl: LoadingController) {
     this.visitId = navParams.get('visitId');
     this.visitDetails = navParams.get('visitDetails');
@@ -217,7 +219,14 @@ export class MyVisitPage implements OnInit {
           if (res.data.length > 0) {
             this.agendaData = res.data;
             this.agendaData.dayCount = this.displayAgenda(res.data);
-            console.log(this.agendaData[0].records[0].from, "===agendaData");
+            console.log(this.agendaData, "===agendaData");
+            this.agendaData.forEach((element,index) => {
+              element.records.forEach((element1,index1) => {
+                    this.agendaData[index].records[index1].from = this.tConvert(element1.from);
+                    this.agendaData[index].records[index1].to= this.tConvert(element1.to);
+                });
+            });
+           
           } else {
             // alert("no agendas");
             this.agendaData = false;
@@ -277,14 +286,38 @@ export class MyVisitPage implements OnInit {
   }
  tConvert (time) {
     // Check correct time format and split into components
-    time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
-  
-    if (time.length > 1) { // If time format correct
-      time = time.slice (1);  // Remove full string match value
-      time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
-      time[0] = +time[0] % 12 || 12; // Adjust hours
+    if(time != undefined) {
+      var timeSplit = time.split(':'),
+          hours,
+          minutes,
+          meridian;
+          hours = timeSplit[0];
+          minutes = timeSplit[1];
+
+      if (hours > 12) {
+          meridian = 'PM';
+          hours -= 12;
+      } else if (hours < 12) {
+          meridian = 'AM';
+          if (hours == 0) {
+              hours = 12;
+          }
+      } else {
+          meridian = 'PM';
+      }
+      return (hours + ':' + minutes + ' ' + meridian);
     }
-    return time.join (''); // return adjusted time or original string
+  }
+
+  arrowFlag(){
+    if(this.arrowUp){
+      this.arrowUp = false; 
+      console.log(this.arrowUp);
+    }
+  
+    else
+{this.arrowUp = true; 
+console.log(this.arrowUp);}
   }
   
  

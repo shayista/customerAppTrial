@@ -12,7 +12,10 @@ import * as moment from 'moment';
 */
 
 export class Message {
-  constructor(public msg: string, public from: string, public iconURL) {}
+  user: any;
+  constructor(public msg: string, public from: string, public iconURL   ) {
+
+  }
 }
 
 @Injectable()
@@ -24,14 +27,17 @@ export class MessageAgentProvider {
   private readonly baseIconUrl = "http://openweathermap.org/img/w/";
   conversation = new BehaviorSubject<Message[]>([]);
   weatherDay: string = "today";
-
-  constructor() {
+  attendeeId: any;
+  constructor( ) {
     //console.log("Hello WeatherAgentProvider Provider");
+    this.attendeeId   = sessionStorage.getItem("attendeeName");
+
   }
 
   // Sends and receives messages via DialogFlow.
   talk(msg: string) {
-    const userMessage = new Message(msg, "user", "");
+  
+    const userMessage = new Message(msg,this.attendeeId,"");
     this.update(userMessage);
     this.detectWeatherDay(userMessage);
 
@@ -50,7 +56,7 @@ export class MessageAgentProvider {
         }
 
 
-        const botMessage = new Message(speech + "\n" + formatedMessage, "bot", iconURL);
+        const botMessage = new Message(speech + "\n" + formatedMessage, "Bot", iconURL);
 
         this.update(botMessage);
       })
