@@ -17,7 +17,7 @@ import { LoadingController } from 'ionic-angular';
 })
 export class HomePage implements OnInit {
   attendeeDeatils: any;
-
+  FeedbackFlag: boolean = false;
   daysRemaining: any = null;
   firstVisit: any;
   pastVisits: Array<Object> = [];
@@ -26,6 +26,7 @@ export class HomePage implements OnInit {
   flagData: any;
   attendeeId: any;
   attendees: any = [];
+ 
   toUser: { toUserId: string, toUserName: string };
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, private _dataservice: DataServiceProvider, public loadingCtrl: LoadingController) {
     //document.getElementById('instantChat').style.display = "block";
@@ -53,6 +54,7 @@ ionViewLoaded() {
       console.log("data")
       this.getCustlatestVisit();
       this.getCustPastVisit();
+ 
       loading.dismiss();
     });
   
@@ -61,10 +63,18 @@ ionViewLoaded() {
   ngOnInit() {
       // this.getCustlatestVisit();
       // this.getCustPastVisit();
+   
       this.ionViewLoaded();
   }
 
-  
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
   
 
   getCustlatestVisit() {
@@ -139,7 +149,7 @@ ionViewLoaded() {
       .subscribe(res => {
 
         this.pastVisits = this.processPastVisits(res.data);
-        // console.log(JSON.stringify(this.pastVisits)+ "blah");
+       // console.log(JSON.parse(this.pastVisits)+ "blah");
 
       },
       error => console.log("Error :: " + error)
@@ -150,17 +160,20 @@ ionViewLoaded() {
     
   processPastVisits(pastVisits) {
     let visitsLists: Array<Object> = [];
-    console.log(JSON.stringify(pastVisits) + "--pastVisits");
+   // console.log(JSON.parse(pastVisits) + "--pastVisits");
     if (pastVisits.length > 0) {
+  
       for (let visit of pastVisits) {
-        //console.log(visit + "---visit");
+        console.log(visit, "---visit");
         //Superscript CAlculation
         visit.startSuperScript = this.daysSuperScript(visit.startDate);
         visit.endSuperScript = this.daysSuperScript(visit.endDate);
         // //No.of Days visit
         visit.noOfDays = this.dateDifference(visit.startDate, visit.endDate);
-
+        // provide feedback
+     
         visitsLists.push(visit);
+    
       }
       //console.log(JSON.stringify(visitsLists)+"---visitsLists");
     } else {
@@ -190,10 +203,14 @@ ionViewLoaded() {
   }
 
   goToSessionFeedback(visitId) {
-    console.log(visitId);
-    this.navCtrl.push(sessionFeedbackPage, { "visitId": visitId });
-    // this.navCtrl.push(commentPage, {"visitId":visitId});
-    // commentPage
+    if(visitId.feedback == null){
+           this.navCtrl.push(sessionFeedbackPage, { "visitId": visitId });
+    } else {
+   
+      this.navCtrl.push(commentPage, {"visitId":visitId});
+      
+    }
+    
   }
 
 }

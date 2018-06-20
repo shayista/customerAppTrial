@@ -110,4 +110,17 @@ changePassword(passwordObj): Observable<any> {
   .map((res:Response) => res)
   .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
  }
+
+ feedbackFirst(feedbackObj): Observable<any>{
+  console.log(feedbackObj,"dataFeedback");
+ return this._http.post(API_ENDPOINT+"/api/feedbackFirstTime", {"feedbackObj":feedbackObj})
+ .map((res:Response) => res)
+ .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
+}
+fetchCustomerFeedback(id): Observable<any>{
+  console.log(id,"dataFeedback");
+ return this._http.post(API_ENDPOINT+"/api/fetchCustomerFeedback", {"id":id})
+ .map((res:Response) => res)
+ .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
+}
 }

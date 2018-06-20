@@ -3,7 +3,7 @@ page-my-visit {
         padding: 0;
         margin: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;     
-        text-transform: capitalize;  
+       // text-transform: capitalize;  
     // HEADER SECTION // // AGENDA VIEW SECTION // 
     .mainContainer{
         float: left !important;
@@ -125,7 +125,9 @@ page-my-visit {
    }
    .connectorsImg{
        width:30px;
-       height: 26.2px;
+       max-height: 26.2px;
+       margin: 0;
+       padding-bottom: 5px;
    }
     .profilesPresenters{
         margin-top: 4.79%;
@@ -465,12 +467,12 @@ page-my-visit {
 .hotelDetails{
     width: 96%;
     background: transparent;
-    margin: 0 0 15px 0;
+    margin: 2px 0 15px 0;
     padding: 0; 
     text-transform: capitalize;
 }
 .hotelDetails h2{
-    font-size: 19px;
+    font-size: 15px;
     font-weight: 500;
     color: #000;
     margin: 0 0 2px 0;
@@ -479,7 +481,7 @@ page-my-visit {
 .hotelName{
     color: #666;
     font-weight: 400;
-    font-size: 19px;
+    font-size: 15px;
     margin: 0 0 2px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -536,7 +538,7 @@ page-my-visit {
 }
 .airportTransfer h2{
     color: #000;
-    font-size: 19px;
+    font-size: 15px;
     font-weight: 500;
     margin: 0 0 3px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -544,7 +546,7 @@ page-my-visit {
     .airportTransfer p{
         color: #666;
         font-weight: 400;
-        font-size: 17px;
+        font-size: 15px;
         margin-bottom: 15px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -601,6 +603,7 @@ page-my-visit {
         text-decoration: none !important;
     }
     a{
+        text-decoration: none !important;
         display: block;
     }
     .leftArrowAccordion i{

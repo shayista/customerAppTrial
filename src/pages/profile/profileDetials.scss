@@ -48,11 +48,11 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
 }
-.profileMenu .item, .profileMenu ion-item{
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
+// .profileMenu .item, .profileMenu ion-item{
+//     margin: 0;
+//     padding: 0;
+//     position: relative;
+// }
 .securityDropDown .select-icon .select-icon-inner{
     color: #00677f;
     left: 0px;
@@ -106,14 +106,13 @@ placeholder{
 .fromConatiner{
     margin:60px 25.5px 0 25.5px;
 }
-ion-card img{
- 
-    display: inline;
-}
+
 .attendeePhoto{
     border-radius: 50%;
     width: 100px;
     height: 100px;
+    display: inline-block !important;
+    
 }
 input{
     width: 100%;

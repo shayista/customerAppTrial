@@ -1,5 +1,13 @@
 <!-- <ion-nav id="nav"  [root]="pageNavigation"></ion-nav> -->
 <ion-content class="container">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   
   <div class="visits">
     <div class="myVisitHeader">
@@ -84,7 +92,9 @@
                 </div>
               </div>
             </ion-card-content>
-            <button class="viewDetails" (click)="goToSessionFeedback(visits)"> Provide Feedback
+            <button class="viewDetails" (click)="goToSessionFeedback(visits)"  *ngIf="visits.feedback != 1"> Provide Feedback
+            </button>
+            <button class="viewDetailsRead" (click)="goToSessionFeedback(visits)" *ngIf="visits.feedback == 1"> View Feedback
             </button>
           </ion-card>
         </div>

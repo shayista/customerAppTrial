@@ -9,16 +9,18 @@ import { DataServiceProvider } from '../../providers/data-service';
   templateUrl: 'sessionFeedback.html'
 })
 export class sessionFeedbackPage {
+  feedbackFlag: boolean = false;
   attendeeName: string;
   additionalCommentsText: string;
   attendee: any;
+  viewFeedback : any;
   customerFeedback = {
     purpose: "",
     user_ID: "",
     loginUserId: "",
     modifiedUserName: "",
     feedback: {
-      clientId:"",
+      clientId: "",
       visitId: "",
       attendeeId: "",
       contentQuality: "",
@@ -32,10 +34,13 @@ export class sessionFeedbackPage {
   };
   val: number = 0;
   visitId: any;
-
+  feedbackObj: {
+    id: "",
+    feedback: number
+  }
   constructor(public navParams: NavParams, public viewCtrl: ViewController, public navCtrl: NavController, private _dataservice: DataServiceProvider) {
     this.visitId = navParams.get('visitId');
-      if (sessionStorage.getItem("attendeeId") == "undefined") {
+    if (sessionStorage.getItem("attendeeId") == "undefined") {
       this.navCtrl.setRoot(loginPage);
       this.navCtrl.push(loginPage);
     } else {
@@ -96,7 +101,7 @@ export class sessionFeedbackPage {
     this.customerFeedback.loginUserId = this.attendee;
     this.customerFeedback.modifiedUserName = this.attendeeName;
     this.customerFeedback.purpose = this.visitId.purpose;
-   
+
     console.log(this.customerFeedback);
 
 
@@ -104,24 +109,41 @@ export class sessionFeedbackPage {
 
   }
   sessionFeedBackForm() {
+    this.feedbackObj = {
+      id: this.visitId._id,
+      feedback: 1
+    }
     this.customerFeedback.feedback.additionalComments = this.additionalCommentsText;
     this._dataservice.saveCustomerFeedback(this.customerFeedback)
       .subscribe(res => {
-        console.log(res);
-        // res;
-        if (res.status == 200) {
+        res;
+        console.log(res.data);
+        if(res.status == 200){
+          this.feedbackFlag = true;
+          this.firstTimeFeedback(this.feedbackFlag);
           this.navCtrl.pop();
         }
-
+  
       },
       error => console.log(error));
 
+   
   }
   goBack() {
     this.navCtrl.pop();
   }
 
+firstTimeFeedback(feedbackFlag){
+  if(feedbackFlag == true) {
+    this._dataservice.feedbackFirst(this.feedbackObj)
+      .subscribe(res => {
+        console.log(res);
+    
+      },
+      error => console.log(error));
 
+  }
+}
 
 
 

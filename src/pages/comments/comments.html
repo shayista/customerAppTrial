@@ -1,104 +1,60 @@
-<!-- <ion-content>
-    <div class="subHeader">
-        <p class="button-clear" ng-disabled="clicked" (click)="goBack()">
-          <i class="fa fa-chevron-left back-arrow" aria-hidden="true"></i>Purpose
-        </p>
-    
-      </div>
-     <div class="container">
-       <p class="commentHeader">Comment</p>
-       <p class="feedbackSelector">Share your feedback after selecting a category</p>
-       <form>
-
-    
-    <label class="category">Category</label>
-  
-    <select class="selectCategory" placeholder="Select a category name">
-        <option value="Presenter">Presenter</option>
-        <option value="Cab">Cab</option>
-        <option value="Food">Food</option>
-    </select>
-    <div class="rangeConatiner">
-      <p class="rating">Rating</p>
-      <input class="rangeIndicator slider" type="range" min="1" max="10" step="1" list="tickmarks" value="10"/>
-      <datalist id="tickmarks">
-          <option value="0">
-          <option value="1">
-          <option value="2">
-          <option value="3">
-          <option value="4">
-          <option value="5">
-          <option value="6">
-          <option value="7">
-          <option value="8">
-          <option value="9">
-          <option value="10">
-        </datalist>
-    </div>
-   
-    <label class="messageTextarea">Message</label>
-    <textarea class="textBox">Enter your text here</textarea>
-   
-    
-    <input type="button" value="Cancel" class="cancelButton pull-right"/>
-    <input type="submit" value="Submit" class="submitButton pull-right"/>
-</form>
-     </div>
-</ion-content> -->
 <ion-content>
     <div class="subHeader">
             <p class="button-clear" ng-disabled="clicked" (click)="goBack()">
-                <i class="fa fa-angle-left" aria-hidden="true"></i>Cognizant DIgital Capabalities
-                <!-- {{visitDetails.purpose}}  -->
+                <i class="fa fa-angle-left back-arrow" aria-hidden="true"></i>View Feedback
+            
             </p>
             <div class="locationDetails" >
             <div class="companyConatiner">
-                <span class="company">Cognizant</span>
-                <!-- <div class="visitDetaikls" *ngFor="let visitDetails of visitDetails.visit_locations; let i =index">
+                <span class="company">    {{visitDetails.purpose}} </span>
+                <div class="visitDetaikls" *ngFor="let visitDetails of visitDetails.visit_locations; let i =index">
                     {{visitDetails.country}}, {{visitDetails.city}} - {{visitDetails.visitingLocation}}
-                </div> -->
+                </div>
                 </div>
             
-                <!-- <p class="daysCount">
+                <p class="daysCount">
                 <i class="fa fa-calendar fa-lg"></i>
                 <span>{{visitDetails.startDate | date: "d"}}<sup class="subScript">{{visitDetails.startSuperScript}}</sup> {{visitDetails.startDate | date: "MMM"}} - {{visitDetails.endDate | date: "d"}}<sup class="subScript">{{visitDetails.endSuperScript}}</sup> {{visitDetails.endDate | date: "MMM"}}  </span> | {{visitDetails.noOfDays}} Day(s)
-                </p> -->
+                </p> 
         
             </div>
             </div>
-    <ul class="parameter-container">
+    <ul class="parameter-container" *ngIf="ratings">
         <li class= "parameters">
-            <span><i class="fa fa-file-alt"></i></span>
+            <span>  <img src="assets/imgs/content@3x.png"></span>
             <p>Content Quality</p>
-            <div><i class="fa fa-star" aria-hidden="true"></i><span>8</span>/10</div>
+            <div [ngClass]="ratings.contentQuality<=5 ? 'less-than-five': ratings.contentQuality>7 ? 'more-than-seven':'five-to-seven' "><i class="fa fa-star" aria-hidden="true">
+                
+            </i>
+                <span>{{ ratings.contentQuality }}</span>/10</div>
         </li>
         <li class= "parameters">
-            <span><i class="fa fa-file-alt"></i></span>
+            <span>  <img src="assets/imgs/presentation@3x.png"></span>
             <p>Presentation Skills</p>
-            <div><i class="fa fa-star" aria-hidden="true"></i> <span>8</span>/10</div>
+            <div [ngClass]="ratings.presentationSkills<=5 ? 'less-than-five': ratings.presentationSkills>7 ? 'more-than-seven':'five-to-seven' "><i class="fa fa-star" aria-hidden="true"></i> <span>{{ratings.presentationSkills}}</span>/10</div>
         </li>
-        <li class= "parameters">
+        <li class= "parameters services">
             SERVICES
         </li>
         <li class= "parameters">
-            <span><i class="fa fa-file-alt"></i></span>
+            <span>  <img src="assets/imgs/taxicar@3x.png"></span>
             <p>Cab Services</p>
-            <div><i class="fa fa-star" aria-hidden="true"></i> <span>8</span>/10</div>
+            <div [ngClass]="ratings.cabServices<=5 ? 'less-than-five': ratings.cabServices>7 ? 'more-than-seven':'five-to-seven' "><i class="fa fa-star" aria-hidden="true"></i> <span>{{ratings.cabServices}}</span>/10</div>
         </li>
         <li class= "parameters">
-            <span><i class="fa fa-file-alt"></i></span>
+            <span>  <img src="assets/imgs/hotel@3x.png"></span>
             <p>Hotel Services</p>
-            <div><i class="fa fa-star" aria-hidden="true"></i> <span>8</span>/10</div>
+            <div [ngClass]="ratings.hotelServices<=5 ? 'less-than-five': ratings.hotelServices>7 ? 'more-than-seven':'five-to-seven' "><i class="fa fa-star" aria-hidden="true"></i> <span>{{ratings.hotelServices}}</span>/10</div>
         </li>
         <li class= "parameters">
-            <span><i class="fa fa-file-alt"></i></span>
+            <span>  <img src="assets/imgs/food@3x.png"></span>
             <p>Food & Cafe Services</p>
-            <div><i class="fa fa-star" aria-hidden="true"></i> <span>8</span>/10</div>
+            <div [ngClass]="ratings.fbServices<=5 ? 'less-than-five': ratings.fbServices>7 ? 'more-than-seven':'five-to-seven' "><i class="fa fa-star" aria-hidden="true"></i> <span>{{ratings.fbServices}}</span>/10</div>
         </li>
         <li class= "parameters">
-            <span><i class="fa fa-file-text-o"></i></span>
+            <span>  <img src="assets/imgs/rating@3x.png"> </span>
             <p>Overall Rating</p>
-            <div><i class="fa fa-star" aria-hidden="true"></i> <span>8</span>/10</div>
+            <div [ngClass]="ratings.overallRating<=5 ? 'less-than-five': ratings.overallRating>7 ? 'more-than-seven':'five-to-seven' "><i class="fa fa-star" aria-hidden="true"></i> <span>{{ratings.overallRating}}</span>/10</div>
         </li>
     </ul>
 </ion-content>

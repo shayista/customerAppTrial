@@ -3,10 +3,10 @@
 
 
 
-2. keytool -genkey -v -keystore my-release-key.keystore -alias snipTrip -keyalg RSA -keysize 2048 -validity 10000
+2. keytool -genkey -v -keystore my-release-key.keystore -alias snipTrip06/20 -keyalg RSA -keysize 2048 -validity 10000
 
 
-3.jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-release-unsigned.apk snipTrip
+3.jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-release-unsigned.apk snipTrip06/20
 
 
-4.zipalign -v 4 android-release-unsigned.apk snipTrip.apk
+4.zipalign -v 4 android-release-unsigned.apk snipTrip06/20.apk
